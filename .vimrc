@@ -2,11 +2,11 @@
 " mapc
 
 " プラグイン
-source /home/syasui/.vim/conf/plugin.vim
+source .vim/conf/plugin.vim
 
 " 基本ファイル
-source /home/syasui/.vim/conf/common.vim
+source .vim/conf/common.vim
 
 " キーバインド
-source /home/syasui/.vim/conf/key.vim
+source .vim/conf/key.vim
 
