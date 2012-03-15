@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/opt/syasui/bmmo/trunk/server/src/channelsv'
+let g:netrw_dirhist_2='/opt/syasui/bmmo/trunk/server/src/recipesv'
+let g:netrw_dirhist_3='/opt/syasui/gitsvn/bmmo/server/src/recipesv'
+let g:netrw_dirhist_4='/opt/syasui/gitsvn/bmmo/server/src/gmsv/log/forgingfusionprogresslog'
+let g:netrw_dirhist_5='/opt/syasui/bmmo/git/server/src/gmsv/enchant'
