@@ -22,7 +22,7 @@ nnoremap <silent> <Space>f :UniteWithBufferDir -buffer-name=files file<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " pyclewn
-source ~/.vim/conf/pyclewn.vim
+source <sfile>:h/pyclewn.vim
 " Pyclewn用キーバインド
 nnoremap <silent> <F4> :<C-u>Pyclewn<CR>
 "nnoremap <F6> :<C-u>call g:TogglePyclewnKeymap()<CR>
