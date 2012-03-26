@@ -8,7 +8,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc( '$HOME/.vim/bundle' )
 
 " Vundle が管理するプラグイン
-" Bundle 'gmarik/vundle'
+Bundle 'gmarik/vundle'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
@@ -18,7 +18,6 @@ Bundle 'the9ball/gtags.vim'
 
 " 試用中
 Bundle 'motemen/git-vim'
-Bundle 'vim-scripts/Conque-Shell'
 Bundle 'scrooloose/syntastic'
 
 " }}}
