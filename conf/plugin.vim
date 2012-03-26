@@ -14,8 +14,12 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'jayed/pyclewn'
+Bundle 'the9ball/gtags.vim'
+
+" 試用中
 Bundle 'motemen/git-vim'
-Bundle 'the-9-ball/gtags.vim'
+Bundle 'vim-scripts/Conque-Shell'
+Bundle 'scrooloose/syntastic'
 
 " }}}
 " =============================================================
@@ -88,6 +92,16 @@ nnoremap <silent> <C-p> :cp<CR>
 nnoremap <silent> <C-]> :Gtags <C-r><C-w><CR>
 " grep
 " nnoremap <C-g><C-g> :Gtags -g <C-t><C-w><CR><CR><C-o>
+
+" }}}
+" =============================================================
+
+" =============================================================
+"	syntastic
+" {{{
+
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
 
 " }}}
 " =============================================================
