@@ -1,0 +1,37 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+args	pyclewn.vim	/^  let s:args = "--window=top --maxlines=10000 --background=Cyan,Green,Magenta"$/;"	v
+args	pyclewn.vim	/^  let s:args = pyclewn_args$/;"	v
+AttachFunc	common.vim	/^	function! g:AttachFunc( progname )$/;"	f
+connection	pyclewn.vim	/^  let s:connection = "localhost:3219:changeme"$/;"	v
+connection	pyclewn.vim	/^  let s:connection = pyclewn_connection$/;"	v
+did_pyclewn	pyclewn.vim	/^let s:did_pyclewn = 1$/;"	v
+error	pyclewn.vim	/^function s:error(msg)$/;"	f
+fixed	pyclewn.vim	/^let s:fixed = "--daemon --editor= --netbeans=" . s:connection . " --cargs="$/;"	v
+info	pyclewn.vim	/^function s:info(msg)$/;"	f
+MyWinEnter	common.vim	/^augroup MyWinEnter$/;"	a
+pgm	pyclewn.vim	/^let s:pgm = "pyclewn"$/;"	v
+prefix	pyclewn.vim	/^            let prefix = argl[idx + 1]$/;"	v
+PutBreak	common.vim	/^function! g:PutBreak()$/;"	f
+pyclewn_ready	pyclewn.vim	/^function s:pyclewn_ready(filename)$/;"	f
+SrcExpl_GoBackMapKey	plugin.vim	/^let g:SrcExpl_GoBackMapKey  = "<C-b>"$/;"	v
+SrcExpl_RefreshMapKey	plugin.vim	/^let g:SrcExpl_RefreshMapKey = "<C-Space>"$/;"	v
+SrcExpl_RefreshTime	plugin.vim	/^let g:SrcExpl_RefreshTime = 0$/;"	v
+SrcExpl_UpdateTags	plugin.vim	/^let g:SrcExpl_UpdateTags    = 1$/;"	v
+SrcExpl_WinHeight	plugin.vim	/^let g:SrcExpl_WinHeight     = 9$/;"	v
+start	pyclewn.vim	/^function s:start(args)$/;"	f
+start_err	pyclewn.vim	/^let s:start_err .= "run the 'pyclewn' program to get the cause of the problem."$/;"	v
+start_err	pyclewn.vim	/^let s:start_err = "Error: pyclewn failed to start, "$/;"	v
+start_pdb	pyclewn.vim	/^function s:start_pdb(args)$/;"	f
+TogglePyclewnKeymap	plugin.vim	/^function! g:TogglePyclewnKeymap()$/;"	f
+TogglePyclewnKeymapFlag	plugin.vim	/^let s:TogglePyclewnKeymapFlag = 0$/;"	v
+t_EI	common.vim	/^	let &t_EI .= "\\eP\\e[<s\\e[<0t\\e\\\\"$/;"	v
+t_EI	common.vim	/^	let &t_EI .= "\\e[<s\\e[<0t"$/;"	v
+t_SI	common.vim	/^	let &t_SI .= "\\eP\\e[<r\\e\\\\"$/;"	v
+t_SI	common.vim	/^	let &t_SI .= "\\e[<r"$/;"	v
+t_te	common.vim	/^	let &t_te .= "\\eP\\e[<0t\\e[<s\\e\\\\"$/;"	v
+t_te	common.vim	/^	let &t_te .= "\\e[<0t\\e[<s"$/;"	v
