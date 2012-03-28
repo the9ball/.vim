@@ -18,7 +18,10 @@ Bundle 'the9ball/gtags.vim'
 
 " 試用中
 Bundle 'motemen/git-vim'
-Bundle 'scrooloose/syntastic'
+
+" 使わない
+" シンタックスチェッカーだが、誤検出が多い印象
+" Bundle 'scrooloose/syntastic'
 
 " }}}
 " =============================================================
