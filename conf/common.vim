@@ -65,6 +65,17 @@ filetype plugin on
 " ファイルを開くときに変更破棄しない。
 set hidden
 
+" ウィンドウ分割時の挙動
+" 横分割したら新しいウィンドウは下に
+set splitbelow
+" 縦分割したら新しいウィンドウは右に
+set splitright
+
+" タブ文字、改行文字を表示
+"set list
+" 改行、タブ文字の設定
+set listchars=tab:^-,trail:-,eol:\
+
 " }}}
 " =============================================================
 
@@ -87,6 +98,9 @@ set cindent
 
 " <BS>で文字が消えない問題の対応
 set backspace=indent,eol,start
+
+" 改行時にコメントしない
+set formatoptions-=ro
 
 " }}}
 " =============================================================
