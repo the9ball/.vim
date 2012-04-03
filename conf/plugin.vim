@@ -18,6 +18,7 @@ Bundle 'the9ball/gtags.vim'
 
 " 試用中
 Bundle 'motemen/git-vim'
+Bundle 'sgur/unite-qf'
 
 " 使わない
 " シンタックスチェッカーだが、誤検出が多い印象
@@ -32,6 +33,33 @@ Bundle 'motemen/git-vim'
 
 nnoremap <silent> <Space>b :Unite buffer<CR>
 nnoremap <silent> <Space>f :UniteWithBufferDir -buffer-name=files file<CR>
+
+call unite#filters#default#use( [ 'matcher_default', 'sorter_word', 'converter_default' ] )
+
+" vimgrep を Unite で。
+command! -nargs=+ Vim :call g:fVim( <f-args> )
+function! g:fVim( pattern, files )
+	let s:temp = 'vimgrep ' . a:pattern . ' ' . a:files . ' -no-empty'
+	call g:UniteQfHelper( s:temp )
+	cclose
+endfunction
+
+" その他 Unite qf 系用
+command! -nargs=1 UniteQfHelper :call g:fUniteQfHelper( <args> )
+function! g:fUniteQfHelper( ope )
+	if 1
+		" なんかうまくいかないのでとりあえずそのまま実行。
+		" そのうち研究する。
+		execute "" . a:ope
+	else
+		" スペースをエスケープする。
+		let s:temp = substitute( a:ope, ' ', '\\ ', 'g' )
+
+		" 実行
+		"echo s:temp
+		execute "Unite qf:ex=" . s:temp
+	endif
+endfunction
 
 " }}}
 " =============================================================
