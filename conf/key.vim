@@ -60,6 +60,10 @@ vnoremap P "_dP
 vnoremap J j
 vnoremap <C-j> j
 
+" visual モードで連続して、インデント出来るように設定
+vnoremap <silent> > >gv
+vnoremap <silent> < <gv
+
 " }}}
 " =============================================================
 
@@ -155,8 +159,8 @@ nnoremap <silent> sh :<C-u>hide edit %<.h<CR>
 nnoremap <silent> ss :<C-u>hide edit %<.cpp<CR>
 
 " いろんなメイク
-command! -nargs=0 Mkcd :make -j8 CCPROG=ccache
-nnoremap <S-m> :wa<CR>:make %:t:r.o<CR><CR>
+command! -nargs=* Mkcd :UniteQfHelper( "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' ) )
+nnoremap <S-m> :wa<CR>:UniteQfHelper( "make " . expand( '%:t:r' ) . ".o" )<CR><CR>
 
 " 指定のプログラムをkill
 command! -nargs=1 Killer :!pgrep <args>|xargs kill -9
@@ -187,7 +191,7 @@ nnoremap <silent> <C-h> :nohlsearch<CR>
 
 " Quickfixを開閉する。
 nnoremap <silent> <Space>o :copen<CR>
-nnoremap <silent> <Space><Space> :cclose<CR>
+nnoremap <silent> <Space>c :cclose<CR>
 
 " }}}
 " =============================================================
