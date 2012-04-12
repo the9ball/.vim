@@ -145,18 +145,30 @@ set timeoutlen=200
 "	折り畳み設定
 " {{{
 
+" foldmethod(fdm)	:	折り畳みの形式
+"							marker	マーカー ( {{{ / }}} )
+"							indent	インデント
+"							syntax	構文	結構見づらい
+"							expr	自分で指定
+" foldmarker(fmr)	:	マーカーの指定
+
+" expr 用定義 """"""""""""""""""""""""""""""""""""
+
+" 設定 """""""""""""""""""""""""""""""""""""""""""
+
 " 基本はマーカー ( {{{ や }}} ) で折り畳み
 set fdm=marker
-" indent	インデント
-" syntax	構文	結構見づらい
 
 autocmd FileType *
 \	if &l:omnifunc == ''
 \	|	setlocal omnifunc=syntaxcomplete#Complete
 \	|endif
 
-autocmd FileType c,cpp,h,hpp,xml,as,mxml
-\	set fdm=indent
+autocmd FileType c,cpp,h,hpp
+\	setlocal fmr={,}
+
+autocmd FileType xml,as,mxml
+\	setlocal fdm=syntax
 
 " }}}
 " =============================================================
@@ -214,23 +226,3 @@ augroup END
 " }}}
 " =============================================================
 
-" =============================================================
-"	Pyclewn の CAttach を引数名で簡単に。
-" {{{
-
-" ダブった時のことは知らない。
-if 1
-	function! g:AttachFunc( progname )
-		let s:pid = system( "pgrep " . a:progname )
-		"echo s:pid
-		"echo exists( 'pyclewn#StartClewn' )
-		if "" != s:pid
-			"echo s:pid
-			execute "Cattach".s:pid
-		endif
-	endfunction
-	command! -nargs=1 -complete=dir Attach :call g:AttachFunc( <f-args> )
-endif
-
-" }}}
-" =============================================================
