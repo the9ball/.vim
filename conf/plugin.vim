@@ -19,6 +19,7 @@ Bundle 'the9ball/gtags.vim'
 " 試用中
 Bundle 'motemen/git-vim'
 Bundle 'sgur/unite-qf'
+Bundle 'vim-scripts/TwitVim'
 
 " 使わない
 " シンタックスチェッカーだが、誤検出が多い印象
@@ -102,6 +103,20 @@ nnoremap <F10> :Cnext<CR>
 nnoremap <F11> :Cstep<CR>
 nnoremap <F12> :Cfinish<CR>
 
+" ダブった時のことは知らない。
+if 1
+	function! g:AttachFunc( progname )
+		let s:pid = system( "pgrep " . a:progname )
+		"echo s:pid
+		"echo exists( 'pyclewn#StartClewn' )
+		if "" != s:pid
+			"echo s:pid
+			execute "Cattach".s:pid
+		endif
+	endfunction
+	command! -nargs=1 -complete=file Attach :call g:AttachFunc( <f-args> )
+endif
+
 " }}}
 " =============================================================
 
@@ -136,3 +151,12 @@ let g:syntastic_auto_loc_list=2
 " }}}
 " =============================================================
 
+" =============================================================
+"	TwitVim
+" {{{
+
+let twitvim_login_b64 = "dGhlOWJhbGw=:am1rdW05a2o="
+let twitvim_count = 2000
+
+" }}}
+" =============================================================
