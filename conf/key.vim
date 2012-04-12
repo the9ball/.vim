@@ -160,7 +160,7 @@ nnoremap <silent> ss :<C-u>hide edit %<.cpp<CR>
 
 " いろんなメイク
 command! -nargs=* Mkcd :UniteQfHelper( "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' ) )
-nnoremap <S-m> :wa<CR>:UniteQfHelper( "make " . expand( '%:t:r' ) . ".o" )<CR><CR>
+nnoremap <S-m> :wa<CR>:UniteQfHelper( "make RELEASE=1 " . expand( '%:t:r' ) . ".o" )<CR><CR>
 
 " 指定のプログラムをkill
 command! -nargs=1 Killer :!pgrep <args>|xargs kill -9
