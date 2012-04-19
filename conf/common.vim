@@ -32,9 +32,10 @@ set hlsearch
 syntax enable
 
 " 検索時の大文字小文字を区別しない
-" set ignorecase
+set ignorecase
+" set wildignorecase
 " 検索する文字に大文字が1つでも入っていた場合は、大文字小文字を区別する。
-" set smartcase
+set smartcase
 " 検索が最後の時に最初へ戻らないように
 set nowrapscan
 
