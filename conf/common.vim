@@ -74,7 +74,7 @@ set splitright
 " タブ文字、改行文字を表示
 "set list
 " 改行、タブ文字の設定
-set listchars=tab:^-,trail:-,eol:\
+set listchars=tab:^=,trail:-,eol:\
 
 " }}}
 " =============================================================
@@ -93,8 +93,35 @@ set shiftwidth=4
 set autoindent
 " C言語形式のインデント
 set cindent
-" 反映されるか？これ。
-" set cinoptions=":0|1g0t0(1su-1U1m1"
+
+" インデント指定
+" {{{
+	" 一旦初期化
+	set cinoptions=
+	" case のインデント位置
+	set cinoptions+=:0
+	" case の {} の位置
+	set cinoptions+=l-1s
+	" class の アクセス識別子(publicとか)の位置
+	set cinoptions+=g0
+	" 複数行コメントの位置
+	set cinoptions+=c1
+
+	" 一番やりたいのに・・・。
+	" 閉じていない括弧の位置
+	set cinoptions+=(1s
+	" 閉じていない括弧の中の位置
+	set cinoptions+=u1s
+	" ( や u の指定を無視しない???
+	set cinoptions+=U1
+	" ) の位置を ( のある行の行頭に合わせる。
+	set cinoptions+=m1
+
+	" 基底クラスの宣言とかの位置???
+	" set cinoptions+=i0
+	" 戻り値の指定???
+	" set cinoptions+=t0
+" }}}
 
 " <BS>で文字が消えない問題の対応
 set backspace=indent,eol,start
@@ -226,3 +253,12 @@ augroup END
 " }}}
 " =============================================================
 
+" =============================================================
+"	やりたいこと。
+" {{{
+"
+"	()の中のインデントを1個に。
+"	)をインデント0個に
+"
+" }}}
+" =============================================================
