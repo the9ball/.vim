@@ -160,6 +160,7 @@ nnoremap <silent> ss :<C-u>hide edit %<.cpp<CR>
 
 " いろんなメイク
 command! -nargs=* Mkcd :UniteQfHelper( "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' ) )
+command! -nargs=* Mkcdd :UniteQfHelper( "make -j8 CCPROG=ccache " . expand( '<args>' ) )
 nnoremap <S-m> :wa<CR>:UniteQfHelper( "make RELEASE=1 " . expand( '%:t:r' ) . ".o" )<CR><CR>
 
 " 指定のプログラムをkill
@@ -206,9 +207,13 @@ if	&diff
 	nnoremap <leader>2 :diffget BASE<CR>
 	nnoremap <leader>3 :diffget REMOTE<CR>
 
+	" ノーマルな vimdiff 時
+	nnoremap <leader>g :diffget<CR>
+	nnoremap <leader>p :diffput<CR>
+
 	" 次へと前へ
-	nnoremap <leader>n ]c
-	nnoremap <leader>b [c
+	nnoremap <leader>n ]czz
+	nnoremap <leader>b [czz
 endif
 
 " }}}
