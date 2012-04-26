@@ -192,7 +192,7 @@ autocmd FileType *
 \	|	setlocal omnifunc=syntaxcomplete#Complete
 \	|endif
 
-autocmd FileType c,cpp,h,hpp
+autocmd FileType c,cpp,h,hpp,php
 \	setlocal fmr={,}
 
 autocmd FileType xml,as,mxml
