@@ -166,6 +166,9 @@ nnoremap <S-m> :wa<CR>:UniteQfHelper( "make RELEASE=1 " . expand( '%:t:r' ) . ".
 " 指定のプログラムをkill
 command! -nargs=1 Killer :!pgrep <args>|xargs kill -9
 
+" コメントアウト
+vnoremap <silent> / :s/^\(\s*\)/\1\/\//g<CR>gv:s/^\(\s*\)\/\/\/\//\1/g<CR>
+
 " }}}
 " =============================================================
 
