@@ -24,6 +24,8 @@ Bundle 'vim-scripts/TwitVim'
 " 使わない
 " シンタックスチェッカーだが、誤検出が多い印象
 " Bundle 'scrooloose/syntastic'
+" rubyのバージョンが古かった・・・。
+" Bundle 'astashov/vim-ruby-debugger'
 
 " }}}
 " =============================================================
