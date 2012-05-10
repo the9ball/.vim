@@ -196,7 +196,7 @@ autocmd FileType *
 \	|	setlocal omnifunc=syntaxcomplete#Complete
 \	|endif
 
-autocmd FileType c,cpp,h,hpp
+autocmd FileType c,cpp,h,hpp,php
 \	setlocal fmr={,}
 
 autocmd FileType xml,as,mxml
@@ -262,8 +262,7 @@ augroup END
 "	やりたいこと。
 " {{{
 "
-"	()の中のインデントを1個に。
-"	)をインデント0個に
+" ファイルのオープンを常に相対パスで。
 "
 " }}}
 " =============================================================
