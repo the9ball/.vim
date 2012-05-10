@@ -137,34 +137,38 @@ set formatoptions-=ro
 "	入力をやめた際にIMEをOFFし、再開時にもとに戻す。
 " {{{
 
-" screen/tmuxによってうまく動かないとのこと。
-" 挿入モードに入った際のシーケンス
-" let &t_SI .= "\e[<r"
-" 挿入モードから出た際のシーケンス
-" let &t_EI .= "\e[<s\e[<0t"
-" vim終了時のシーケンス
-" let &t_te .= "\e[<0t\e[<s"
+if	1
+	" screen/tmuxによってうまく動かないとのこと。
+	" 挿入モードに入った際のシーケンス
+	" let &t_SI .= "\e[<r"
+	" 挿入モードから出た際のシーケンス
+	" let &t_EI .= "\e[<s\e[<0t"
+	" vim終了時のシーケンス
+	" let &t_te .= "\e[<0t\e[<s"
 
-if $term =~ "screen" || $TERM =~ "screen"
-	" screen の場合は \eP と \e\\ で囲めば問題ない。
-	" 挿入モードに入った際のシーケンス
-	let &t_SI .= "\eP\e[<r\e\\"
-	" 挿入モードから出た際のシーケンス
-	let &t_EI .= "\eP\e[<s\e[<0t\e\\"
-	" vim終了時のシーケンス
-	let &t_te .= "\eP\e[<0t\e[<s\e\\"
-else
-	" screen 以外
-	" 挿入モードに入った際のシーケンス
-	let &t_SI .= "\e[<r"
-	" 挿入モードから出た際のシーケンス
-	let &t_EI .= "\e[<s\e[<0t"
-	" vim終了時のシーケンス
-	let &t_te .= "\e[<0t\e[<s"
+	if $term =~ "screen" || $TERM =~ "screen"
+		" screen の場合は \eP と \e\\ で囲めば問題ない。
+		" 挿入モードに入った際のシーケンス
+		let &t_SI .= "\eP\e[<r\e\\"
+		" 挿入モードから出た際のシーケンス
+		let &t_EI .= "\eP\e[<s\e[<0t\e\\"
+		" vim終了時のシーケンス
+		let &t_te .= "\eP\e[<0t\e[<s\e\\"
+	else
+		" screen 以外
+		" 挿入モードに入った際のシーケンス
+		let &t_SI .= "\e[<r"
+		" 挿入モードから出た際のシーケンス
+		let &t_EI .= "\e[<s\e[<0t"
+		" vim終了時のシーケンス
+		let &t_te .= "\e[<0t\e[<s"
+	endif
+	" IMEを切り替える時間
+	" 時間が短いと変更が間に合わない可能性があるとのこと。
+	set timeoutlen=200
 endif
-" IMEを切り替える時間
-" 時間が短いと変更が間に合わない可能性があるとのこと。
-set timeoutlen=200
+
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 " }}}
 " =============================================================
