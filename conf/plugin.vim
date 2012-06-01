@@ -21,6 +21,7 @@ Bundle 'motemen/git-vim'
 Bundle 'sgur/unite-qf'
 Bundle 'vim-scripts/TwitVim'
 Bundle 'vim-scripts/surround.vim'
+Bundle 'othree/eregex.vim'
 
 " 使わない
 " シンタックスチェッカーだが、誤検出が多い印象
