@@ -226,10 +226,15 @@ nnoremap <silent> <Space>c :cclose<CR>
 "	メモ用設定
 " {{{
 
-nnoremap <Laddr>: call memoSeparate
+nnoremap memo :MemoSeparate<CR>
+command! -nargs=0 MemoSeparate call s:memoSeparate()
 function! s:memoSeparate()
+	call append( a:firstline-1, "###############################################################" )
+	.!date
+	call append( a:firstline+1, "" )	" 空行挿入
+	call append( a:firstline+2, "" )	" 空行挿入
+	call cursor( line(".")+2, 0 )
 endfunction
 
 " }}}
 " =============================================================
-
