@@ -204,7 +204,7 @@ nnoremap <silent> <Space>c :cclose<CR>
 "	vimdiff 用設定
 " {{{
 
-if	&diff
+"if	&diff	これを有効にすると通常時にdiffthisとかをした時に効かない
 	" git mergetool の vimdiff 時のマージに使う。 <leader> == ￥
 	nnoremap <leader>1 :diffget LOCAL<CR>
 	nnoremap <leader>2 :diffget BASE<CR>
@@ -217,7 +217,7 @@ if	&diff
 	" 次へと前へ
 	nnoremap <leader>n ]czz
 	nnoremap <leader>b [czz
-endif
+"endif
 
 " }}}
 " =============================================================
