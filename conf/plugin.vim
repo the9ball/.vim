@@ -22,12 +22,15 @@ Bundle 'sgur/unite-qf'
 Bundle 'vim-scripts/TwitVim'
 Bundle 'vim-scripts/surround.vim'
 Bundle 'othree/eregex.vim'
+Bundle 'Lokaltog/vim-easymotion'
 
 " 使わない
 " シンタックスチェッカーだが、誤検出が多い印象
 " Bundle 'scrooloose/syntastic'
 " rubyのバージョンが古かった・・・。
 " Bundle 'astashov/vim-ruby-debugger'
+" vim-easymotionがイマイチだったら使ってみる。
+" Bundle 'kana/kuy-vim-fuzzyjump'
 
 " }}}
 " =============================================================
@@ -164,3 +167,15 @@ let twitvim_count = 2000
 
 " }}}
 " =============================================================
+
+" =============================================================
+"	EasyMotion
+" {{{
+
+let g:EasyMotion_leader_key	=	'<Leader>'
+
+" }}}
+" =============================================================
+
+command! -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-change <args>
+
