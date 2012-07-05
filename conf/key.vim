@@ -31,6 +31,24 @@
 " テンキーのEnterを通常のEnterに。
 map OM <CR>
 
+" 入力時は数値として認識させる。
+" inoremap 0p 0
+" inoremap 1q 1
+" inoremap 2r 2
+" inoremap 3s 3
+" inoremap 4t 4
+" inoremap 5u 5
+" inoremap 6v 6
+" inoremap 7w 7
+" inoremap 8x 8
+" inoremap 9y 9
+" inoremap . .
+" inoremap / /
+" inoremap * *
+" inoremap - -
+" inoremap + +
+" inoremap OM <CR>
+
 " }}}
 " =============================================================
 
