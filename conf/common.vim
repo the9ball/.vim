@@ -259,6 +259,44 @@ augroup END
 " =============================================================
 
 " =============================================================
+"	ステータス
+" {{{
+
+function! g:visual_charcnt()
+	if 1
+		return ''
+	endif
+	if visualmode() == mode()
+		let	l:pos	=	getpos( "." )
+		normal `<
+		let l:st	=	getpos( "." )
+		normal `>
+		let l:ed	=	getpos( "." )
+		call setpos( '.', l:pos )
+		return	'[' . l:st . ']'
+	else
+		return ''
+	endif
+endfunction
+
+set statusline=							" 一旦クリア
+set statusline+=[%n]					" バッファ番号
+set statusline+=[%Y]					" ファイル形式
+set statusline+=:%t						" ファイル名
+set statusline+=%m						" 修正フラグ
+set statusline+=%r						" 読み込み専用フラグ
+set statusline+=%w						" プレビューウィンドウフラグ
+set statusline+=%=						" 左と右の境界
+set statusline+=%{g:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
+set statusline+=%l,%v					" カーソル位置
+set statusline+=\ %p%%					" ファイル内のページの位置
+set statusline+=\  
+
+"
+" }}}
+" =============================================================
+
+" =============================================================
 "	やりたいこと。
 " {{{
 "
