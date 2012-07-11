@@ -77,6 +77,9 @@ set splitright
 " 改行、タブ文字の設定
 set listchars=tab:^=,trail:-,eol:\
 
+" vimdiff
+set diffopt=filler,iwhite
+
 " }}}
 " =============================================================
 
@@ -262,6 +265,62 @@ augroup END
 "	ステータス
 " {{{
 
+set statusline=							" 一旦クリア
+set statusline+=[%n]					" バッファ番号
+set statusline+=[%Y]					" ファイル形式
+set statusline+=:%t						" ファイル名
+set statusline+=%m						" 修正フラグ
+set statusline+=%r						" 読み込み専用フラグ
+set statusline+=%w						" プレビューウィンドウフラグ
+set statusline+=%=						" 左と右の境界
+set statusline+=%{g:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
+set statusline+=%l,%v					" カーソル位置
+set statusline+=\ %p%%					" ファイル内のページの位置
+set statusline+=\  
+
+"
+" }}}
+" =============================================================
+
+" =============================================================
+"	ステータスラインの色を状態によって変更
+" {{{	alwei さんからぱくってきた。
+
+let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
+
+if has('syntax')
+	augroup InsertHook
+		autocmd!
+		autocmd InsertEnter * call s:StatusLine('Enter')
+		autocmd InsertLeave * call s:StatusLine('Leave')
+	augroup END
+endif
+" if has('unix') && !has('gui_running')
+"   " ESCですぐに反映されない対策
+"   inoremap <silent> <ESC> <ESC>
+" endif
+
+let s:slhlcmd = ''
+function! s:StatusLine(mode)
+	if a:mode == 'Enter'
+		silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+		silent exec g:hi_insert
+	else
+		highlight clear StatusLine
+		silent exec s:slhlcmd
+		redraw
+	endif
+endfunction
+
+function! s:GetHighlight(hi)
+	redir => hl
+	exec 'highlight '.a:hi
+	redir END
+	let hl = substitute(hl, '[\r\n]', '', 'g')
+	let hl = substitute(hl, 'xxx', '', '')
+	return hl
+endfunction
+
 function! g:visual_charcnt()
 	if 1
 		return ''
@@ -278,19 +337,6 @@ function! g:visual_charcnt()
 		return ''
 	endif
 endfunction
-
-set statusline=							" 一旦クリア
-set statusline+=[%n]					" バッファ番号
-set statusline+=[%Y]					" ファイル形式
-set statusline+=:%t						" ファイル名
-set statusline+=%m						" 修正フラグ
-set statusline+=%r						" 読み込み専用フラグ
-set statusline+=%w						" プレビューウィンドウフラグ
-set statusline+=%=						" 左と右の境界
-set statusline+=%{g:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
-set statusline+=%l,%v					" カーソル位置
-set statusline+=\ %p%%					" ファイル内のページの位置
-set statusline+=\  
 
 "
 " }}}
