@@ -218,7 +218,7 @@ vnoremap <silent> / :s/^\(\s*\)/\1\/\//g<CR>gv:s/^\(\s*\)\/\/\/\//\1/g<CR>:nohls
 "	vim script 入力
 " {{{
 
-if 'vim' == &filetype
+if 'vim' == &filetype || 'VIM' == &filetype
 
 	" vimscript再読み込み
 	nnoremap <C-e> :w<CR>:source %<CR>
