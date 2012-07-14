@@ -247,8 +247,16 @@ augroup FoldMethodAutocmd
 	\	|	setlocal omnifunc=syntaxcomplete#Complete
 	\	|endif
 
-	autocmd FileType c,cpp,h,hpp,php
-	\	setlocal fmr={,}
+	" 素直に設定すると、コメントアウトされている括弧にも反応してしまう。
+	if 1
+		autocmd FileType c,cpp,h,hpp,php
+		\	setlocal fmr={,}
+	else
+		" TODO がんばる
+		autocmd FileType c,cpp,h,hpp,php
+		\	set fdm=expr
+		\|	set foldexpr=getline(v:lnum)=~'//[^{]*{'
+	endif
 
 	autocmd FileType xml,as,mxml
 	\	setlocal fdm=syntax
