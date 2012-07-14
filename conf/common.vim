@@ -131,6 +131,7 @@ set cindent
 set backspace=indent,eol,start
 
 " 改行時にコメントしない
+" なぜか効かない。
 set formatoptions-=ro
 
 " }}}
