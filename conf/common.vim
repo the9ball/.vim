@@ -279,7 +279,24 @@ set statusline+=%l,%v					" カーソル位置
 set statusline+=\ %p%%					" ファイル内のページの位置
 set statusline+=\  
 
-"
+function! g:visual_charcnt()
+	if 1
+		return ''
+	endif
+	if visualmode() == mode()
+		let	l:pos	=	getpos( "." )
+		normal `<
+		let l:st	=	getpos( "." )
+		normal `>
+		let l:ed	=	getpos( "." )
+		call setpos( '.', l:pos )
+		return	'[' . l:st . ']'
+	else
+		return ''
+	endif
+endfunction
+
+
 " }}}
 " =============================================================
 
@@ -322,22 +339,6 @@ function! s:GetHighlight(hi)
 	return hl
 endfunction
 
-function! g:visual_charcnt()
-	if 1
-		return ''
-	endif
-	if visualmode() == mode()
-		let	l:pos	=	getpos( "." )
-		normal `<
-		let l:st	=	getpos( "." )
-		normal `>
-		let l:ed	=	getpos( "." )
-		call setpos( '.', l:pos )
-		return	'[' . l:st . ']'
-	else
-		return ''
-	endif
-endfunction
 
 "
 " }}}
