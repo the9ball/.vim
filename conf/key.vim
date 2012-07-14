@@ -131,6 +131,27 @@ nnoremap ZZ <Nop>
 " CTRL+F でファイル名補完
 inoremap <silent> <C-f> <C-x><C-f>
 
+" スペルチェック ON/OFF
+function! s:completeSpellCheckOff()
+	if 0 == pumvisible()
+		" ポップアップメニューが出ていない。
+		set nospell
+		aug completeSpellCheck
+			au! * <buffer>
+		aug END
+	endif
+endfunction
+function! s:completeSpellCheckOn()
+	set spell
+	aug completeSpellCheck
+		au! * <buffer>
+		au CursorMoved,CursorMovedI <buffer> call s:completeSpellCheckOff()
+	aug END
+endfunction
+" <C-s> は isurround (テキストオブジェクト操作プラグイン) で使用されているが、使い勝手よくなかったのでつぶしていいと思う。
+command! -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
+inoremap <C-s> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
+
 " }}}
 " =============================================================
 
@@ -189,6 +210,23 @@ command! -nargs=1 Killer :!pgrep <args>|xargs kill -9
 
 " コメントアウト
 vnoremap <silent> / :s/^\(\s*\)/\1\/\//g<CR>gv:s/^\(\s*\)\/\/\/\//\1/g<CR>:nohlsearch<CR>
+
+" }}}
+" =============================================================
+
+" =============================================================
+"	コード入力支援
+" {{{
+
+if 'vim' == &filetype
+
+	" vimscript再読み込み
+	nnoremap <C-e> :w<CR>:source %<CR>
+
+	" コメントアウト
+	vnoremap <silent> / :s/^\(\s*\)/\1\"/g<CR>gv:s/^\(\s*\)\"\"/\1/g<CR>:nohlsearch<CR>
+
+endif
 
 " }}}
 " =============================================================
@@ -259,3 +297,4 @@ endfunction
 
 " }}}
 " =============================================================
+
