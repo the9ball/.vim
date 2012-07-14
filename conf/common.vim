@@ -89,6 +89,7 @@ set diffopt=filler,iwhite
 
 " =============================================================
 " {{{ ファイルを開いた時にfiletypeなどによって設定を変更する。
+" au FileType でやった方が見やすいのか・・・？
 
 function! s:BufAdd()
 	" switchってないんだっけ？
