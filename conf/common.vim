@@ -1,6 +1,5 @@
 " =============================================================
-"	基本設定
-" {{{
+" {{{ 基本設定
 
 " カレント .vimrc, .exrc などを読まない
 set noexrc
@@ -76,7 +75,7 @@ set splitbelow
 set splitright
 
 " タブ文字、改行文字を表示
-set list
+"set list	やっぱ見にくかった。
 " 改行、タブ文字の設定
 set listchars=tab:^\ ,trail:-
 "tab:タブ:	
@@ -89,8 +88,50 @@ set diffopt=filler,iwhite
 " =============================================================
 
 " =============================================================
-"	記述支援
-" {{{
+" {{{ ファイルを開いた時にfiletypeなどによって設定を変更する。
+
+function! s:BufAdd()
+	" switchってないんだっけ？
+
+	" =============================================================
+	" {{{ vim script 入力
+
+	if 'vim' == &filetype || 'VIM' == &filetype
+		" vimscript再読み込み
+		nnoremap <buffer> <C-e> :w<CR>:source %<CR>
+
+		" コメントアウト
+		vnoremap <buffer> <silent> / :s/^\(\s*\)/\1\"/g<CR>gv:s/^\(\s*\)\"\"/\1/g<CR>:nohlsearch<CR>
+	endif
+
+	" }}}
+	" =============================================================
+
+	" =============================================================
+	" {{{ ReadOnly用
+
+	if &readonly
+		" ものぐさ。undoとかできないから不都合あるかも。
+		nnoremap <buffer> u <C-u>
+		nnoremap <buffer> d <C-d>
+		nnoremap <buffer> f <C-f>
+		nnoremap <buffer> b <C-b>
+	endif
+
+	" }}}
+	" =============================================================
+
+endfunction
+augroup MyFileOpen
+	au!
+	au BufNewFile,BufRead,FileReadPost,FilterReadPost,StdinReadPost * call s:BufAdd()
+augroup END
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ 記述支援
 
 " タブ
 set tabstop=4
@@ -143,8 +184,7 @@ set formatoptions-=ro
 " =============================================================
 
 " =============================================================
-"	入力をやめた際にIMEをOFFし、再開時にもとに戻す。
-" {{{
+" {{{ 入力をやめた際にIMEをOFFし、再開時にもとに戻す。
 
 if	1
 	" screen/tmuxによってうまく動かないとのこと。
@@ -183,8 +223,7 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 " =============================================================
 
 " =============================================================
-"	折り畳み設定
-" {{{
+" {{{ 折り畳み設定
 
 " foldmethod(fdm)	:	折り畳みの形式
 "							marker	マーカー ( {{{ / }}} )
@@ -200,35 +239,36 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 " 基本はマーカー ( {{{ や }}} ) で折り畳み
 set fdm=marker
 
-autocmd FileType *
-\	if &l:omnifunc == ''
-\	|	setlocal omnifunc=syntaxcomplete#Complete
-\	|endif
+augroup FoldMethodAutocmd
+	au! *
+	autocmd FileType *
+	\	if &l:omnifunc == ''
+	\	|	setlocal omnifunc=syntaxcomplete#Complete
+	\	|endif
 
-autocmd FileType c,cpp,h,hpp,php
-\	setlocal fmr={,}
+	autocmd FileType c,cpp,h,hpp,php
+	\	setlocal fmr={,}
 
-autocmd FileType xml,as,mxml
-\	setlocal fdm=syntax
-
-" }}}
-" =============================================================
-
-" =============================================================
-"	予約語の補完
-" {{{
-
-autocmd FileType *
-\	if &l:omnifunc == ''
-\	|	setlocal omnifunc=syntaxcomplete#Complete
-\	|endif
+	autocmd FileType xml,as,mxml
+	\	setlocal fdm=syntax
+augroup END
 
 " }}}
 " =============================================================
 
 " =============================================================
-"	ウィンドウ移動時の処理
-" {{{
+" {{{ 予約語の補完
+
+autocmd FileType *
+\	if &l:omnifunc == ''
+\	|	setlocal omnifunc=syntaxcomplete#Complete
+\	|endif
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ ウィンドウ移動時の処理
 
 augroup MyWinEnter
 	au!
@@ -268,8 +308,7 @@ augroup END
 " =============================================================
 
 " =============================================================
-"	ステータス
-" {{{
+" {{{ ステータス
 
 set statusline=							" 一旦クリア
 set statusline+=[%n]					" バッファ番号
@@ -306,8 +345,8 @@ endfunction
 " =============================================================
 
 " =============================================================
-"	ステータスラインの色を状態によって変更
-" {{{	alwei さんからぱくってきた。
+" {{{ ステータスラインの色を状態によって変更
+"	alwei さんからぱくってきた。
 
 let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
 
@@ -349,27 +388,24 @@ endfunction
 " =============================================================
 
 " =============================================================
-" 行末のスペースをハイライトする
-" {{{
-" 調整中
+" {{{ 行末のスペースをハイライトする
+"	調整中
 
-"function! s:HighlightTrailingSpaces ()
-  "highlight WhitespaceEOL ctermbg=red guibg=red
-  "match WhitespaceEOL /\s\+$/
-"endfunction
-"
-"augroup TailHiLight
-	"au! *
-	"au BufNewFile,WinEnter * call s:HighlightTrailingSpaces()
-"augroup END
+function! s:HighlightTrailingSpaces ()
+	highlight WhitespaceEOL ctermbg=red guibg=red
+	match WhitespaceEOL /\s　\+$/
+endfunction
 
-"
+augroup TailHiLight
+	au! *
+	au BufNewFile,WinEnter * call s:HighlightTrailingSpaces()
+augroup END
+
 " }}}
 " =============================================================
 
 " =============================================================
-"	やりたいこと。
-" {{{
+" {{{ やりたいこと。
 "
 " ファイルのオープンを常に相対パスで。
 "

@@ -1,6 +1,5 @@
 " =============================================================
-"	Vundle のための設定
-" {{{
+" {{{ Vundle のための設定
 
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -37,8 +36,7 @@ Bundle 'tsukkee/lingr-vim'
 " =============================================================
 
 " =============================================================
-"	unite
-" {{{
+" {{{ unite
 
 nnoremap <silent> <Space>b :Unite buffer<CR>
 nnoremap <silent> <Space>f :UniteWithBufferDir -buffer-name=files file<CR>
@@ -74,8 +72,7 @@ endfunction
 " =============================================================
 
 " =============================================================
-"	pyclewn
-" {{{
+" {{{ pyclewn
 
 " 一旦読み込み
 source <sfile>:h/pyclewn.vim
@@ -129,8 +126,7 @@ endif
 " =============================================================
 
 " =============================================================
-"	gtags
-" {{{
+" {{{ gtags
 
 " gtags
 nnoremap <C-g> :Gtags 
@@ -150,8 +146,7 @@ nnoremap <silent> <C-]> :Gtags <C-r><C-w><CR>
 " =============================================================
 
 " =============================================================
-"	syntastic
-" {{{
+" {{{ syntastic
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
@@ -160,8 +155,7 @@ let g:syntastic_auto_loc_list=2
 " =============================================================
 
 " =============================================================
-"	TwitVim
-" {{{
+" {{{ TwitVim
 
 let twitvim_login_b64 = "dGhlOWJhbGw=:am1rdW05a2o="
 let twitvim_count = 2000
@@ -170,8 +164,7 @@ let twitvim_count = 2000
 " =============================================================
 
 " =============================================================
-"	EasyMotion
-" {{{
+" {{{ EasyMotion
 
 let g:EasyMotion_leader_key	=	','
 
@@ -179,8 +172,7 @@ let g:EasyMotion_leader_key	=	','
 " =============================================================
 
 " =============================================================
-"	lingr-vim
-" {{{
+" {{{ lingr-vim
 
 "まだテスト中
 "g:lingr_vim_user=the9ball@gmail.com
@@ -189,8 +181,7 @@ let g:EasyMotion_leader_key	=	','
 " =============================================================
 
 " =============================================================
-"	gitdiff???
-" {{{
+" {{{ gitdiff???
 
 " いつ入れたか覚えていない・・・なんの設定？
 command! -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-change <args>
