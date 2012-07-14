@@ -253,6 +253,11 @@ augroup FoldMethodAutocmd
 		\	setlocal fmr={,}
 	else
 		" TODO がんばる
+		" この辺が参考になるかも。
+		" https://github.com/thinca/vim-ft-vim_fold
+		" http://d.hatena.ne.jp/thinca/20110516/1305471815
+		" http://d.hatena.ne.jp/thinca/20110523/1306080318
+		" http://d.hatena.ne.jp/tyru/20110517/disable_modeline_and_use_foldexpr
 		autocmd FileType c,cpp,h,hpp,php
 		\	set fdm=expr
 		\|	set foldexpr=getline(v:lnum)=~'//[^{]*{'
