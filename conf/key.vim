@@ -60,6 +60,12 @@ map OM <CR>
 cnoremap <c-x> <c-r>=expand('%:p:h')<cr>/
 cnoremap <c-z> <c-r>=expand('%:p')<cr>
 
+" カーソルキーっぽく
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+"cnoremap <C-h> <Left>	BSとかぶる。
+cnoremap <C-l> <Right>
+
 " }}}
 " =============================================================
 
@@ -294,6 +300,21 @@ function! s:memoSeparate()
 	call append( a:firstline+2, "" )	" 空行挿入
 	call cursor( line(".")+2, 0 )
 endfunction
+
+" }}}
+" =============================================================
+
+" =============================================================
+"	ReadOnly用
+" {{{
+
+if 0 != &readonly
+	" ものぐさ。undoとかできないから不都合あるかも。
+	nnoremap <buffer> u <C-u>
+	nnoremap <buffer> d <C-d>
+	nnoremap <buffer> f <C-f>
+	nnoremap <buffer> b <C-b>
+endif
 
 " }}}
 " =============================================================

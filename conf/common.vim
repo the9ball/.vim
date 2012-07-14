@@ -2,6 +2,9 @@
 "	基本設定
 " {{{
 
+" カレント .vimrc, .exrc などを読まない
+set noexrc
+
 " 背景色を指定することで文字色を設定
 set background=dark
 " set background=light
@@ -73,9 +76,11 @@ set splitbelow
 set splitright
 
 " タブ文字、改行文字を表示
-"set list
+set list
 " 改行、タブ文字の設定
-set listchars=tab:^=,trail:-,eol:\
+set listchars=tab:^\ ,trail:-
+"tab:タブ:	
+"trail:行末のスペース: 
 
 " vimdiff
 set diffopt=filler,iwhite
@@ -339,6 +344,24 @@ function! s:GetHighlight(hi)
 	return hl
 endfunction
 
+"
+" }}}
+" =============================================================
+
+" =============================================================
+" 行末のスペースをハイライトする
+" {{{
+" 調整中
+
+"function! s:HighlightTrailingSpaces ()
+  "highlight WhitespaceEOL ctermbg=red guibg=red
+  "match WhitespaceEOL /\s\+$/
+"endfunction
+"
+"augroup TailHiLight
+	"au! *
+	"au BufNewFile,WinEnter * call s:HighlightTrailingSpaces()
+"augroup END
 
 "
 " }}}

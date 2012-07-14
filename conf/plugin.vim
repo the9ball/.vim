@@ -23,6 +23,7 @@ Bundle 'vim-scripts/TwitVim'
 Bundle 'vim-scripts/surround.vim'
 Bundle 'othree/eregex.vim'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tsukkee/lingr-vim'
 
 " 使わない
 " シンタックスチェッカーだが、誤検出が多い印象
@@ -177,5 +178,23 @@ let g:EasyMotion_leader_key	=	','
 " }}}
 " =============================================================
 
+" =============================================================
+"	lingr-vim
+" {{{
+
+"まだテスト中
+"g:lingr_vim_user=the9ball@gmail.com
+
+" }}}
+" =============================================================
+
+" =============================================================
+"	gitdiff???
+" {{{
+
+" いつ入れたか覚えていない・・・なんの設定？
 command! -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-change <args>
+
+" }}}
+" =============================================================
 
