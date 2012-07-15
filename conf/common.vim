@@ -365,43 +365,16 @@ endfunction
 
 " ヴィジュアルモードで選択中の文字数をカウントする。
 function! b:visual_charcnt()
-	if visualmode() == mode()
-if 0
-		" ヴィジュアルモード時のみ動作させる。
-		let	l:pos	=	getpos( "." )
-			" これ、前回の選択範囲であって、今回ではないっぽい。
-			normal `<
-			let l:st	=	getpos( "." )
-			normal `>
-			let l:ed	=	getpos( "." )
-		call setpos( '.', l:pos )
+	" 選択中の文字列を取得して素直にstrlen
+	let l:str	=	s:GetSelectString()
+	let l:len	=	strlen( l:str )
 
-		" 選択範囲の文字を全て取得する。
-		let l:str		=	""
-		let l:strlist	=	getline( l:st[1], l:ed[1] )
-		for l:it in l:strlist	" リスト形式で入っているので結合。改行コードは含まれていなかった。
-			let l:str	=	l:str . l:it
-		endfor
-		let l:len	=	strlen( l:str )
-
-		" 選択されていない文字数を考慮
-		" 終点は残った文字数を計算しなければいけない。
-		let l:len	=	l:len - l:st[2]
-		let l:len	=	l:len - ( strlen( getline( l:ed[1] ) ) - l:ed[2] ) + 1
-		"echo l:len
-else
-		let l:str	=	s:GetSelectString()
-		let l:len	=	strlen( l:str )
-endif
-
-		" 文字数を表示
-		return '[' . l:len . ']'
-	else
-		" ヴィジュアルモード時以外
-		return ''
-	endif
+	" 文字数を表示
+	return ( 0 != l:len )? '[' . l:len . ']' : ''
 endfunction
 
+" 最初の1回がなぜかうまくいかないので・・・
+silent normal! vv
 
 " }}}
 " =============================================================
