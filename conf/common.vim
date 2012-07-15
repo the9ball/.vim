@@ -332,24 +332,72 @@ set statusline+=%m						" 修正フラグ
 set statusline+=%r						" 読み込み専用フラグ
 set statusline+=%w						" プレビューウィンドウフラグ
 set statusline+=%=						" 左と右の境界
-set statusline+=%{g:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
+set statusline+=%{b:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
 set statusline+=%l,%v					" カーソル位置
 set statusline+=\ %p%%					" ファイル内のページの位置
 set statusline+=\  
 
-function! g:visual_charcnt()
-	if 1
-		return ''
+" ヴィジュアルモード時に選択中の文字列を取得する。
+function! s:GetSelectString()
+	if visualmode() != mode()
+		" ヴィジュアルモード時以外は動作させない。
+		return	''
 	endif
+
+	" 直接取得できないため、一旦ヤンクする。
+
+	" 古いレジスタを退避
+	let l:old_reg_val	=	getreg('a')
+	let l:old_reg_mod	=	getregtype('a')
+
+	" ヤンクしてその内容を習得
+	silent normal! "ay
+	let l:result	=	@a
+
+	" 古いレジスタを戻す
+	call setreg( 'a', l:old_reg_val, l:old_reg_mod )
+
+	" 選択状態を戻す
+	silent normal gv
+
+	return	l:result
+endfunction
+
+" ヴィジュアルモードで選択中の文字数をカウントする。
+function! b:visual_charcnt()
 	if visualmode() == mode()
+if 0
+		" ヴィジュアルモード時のみ動作させる。
 		let	l:pos	=	getpos( "." )
-		normal `<
-		let l:st	=	getpos( "." )
-		normal `>
-		let l:ed	=	getpos( "." )
+			" これ、前回の選択範囲であって、今回ではないっぽい。
+			normal `<
+			let l:st	=	getpos( "." )
+			normal `>
+			let l:ed	=	getpos( "." )
 		call setpos( '.', l:pos )
-		return	'[' . l:st . ']'
+
+		" 選択範囲の文字を全て取得する。
+		let l:str		=	""
+		let l:strlist	=	getline( l:st[1], l:ed[1] )
+		for l:it in l:strlist	" リスト形式で入っているので結合。改行コードは含まれていなかった。
+			let l:str	=	l:str . l:it
+		endfor
+		let l:len	=	strlen( l:str )
+
+		" 選択されていない文字数を考慮
+		" 終点は残った文字数を計算しなければいけない。
+		let l:len	=	l:len - l:st[2]
+		let l:len	=	l:len - ( strlen( getline( l:ed[1] ) ) - l:ed[2] ) + 1
+		"echo l:len
+else
+		let l:str	=	s:GetSelectString()
+		let l:len	=	strlen( l:str )
+endif
+
+		" 文字数を表示
+		return '[' . l:len . ']'
 	else
+		" ヴィジュアルモード時以外
 		return ''
 	endif
 endfunction
