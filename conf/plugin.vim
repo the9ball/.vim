@@ -24,7 +24,6 @@ Bundle 'sgur/unite-qf'
 Bundle 'vim-scripts/TwitVim'
 Bundle 'othree/eregex.vim'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tsukkee/lingr-vim'
 
 " 使わない
 " シンタックスチェッカーだが、誤検出が多い印象
@@ -33,6 +32,8 @@ Bundle 'tsukkee/lingr-vim'
 " Bundle 'astashov/vim-ruby-debugger'
 " vim-easymotionがイマイチだったら使ってみる。
 " Bundle 'kana/kuy-vim-fuzzyjump'
+" なんかエラーだって。調べるのが面倒なので放置。
+" Bundle 'tsukkee/lingr-vim'
 
 " }}}
 " =============================================================
