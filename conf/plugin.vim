@@ -24,51 +24,66 @@ Bundle 'sgur/unite-qf'
 Bundle 'vim-scripts/TwitVim'
 Bundle 'othree/eregex.vim'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Shougo/unite-build'
 
-" 使わない
+" 使わないことにしたリスト。{{{
+" 別ファイルにすべきかも。
+
 " シンタックスチェッカーだが、誤検出が多い印象
 " Bundle 'scrooloose/syntastic'
+
 " rubyのバージョンが古かった・・・。
 " Bundle 'astashov/vim-ruby-debugger'
+
 " vim-easymotionがイマイチだったら使ってみる。
 " Bundle 'kana/kuy-vim-fuzzyjump'
+
 " なんかエラーだって。調べるのが面倒なので放置。
 " Bundle 'tsukkee/lingr-vim'
+
+" vimが固まったし、有用性を感じなかった。
+" Bundle 'tsukkee/unite-help'
+
+" 使い方がわからなかった。
+" Bundle 'daisuzu/unite-gtags'
+" Bundle 'thinca/vim-unite-history'
+
+" }}}
 
 " }}}
 " =============================================================
 
 " =============================================================
-" {{{ unite
+" {{{ unite系
 
-nnoremap <silent> <Space>b :Unite buffer<CR>
-nnoremap <silent> <Space>f :UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Space>b :<C-u>Unite buffer<CR>
+nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -start-insert -no-quit<CR>
 
 call unite#filters#default#use( [ 'matcher_default', 'sorter_word', 'converter_default' ] )
 
-" vimgrep を Unite で。
-command! -nargs=+ Vim :call g:fVim( <f-args> )
-function! g:fVim( pattern, files )
-	let s:temp = 'vimgrep ' . a:pattern . ' ' . a:files . ' -no-empty'
-	call g:UniteQfHelper( s:temp )
-	cclose
-endfunction
-
-" その他 Unite qf 系用
+" Unite qf 系用
+" 調整中
 command! -nargs=1 UniteQfHelper :call g:fUniteQfHelper( <args> )
 function! g:fUniteQfHelper( ope )
-	if 1
-		" なんかうまくいかないのでとりあえずそのまま実行。
-		" そのうち研究する。
-		execute "" . a:ope
-	else
-		" スペースをエスケープする。
-		let s:temp = substitute( a:ope, ' ', '\\ ', 'g' )
+	" スペースをエスケープする。
+	let s:temp = substitute( a:ope, ' ', '\\ ', 'g' )
 
-		" 実行
-		"echo s:temp
-		execute "Unite qf:ex=" . s:temp
-	endif
+	" 実行
+	execute "Unite qf:ex=" . s:temp
+endfunction
+
+" vimgrep を Unite で。
+" 調整中
+"手入力の方がよさそう nnoremap <Space>v :<C-u>Vim 
+command! -nargs=+ Vim :call g:fVim( <f-args> )
+command! -nargs=+ VIm :call g:fVim( <f-args> )
+command! -nargs=+ VIM :call g:fVim( <f-args> )
+function! g:fVim( pattern, files )
+	let s:temp = 'vimgrep ' . a:pattern . ' ' . a:files
+	". "--no-empty"
+	call g:fUniteQfHelper( s:temp )
+	cclose
 endfunction
 
 " }}}
