@@ -350,6 +350,8 @@ function! s:GetSelectString()
 	" 古いレジスタを退避
 	let l:old_reg_val	=	getreg('a')
 	let l:old_reg_mod	=	getregtype('a')
+	let l:old_regd_val	=	getreg('"')
+	let l:old_regd_mod	=	getregtype('"')
 
 	" ヤンクしてその内容を習得
 	silent normal! "ay
@@ -357,6 +359,7 @@ function! s:GetSelectString()
 
 	" 古いレジスタを戻す
 	call setreg( 'a', l:old_reg_val, l:old_reg_mod )
+	call setreg( '"', l:old_regd_val, l:old_regd_mod )
 
 	" 選択状態を戻す
 	silent normal gv
