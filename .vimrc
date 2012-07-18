@@ -10,5 +10,3 @@ source <sfile>:h/conf/common.vim
 " キーバインド
 source <sfile>:h/conf/key.vim
 
-" $HOME/.vimrc に書く内容
-"source <sfile>:h/.vim/.vimrc
