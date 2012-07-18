@@ -198,9 +198,9 @@ nnoremap <silent> sh :<C-u>hide edit %<.h<CR>
 nnoremap <silent> ss :<C-u>hide edit %<.cpp<CR>
 
 " いろんなメイク
-command! -nargs=* Mkcd :UniteQfHelper( "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' ) )
-command! -nargs=* Mkcdd :UniteQfHelper( "make -j8 CCPROG=ccache " . expand( '<args>' ) )
-nnoremap <S-m> :wa<CR>:UniteQfHelper( "make RELEASE=1 " . expand( '%:t:r' ) . ".o" )<CR><CR>
+command! -nargs=* Mkcd :execute "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' )
+command! -nargs=* Mkcdd :execute "make -j8 CCPROG=ccache " . expand( '<args>' )
+nnoremap <S-m> :wa<CR>:execute "make RELEASE=1 " . expand( '%:t:r' ) . ".o"<CR><CR>
 
 " 指定のプログラムをkill
 command! -nargs=1 Killer :!pgrep <args>|xargs kill -9
