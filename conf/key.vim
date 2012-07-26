@@ -207,6 +207,16 @@ command! -nargs=1 Killer :!pgrep <args>|xargs kill -9
 " コメントアウト
 vnoremap <silent> / :s/^\(\s*\)/\1\/\//g<CR>gv:s/^\(\s*\)\/\/\/\//\1/g<CR>:nohlsearch<CR>
 
+" 括弧とかとか
+nnoremap <silent> ;{} :FunctionHelperCommand<CR>
+command! -nargs=* FunctionHelperCommand call s:functionHelper()
+function! s:functionHelper()
+	silent! exec 's/;$//'
+	silent normal! o{
+	silent normal! o}
+	exec 'nohlsearch'
+endfunction
+
 " }}}
 " =============================================================
 
