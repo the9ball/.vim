@@ -113,7 +113,7 @@ function! s:BufAdd()
 
 	if &readonly && 0
 		" ものぐさ。undoとかできないから不都合あるかも。
-		" b が使えないのが地味に痛かった。
+		" b でのワード移動が使えないのが地味に痛かった。
 		nnoremap <buffer> u <C-u>
 		nnoremap <buffer> d <C-d>
 		nnoremap <buffer> f <C-f>
