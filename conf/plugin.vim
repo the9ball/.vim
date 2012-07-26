@@ -56,9 +56,10 @@ Bundle 'Shougo/unite-build'
 " =============================================================
 " {{{ unite系
 
-nnoremap <silent> <Space>b :<C-u>Unite buffer<CR>
-nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -start-insert -no-quit<CR>
+nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
+nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
+nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -auto-resize -start-insert -no-quit<CR>
+nnoremap <silent> <Space>r :<C-u>Unite -auto-resize -hide-source-names file_mru<CR>
 
 call unite#filters#default#use( [ 'matcher_default', 'sorter_word', 'converter_default' ] )
 
