@@ -29,6 +29,8 @@ set wildmode=list:longest
 
 " 検索結果のハイライト
 set hlsearch
+" ハイライトを消しておく。
+nohlsearch
 
 " 構文フォントカラー
 syntax enable
@@ -336,10 +338,13 @@ set statusline=							" 一旦クリア
 set statusline+=[%n]					" バッファ番号
 set statusline+=[%Y]					" ファイル形式
 set statusline+=:%t						" ファイル名
+"set statusline+={%{b:FuncName()}}			" 関数名
 set statusline+=%m						" 修正フラグ
 set statusline+=%r						" 読み込み専用フラグ
 set statusline+=%w						" プレビューウィンドウフラグ
+
 set statusline+=%=						" 左と右の境界
+
 set statusline+=%{b:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
 set statusline+=%l,%v					" カーソル位置
 set statusline+=\ %p%%					" ファイル内のページの位置
@@ -386,6 +391,38 @@ endfunction
 
 " 最初の1回がなぜかうまくいかないので・・・
 silent normal! vv
+
+" 今いるところの関数名を取得
+function! b:FuncName()
+	" 今居る位置を保存
+	let l:oldpos=getpos('.')
+
+	" {{{ 関数名のあるところまで移動。
+		" 一番外側にある '{' まで飛ぶ。
+		call searchpairpos( '{', '', '}', 'brW' )
+		" その前のブロックへ飛ぶ
+		call searchpos( '^$\|}', 'b' )
+		" 次にある ( へ飛ぶ
+		let l:pos=searchpos( '(' )
+	" }}}
+
+	if 0 != l:pos[0] && 0 != l:pos[1]
+		" 存在を確認したので関数名を取得
+		let l:result=getline( l:pos[0] )
+		let l:result=substitute( l:result, '^[0-9a-zA-Z\s<>&*]*\s\+', '', 'g' )
+		let l:result=substitute( l:result, '(.*$', '', 'g' )
+	else
+		" 存在を確認できなかったのでダミー
+		let l:result=''
+	endif
+
+	" 元居た位置へ戻る。
+	call setpos( '.', l:oldpos )
+
+	" 関数名を返す。
+	"echo l:result
+	return l:result
+endfunction
 
 " }}}
 " =============================================================
@@ -446,6 +483,29 @@ augroup TailHiLight
 	au! *
 	au BufNewFile,WinEnter * call s:HighlightTrailingSpaces()
 augroup END
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ ヴィジュアルモード時に行番号を消す。
+
+if 0
+	command! -nargs=1 VisualModeLineNumber call s:funcVisualModeLineNumber( '<args>' )
+	function! s:funcVisualModeLineNumber( arg )
+		execute 'normal! ' . a:arg
+		"echo 'normal! ' . a:arg
+		if visualmode() != mode()
+			execute 'setlocal number'
+		else
+			execute 'setlocal nonumber'
+		endif
+	endfunction
+	nnoremap <silent> v :<C-u>VisualModeLineNumber v<CR>
+	nnoremap <silent> <C-v> :<C-u>VisualModeLineNumber <C-v><CR>
+	nnoremap <silent> <S-v> :<C-u>VisualModeLineNumber V<CR>
+	vnoremap <silent> <ESC> :<C-u>VisualModeLineNumber <ESC><CR>
+endif
 
 " }}}
 " =============================================================
