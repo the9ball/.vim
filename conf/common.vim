@@ -84,6 +84,13 @@ set listchars=tab:^\ ,trail:-
 " vimdiff
 set diffopt=filler,iwhite
 
+" オプションのトグル
+command! -nargs=1 Tgl call s:toggle_option( '<args>' )
+function! s:toggle_option(option_name)
+	execute 'setlocal' a:option_name.'!'
+	execute 'setlocal' a:option_name.'?'
+endfunction
+
 " }}}
 " =============================================================
 
