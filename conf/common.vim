@@ -109,7 +109,7 @@ function! s:BufAdd()
 	" =============================================================
 	" {{{ vim script 入力
 
-	if 'vim' == &filetype || 'VIM' == &filetype
+	if 'vim' ==# &filetype || 'VIM' ==# &filetype
 		" vimscript再読み込み
 		" いいマッピングが見つからない。
 		" nnoremap <buffer> <C-> :w<CR>:source %<CR>
@@ -257,7 +257,7 @@ set fdm=marker
 augroup FoldMethodAutocmd
 	au! *
 	autocmd FileType *
-	\	if &l:omnifunc == ''
+	\	if &l:omnifunc ==# ''
 	\	|	setlocal omnifunc=syntaxcomplete#Complete
 	\	|endif
 
@@ -288,7 +288,7 @@ augroup END
 " {{{ 予約語の補完
 
 autocmd FileType *
-\	if &l:omnifunc == ''
+\	if &l:omnifunc ==# ''
 \	|	setlocal omnifunc=syntaxcomplete#Complete
 \	|endif
 
@@ -451,7 +451,7 @@ endif
 
 let s:slhlcmd = ''
 function! s:StatusLine(mode)
-	if a:mode == 'Enter'
+	if a:mode ==# 'Enter'
 		silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
 		silent exec g:hi_insert
 	else
