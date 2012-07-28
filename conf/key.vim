@@ -166,7 +166,7 @@ function! s:completeSpellCheckOn()
 	aug END
 endfunction
 " <C-s> は isurround (テキストオブジェクト操作プラグイン) で使用されているが、使い勝手よくなかったのでつぶしていいと思う。
-command! -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
+command! -bar -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
 inoremap <C-s> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
 
 " 簡単移動
@@ -221,19 +221,19 @@ nnoremap <silent> sh :<C-u>hide edit %<.h<CR>
 nnoremap <silent> ss :<C-u>hide edit %<.cpp<CR>
 
 " いろんなメイク
-command! -nargs=* Mkcd :execute "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' )
-command! -nargs=* Mkcdd :execute "make -j8 CCPROG=ccache " . expand( '<args>' )
+command! -bar -nargs=* Mkcd :execute "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' )
+command! -bar -nargs=* Mkcdd :execute "make -j8 CCPROG=ccache " . expand( '<args>' )
 nnoremap <S-m> :wa<CR>:execute "make RELEASE=1 " . expand( '%:t:r' ) . ".o"<CR><CR>
 
 " 指定のプログラムをkill
-command! -nargs=1 Killer :!pgrep <args>|xargs kill -9
+command! -bar -nargs=1 Killer :!pgrep <args>|xargs kill -9
 
 " コメントアウト
 vnoremap <silent> / :s/^\(\s*\)/\1\/\//g<CR>gv:s/^\(\s*\)\/\/\/\//\1/g<CR>:nohlsearch<CR>
 
 " 括弧とかとか
 nnoremap <silent> ;{} :FunctionHelperCommand<CR>
-command! -nargs=* FunctionHelperCommand call s:functionHelper()
+command! -bar -nargs=* FunctionHelperCommand call s:functionHelper()
 function! s:functionHelper()
 	silent! exec 's/;$//'
 	silent normal! o{
@@ -299,7 +299,7 @@ nnoremap <silent> <Space>c :cclose<CR>
 " {{{ メモ用設定
 
 nnoremap memo :MemoSeparate<CR>
-command! -nargs=0 MemoSeparate call s:memoSeparate()
+command! -bar -nargs=0 MemoSeparate call s:memoSeparate()
 function! s:memoSeparate()
 	call append( a:firstline-1, "###############################################################" )
 	.!date
