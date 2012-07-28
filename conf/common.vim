@@ -86,6 +86,9 @@ set listchars=tab:^\ ,trail:-
 " vimdiff
 set diffopt=filler,iwhite
 
+" シェルの区切り文字
+set shellslash
+
 " オプションのトグル
 command! -nargs=1 Tgl call s:toggle_option( '<args>' )
 function! s:toggle_option(option_name)
@@ -108,10 +111,11 @@ function! s:BufAdd()
 
 	if 'vim' == &filetype || 'VIM' == &filetype
 		" vimscript再読み込み
-		nnoremap <buffer> <C-e> :w<CR>:source %<CR>
+		" いいマッピングが見つからない。
+		" nnoremap <buffer> <C-> :w<CR>:source %<CR>
 
 		" コメントアウト
-		vnoremap <buffer> <silent> / :s/^\(\s*\)/\1\"/g<CR>gv:s/^\(\s*\)\"\"/\1/g<CR>:nohlsearch<CR>
+		vnoremap <buffer> <silent> / :<C-u>s/^\(\s*\)/\1\" /<CR>gv:<C-u>s/^\(\s*\)\" \" /\1/<CR>:<C-u>nohlsearch<CR>
 	endif
 
 	" }}}
