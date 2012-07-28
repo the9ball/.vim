@@ -20,6 +20,9 @@
 " <C-m> は <CR> と同義
 " <CR> は Enterキー と同義
 
+" なんかよくわかんないけど、Macだと<C-s>がうまく動かない。
+" 何かの設定が邪魔してるのかなぁ・・・。
+
 " }}}
 " =============================================================
 
@@ -167,8 +170,7 @@ function! s:completeSpellCheckOn()
 endfunction
 " <C-s> は isurround (テキストオブジェクト操作プラグイン) で使用されているが、使い勝手よくなかったのでつぶしていいと思う。
 command! -bar -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
-inoremap <C-s> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
-" なんかよくわかんないけど、Macだと<C-s>がうまく動かない。
+inoremap <C-l> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
 
 " 簡単移動
 inoremap <C-a> <Home>
