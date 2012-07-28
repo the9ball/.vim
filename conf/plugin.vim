@@ -65,7 +65,7 @@ call unite#filters#default#use( [ 'matcher_default', 'sorter_word', 'converter_d
 
 " Unite qf 系用
 " 調整中
-command! -nargs=1 UniteQfHelper :call g:fUniteQfHelper( <args> )
+command! -bar -nargs=1 UniteQfHelper :call g:fUniteQfHelper( <args> )
 function! g:fUniteQfHelper( ope )
 	" スペースをエスケープする。
 	let s:temp = substitute( a:ope, ' ', '\\ ', 'g' )
@@ -77,9 +77,9 @@ endfunction
 " vimgrep を Unite で。
 " 調整中
 "手入力の方がよさそう nnoremap <Space>v :<C-u>Vim 
-command! -nargs=+ Vim :call g:fVim( <f-args> )
-command! -nargs=+ VIm :call g:fVim( <f-args> )
-command! -nargs=+ VIM :call g:fVim( <f-args> )
+command! -bar -nargs=+ Vim :call g:fVim( <f-args> )
+command! -bar -nargs=+ VIm :call g:fVim( <f-args> )
+command! -bar -nargs=+ VIM :call g:fVim( <f-args> )
 function! g:fVim( pattern, files )
 	let s:temp = 'vimgrep ' . a:pattern . ' ' . a:files
 	". "--no-empty"
@@ -138,7 +138,7 @@ if 1
 			execute "Cattach".s:pid
 		endif
 	endfunction
-	command! -nargs=1 -complete=file Attach :call g:AttachFunc( <f-args> )
+	command! -bar -nargs=1 -complete=file Attach :call g:AttachFunc( <f-args> )
 endif
 
 " }}}
@@ -203,7 +203,7 @@ let g:EasyMotion_leader_key	=	','
 " {{{ gitdiff???
 
 " いつ入れたか覚えていない・・・なんの設定？
-command! -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-change <args>
+command! -bar -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-change <args>
 
 " }}}
 " =============================================================

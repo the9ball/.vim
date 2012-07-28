@@ -90,7 +90,7 @@ set diffopt=filler,iwhite
 set shellslash
 
 " オプションのトグル
-command! -nargs=1 Tgl call s:toggle_option( '<args>' )
+command! -bar -nargs=1 Tgl call s:toggle_option( '<args>' )
 function! s:toggle_option(option_name)
 	execute 'setlocal' a:option_name.'!'
 	execute 'setlocal' a:option_name.'?'
@@ -495,7 +495,7 @@ augroup END
 " {{{ ヴィジュアルモード時に行番号を消す。
 
 if 0
-	command! -nargs=1 VisualModeLineNumber call s:funcVisualModeLineNumber( '<args>' )
+	command! -bar -nargs=1 VisualModeLineNumber call s:funcVisualModeLineNumber( '<args>' )
 	function! s:funcVisualModeLineNumber( arg )
 		execute 'normal! ' . a:arg
 		"echo 'normal! ' . a:arg
