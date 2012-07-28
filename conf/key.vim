@@ -30,6 +30,8 @@
 map OM <CR>
 
 " 入力時は数値として認識させる。
+" TeraTerm用
+" なんかうまくいかない。
 " inoremap 0p 0
 " inoremap 1q 1
 " inoremap 2r 2
@@ -45,7 +47,7 @@ map OM <CR>
 " inoremap * *
 " inoremap - -
 " inoremap + +
-" inoremap OM <CR>
+" inoremap OM <CR>	上にある
 
 " }}}
 " =============================================================
@@ -62,6 +64,8 @@ cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 "cnoremap <C-h> <Left>	BSとかぶる。
 cnoremap <C-l> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 " }}}
 " =============================================================
@@ -99,6 +103,10 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+" 簡単移動
+nnoremap <C-a> <Home>
+nnoremap <C-e> <End>
+
 " wbでのワード移動時、WBだと行を進めてみる。
 " いまいち
 " nnoremap W jw
@@ -120,6 +128,15 @@ nnoremap <Space><CR> :<Up><CR>
 
 "強制全保存終了を無効化
 nnoremap ZZ <Nop>
+
+" 誤爆防止
+" でも結構頻繁に使う。
+nnoremap <C-q> q
+nnoremap Q q
+nnoremap q <ESC>
+
+" 誤爆防止
+nnoremap S <Nop>
 
 " }}}
 " =============================================================
@@ -152,6 +169,10 @@ endfunction
 command! -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
 inoremap <C-s> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
 
+" 簡単移動
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+
 " }}}
 " =============================================================
 
@@ -174,6 +195,8 @@ nnoremap <silent> tp :<C-u>tabprev<CR>
 " =============================================================
 " {{{ バッファ
 
+" Unite buffer で十分
+if 0
 " バッファ操作キー
 nnoremap s <Nop>
 " ファイルリスト表示
@@ -184,6 +207,7 @@ nnoremap <silent> sf :<C-u>hide b#<CR>
 nnoremap <silent> sn :<C-u>hide bn<CR>
 " 前のファイルへ移動
 nnoremap <silent> sp :<C-u>hide bp<CR>
+endif
 
 " }}}
 " =============================================================
@@ -224,6 +248,7 @@ endfunction
 " {{{ 検索
 
 " コード検索
+" 使ってないので削除候補
 " カーソル下の単語をソースから検索
 nnoremap sfs :vim /<C-r><C-w>/ **/*.c*<CR>
 " カーソル下の単語をヘッダから検索
@@ -238,7 +263,9 @@ map g* g*N
 map g# g#N
 
 " 検索ハイライトを消す。
-nnoremap <silent> <C-h> :nohlsearch<CR>
+"nnoremap <silent> <C-h> :<C-u>nohlsearch<CR>
+" ESCの方がよさそうだけどもう慣れちゃってるからなぁ・・・。
+nnoremap <silent> <ESC> :<C-u>nohlsearch<CR>
 
 " Quickfixを開閉する。
 nnoremap <silent> <Space>o :copen<CR>
