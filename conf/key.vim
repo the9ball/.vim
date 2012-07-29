@@ -110,6 +110,10 @@ nnoremap gk k
 nnoremap <C-a> <Home>
 nnoremap <C-e> <End>
 
+" D とか C とか互換
+" 標準の Y は yy と同義らしい。
+nnoremap Y y$
+
 " wbでのワード移動時、WBだと行を進めてみる。
 " いまいち
 " nnoremap W jw

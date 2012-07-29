@@ -1,5 +1,6 @@
 " =============================================================
 " {{{ 基本設定
+" 長いので分割すべきかも
 
 " カレント .vimrc, .exrc などを読まない
 set noexrc
@@ -88,6 +89,9 @@ set diffopt=filler,iwhite
 
 " シェルの区切り文字
 set shellslash
+
+" 括弧のペア
+set matchpairs+=<:>
 
 " オプションのトグル
 command! -bar -nargs=1 Tgl call s:toggle_option( '<args>' )
