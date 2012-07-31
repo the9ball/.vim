@@ -9,10 +9,9 @@ call vundle#rc( '$HOME/.vim/bundle' )
 " Vundle が管理するプラグイン
 Bundle 'vim-jp/vimdoc-ja'
 Bundle 'gmarik/vundle'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
-Bundle 'Shougo/vimshell'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
 Bundle 'jayed/pyclewn'
 Bundle 'the9ball/gtags.vim'
 Bundle 'vim-scripts/surround.vim'
@@ -21,10 +20,11 @@ Bundle 'tsaleh/vim-matchit'
 " 試用中
 Bundle 'motemen/git-vim'
 Bundle 'sgur/unite-qf'
+Bundle 'Shougo/unite-build'
 Bundle 'vim-scripts/TwitVim'
 Bundle 'othree/eregex.vim'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Shougo/unite-build'
+Bundle 'kien/ctrlp.vim'
 
 " 使わないことにしたリスト。{{{
 " 別ファイルにすべきかも。
@@ -47,6 +47,9 @@ Bundle 'Shougo/unite-build'
 " 使い方がわからなかった。
 " Bundle 'daisuzu/unite-gtags'
 " Bundle 'thinca/vim-unite-history'
+
+" 使用しなくなった。
+" Bundle 'Shougo/vimshell'
 
 " }}}
 
