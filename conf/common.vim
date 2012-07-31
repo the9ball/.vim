@@ -342,7 +342,10 @@ set statusline=							" 一旦クリア
 set statusline+=[%n]					" バッファ番号
 set statusline+=[%Y]					" ファイル形式
 set statusline+=:%t						" ファイル名
-set statusline+={%{b:FuncName()}}		" 関数名 cpp とかだけにしたいなぁ。
+
+" 重すぎて使い物にならない。
+"set statusline+={%{b:FuncName()}}		" 関数名 cpp とかだけにしたいなぁ。
+
 set statusline+=%m						" 修正フラグ
 set statusline+=%r						" 読み込み専用フラグ
 set statusline+=%w						" プレビューウィンドウフラグ
