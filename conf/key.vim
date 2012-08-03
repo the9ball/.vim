@@ -168,7 +168,6 @@ function! s:completeSpellCheckOn()
 		au CursorMoved,CursorMovedI <buffer> call s:completeSpellCheckOff()
 	aug END
 endfunction
-" <C-s> は isurround (テキストオブジェクト操作プラグイン) で使用されているが、使い勝手よくなかったのでつぶしていいと思う。
 command! -bar -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
 inoremap <C-l> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
 
