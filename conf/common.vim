@@ -93,6 +93,13 @@ set shellslash
 " 括弧のペア
 set matchpairs+=<:>
 
+" swap
+" どうするか考え中
+"set noswapfile
+
+" バックアップ
+set nobackup
+
 " オプションのトグル
 command! -bar -nargs=1 Tgl call s:toggle_option( '<args>' )
 function! s:toggle_option(option_name)
