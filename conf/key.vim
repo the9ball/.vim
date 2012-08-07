@@ -136,11 +136,14 @@ nnoremap <Space><CR> :<Up><CR>
 "強制全保存終了を無効化
 nnoremap ZZ <Nop>
 
+" 開いているバッファを閉じる
+nnoremap <C-z> :<C-u>bdel<CR>
+
 " 誤爆防止
 " でも結構頻繁に使う。
-nnoremap <C-q> q
-nnoremap Q q
 nnoremap q <ESC>
+nnoremap Q q
+nnoremap <C-q> q
 
 " 誤爆防止
 nnoremap S <Nop>
