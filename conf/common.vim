@@ -123,7 +123,7 @@ function! s:BufAdd()
 	if 'vim' ==# &filetype || 'VIM' ==# &filetype
 		" vimscript再読み込み
 		" いいマッピングが見つからない。
-		" nnoremap <buffer> <C-> :w<CR>:source %<CR>
+		nnoremap <buffer> <Space>w :w<CR>:source %<CR>
 
 		" コメントアウト
 		vnoremap <buffer> <silent> / :<C-u>s/^\(\s*\)/\1\" /<CR>gv:<C-u>s/^\(\s*\)\" \" /\1/<CR>:<C-u>nohlsearch<CR>
