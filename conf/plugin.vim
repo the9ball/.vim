@@ -1,55 +1,55 @@
 " =============================================================
-" {{{ Vundle のための設定
+" {{{ NeoBundle のための設定
 
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/neobundle.vim/
 " 管理するフォルダを引数で渡します。
-call vundle#rc( '$HOME/.vim/bundle' )
+call neobundle#rc( '$HOME/.vim/bundle' )
 
 " Vundle が管理するプラグイン
-Bundle 'vim-jp/vimdoc-ja'
-Bundle 'gmarik/vundle'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'jayed/pyclewn'
-Bundle 'the9ball/gtags.vim'
-Bundle 'vim-scripts/surround.vim'
-Bundle 'tsaleh/vim-matchit'
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'gmarik/vundle'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'jayed/pyclewn'
+NeoBundle 'the9ball/gtags.vim'
+NeoBundle 'vim-scripts/surround.vim'
+NeoBundle 'tsaleh/vim-matchit'
 
 " 試用中
-Bundle 'motemen/git-vim'
-Bundle 'sgur/unite-qf'
-Bundle 'Shougo/unite-build'
-Bundle 'vim-scripts/TwitVim'
-Bundle 'othree/eregex.vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'kien/ctrlp.vim'
+NeoBundle 'motemen/git-vim'
+NeoBundle 'sgur/unite-qf'
+NeoBundle 'Shougo/unite-build'
+NeoBundle 'vim-scripts/TwitVim'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'kien/ctrlp.vim'
 
 " 使わないことにしたリスト。{{{
 " 別ファイルにすべきかも。
 
 " シンタックスチェッカーだが、誤検出が多い印象
-" Bundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
 
 " rubyのバージョンが古かった・・・。
-" Bundle 'astashov/vim-ruby-debugger'
+" NeoBundle 'astashov/vim-ruby-debugger'
 
 " vim-easymotionがイマイチだったら使ってみる。
-" Bundle 'kana/kuy-vim-fuzzyjump'
+" NeoBundle 'kana/kuy-vim-fuzzyjump'
 
 " なんかエラーだって。調べるのが面倒なので放置。
-" Bundle 'tsukkee/lingr-vim'
+" NeoBundle 'tsukkee/lingr-vim'
 
 " vimが固まったし、有用性を感じなかった。
-" Bundle 'tsukkee/unite-help'
+" NeoBundle 'tsukkee/unite-help'
 
 " 使い方がわからなかった。
-" Bundle 'daisuzu/unite-gtags'
-" Bundle 'thinca/vim-unite-history'
+" NeoBundle 'daisuzu/unite-gtags'
+" NeoBundle 'thinca/vim-unite-history'
 
 " 使用しなくなった。
-" Bundle 'Shougo/vimshell'
+" NeoBundle 'Shougo/vimshell'
 
 " }}}
 
