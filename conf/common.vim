@@ -161,7 +161,13 @@ augroup END
 
 augroup MyFileWrite
 	au!
+	" 副作用があったら消す。
+	" 副作用があったら消す。
+	" 副作用があったら消す。
 	au BufWrite * saveas <afile>
+	" 副作用があったら消す。
+	" 副作用があったら消す。
+	" 副作用があったら消す。
 augroup END
 
 " }}}
