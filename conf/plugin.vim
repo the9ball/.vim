@@ -8,7 +8,6 @@ call neobundle#rc( '$HOME/.vim/bundle' )
 
 " Vundle が管理するプラグイン
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'gmarik/vundle'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
