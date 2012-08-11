@@ -256,6 +256,12 @@ function! s:functionHelper()
 	exec 'nohlsearch'
 endfunction
 
+" 縦に連番を入力する
+" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/tips#TOC--7
+"nnoremap <silent> co :ContinuousNumber <C-a><CR>
+vnoremap <silent> co :ContinuousNumber <C-a><CR>
+command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
+
 " }}}
 " =============================================================
 

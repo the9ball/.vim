@@ -1,5 +1,4 @@
-" 参考：http://www.kawaz.jp/pukiwiki/?vim
-
+" http://www.ksknet.net/vi/vim_1.html
 " 文字コードの自動認識
 if &encoding !=# 'utf-8'
   set encoding=japan

@@ -118,6 +118,9 @@ set shortmess& shortmess+=I
 " au FileType でやった方が見やすいのか・・・？
 
 function! s:BufAdd()
+	" 文字コードの自動認識 ついでなんでここに書く。
+	source <sfile>:h/encode.vim
+
 	" switchってないんだっけ？
 
 	" =============================================================
