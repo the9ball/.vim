@@ -239,7 +239,10 @@ nnoremap <S-m> :wa<CR>:execute "make RELEASE=1 CCPROG=\'\' " . expand( '%:t:r' )
 command! -bar -nargs=1 Killer :!pgrep <args>|xargs kill -9
 
 " コメントアウト
-vnoremap <silent> / :s/^\(\s*\)/\1\/\//g<CR>gv:s/^\(\s*\)\/\/\/\//\1/g<CR>:nohlsearch<CR>
+vnoremap <silent> / :s/^\(\s*\)/\1\/\//e<CR>gv:s/^\(\s*\)\/\/\/\//\1/e<CR>:nohlsearch<CR>
+
+" なぜか効かない・・・？
+" vnoremap <silent> # :s/^\(\s*\)/\1# /e<CR>gv:s/^\(\s*\)# # /\1/e<CR>:nohlsearch<CR>
 
 " 括弧とかとか
 nnoremap <silent> ;{} :FunctionHelperCommand<CR>
