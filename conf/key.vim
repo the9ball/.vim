@@ -101,10 +101,12 @@ vnoremap <silent> < <gv
 nnoremap x "_x
 
 " jkでのカーソル移動を表示行単位で行う
-nnoremap j gj
-nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+" accelerated-jk で使うので一旦無効化。
+" 廃止するときは戻す。
+" nnoremap j gj
+" nnoremap k gk
 
 " 簡単移動
 nnoremap <C-a> <Home>
@@ -315,7 +317,9 @@ nnoremap memo :MemoSeparate<CR>
 command! -bar -nargs=0 MemoSeparate call s:memoSeparate()
 function! s:memoSeparate()
 	call append( a:firstline-1, "###############################################################" )
-	.!date
+
+	call setline('.', getline('.') . strftime('%Y/%m/%d (%a) %H:%M'))
+
 	call append( a:firstline+1, "" )	" 空行挿入
 	call append( a:firstline+2, "" )	" 空行挿入
 	call cursor( line(".")+2, 0 )

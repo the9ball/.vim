@@ -107,6 +107,9 @@ function! s:toggle_option(option_name)
 	execute 'setlocal' a:option_name.'?'
 endfunction
 
+"起動時のメッセージを消す
+set shortmess& shortmess+=I
+
 " }}}
 " =============================================================
 
