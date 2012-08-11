@@ -126,7 +126,7 @@ function! s:BufAdd()
 		nnoremap <buffer> <Space>w :w<CR>:source %<CR>
 
 		" コメントアウト
-		vnoremap <buffer> <silent> / :<C-u>s/^\(\s*\)/\1\" /<CR>gv:<C-u>s/^\(\s*\)\" \" /\1/<CR>:<C-u>nohlsearch<CR>
+		vnoremap <buffer> <silent> " :s/^\(\s*\)/\1\" /e<CR>gv:s/^\(\s*\)\" \" /\1/e<CR>:<C-u>nohlsearch<CR>
 	endif
 
 	" }}}
