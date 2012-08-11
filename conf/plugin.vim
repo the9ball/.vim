@@ -8,6 +8,7 @@ call neobundle#rc( '$HOME/.vim/bundle' )
 
 " Vundle が管理するプラグイン
 NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
@@ -15,6 +16,7 @@ NeoBundle 'jayed/pyclewn'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
 NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'rhysd/accelerated-jk'
 
 " 試用中
 NeoBundle 'motemen/git-vim'
@@ -24,6 +26,11 @@ NeoBundle 'vim-scripts/TwitVim'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'kana/vim-submode'
+
+" 使ってみたいリスト {{{
+" NeoBundle 'kana/vim-smartinput'
+" }}}
 
 " 使わないことにしたリスト。{{{
 " 別ファイルにすべきかも。
@@ -215,6 +222,10 @@ command! -bar -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-c
 
 " CTRLP
 let g:ctrlp_map='<C-k>'
+
+" accelerated-jk
+nmap <silent>j <Plug>(accelerated_jk_gj)
+nmap <silent>k <Plug>(accelerated_jk_gk)
 
 " }}}
 " =============================================================
