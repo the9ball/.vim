@@ -74,9 +74,15 @@ nnoremap <silent> <Space>s :<C-u>CtrlPLauncher<CR>
 
 " キャッシュ？
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+let g:ctrlp_clear_cache_on_exit = 0
 
 " ctrlp-launcherのファイル指定
 let g:filename_ctrlp_launcher = $HOME.'/.vim/.ctrlp-launcher'
+
+" キーマッピング
+let g:ctrlp_prompt_mappings = {
+	\	'PrtCurLeft()'	:	['<left>', '<c-^>']
+	\}
 
 " }}}
 " =============================================================
