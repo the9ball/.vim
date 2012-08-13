@@ -71,6 +71,7 @@ NeoBundle 'kana/vim-submode'
 let g:ctrlp_map='<C-k>'
 nnoremap <silent> <Space>b :<C-u>CtrlPBuffer<CR>
 nnoremap <silent> <Space>s :<C-u>CtrlPLauncher<CR>
+nnoremap <silent> <Space>m :<C-u>CtrlPMRUFiles<CR>
 
 " キャッシュ？
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
