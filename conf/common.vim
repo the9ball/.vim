@@ -119,7 +119,7 @@ set shortmess& shortmess+=I
 
 function! s:BufAdd()
 	" 文字コードの自動認識 ついでなんでここに書く。
-	source <sfile>:h/encode.vim
+	source $HOME/.vim/conf/encode.vim
 
 	" switchってないんだっけ？
 
