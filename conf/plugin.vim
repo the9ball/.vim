@@ -28,11 +28,6 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kana/vim-submode'
 
-" 消す時はマッピングも一緒に消す！
-NeoBundle 'rhysd/accelerated-jk'
-nmap <silent>j <Plug>(accelerated_jk_gj)
-nmap <silent>k <Plug>(accelerated_jk_gk)
-
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
 " }}}
@@ -61,6 +56,9 @@ nmap <silent>k <Plug>(accelerated_jk_gk)
 
 " 使用しなくなった。
 " NeoBundle 'Shougo/vimshell'
+
+" つかいにくかった。
+" NeoBundle 'rhysd/accelerated-jk'
 
 " }}}
 
