@@ -2,11 +2,11 @@
 " mapc
 
 " プラグイン
-source <sfile>:h/conf/plugin.vim
+source $HOME/.vim/conf/plugin.vim
 
 " 基本ファイル
-source <sfile>:h/conf/common.vim
+source $HOME/.vim/conf/common.vim
 
 " キーバインド
-source <sfile>:h/conf/key.vim
+source $HOME/.vim/conf/key.vim
 
