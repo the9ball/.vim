@@ -101,12 +101,10 @@ vnoremap <silent> < <gv
 nnoremap x "_x
 
 " jkでのカーソル移動を表示行単位で行う
+nnoremap j gj
+nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-" accelerated-jk で使うので一旦無効化。
-" 廃止するときは戻す。
-" nnoremap j gj
-" nnoremap k gk
 
 " 簡単移動
 nnoremap <C-a> <Home>
