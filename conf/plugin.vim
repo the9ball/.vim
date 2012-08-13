@@ -9,14 +9,15 @@ call neobundle#rc( '$HOME/.vim/bundle' )
 " Vundle が管理するプラグイン
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-jp/cpp-vim'
+NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'kien/ctrlp.vim'
+	NeoBundle 'the9ball/ctrlp-launcher'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'jayed/pyclewn'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
-NeoBundle 'tsaleh/vim-matchit'
-NeoBundle 'rhysd/accelerated-jk'
 
 " 試用中
 NeoBundle 'motemen/git-vim'
@@ -25,8 +26,12 @@ NeoBundle 'Shougo/unite-build'
 NeoBundle 'vim-scripts/TwitVim'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'kana/vim-submode'
+
+" 消す時はマッピングも一緒に消す！
+NeoBundle 'rhysd/accelerated-jk'
+nmap <silent>j <Plug>(accelerated_jk_gj)
+nmap <silent>k <Plug>(accelerated_jk_gk)
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
@@ -63,14 +68,33 @@ NeoBundle 'kana/vim-submode'
 " =============================================================
 
 " =============================================================
+" {{{ CTRLP系
+
+let g:ctrlp_map='<C-k>'
+nnoremap <silent> <Space>b :<C-u>CtrlPBuffer<CR>
+nnoremap <silent> <Space>s :<C-u>CtrlPLauncher<CR>
+
+" キャッシュ？
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+
+" ctrlp-launcherのファイル指定
+let g:filename_ctrlp_launcher = $HOME.'/.vim/.ctrlp-launcher'
+
+" }}}
+" =============================================================
+
+" =============================================================
 " {{{ unite系
 
-nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
+"nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
 nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
 nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -auto-resize -start-insert -no-quit<CR>
 nnoremap <silent> <Space>r :<C-u>Unite -auto-resize -hide-source-names file_mru<CR>
 
-call unite#filters#default#use( [ 'matcher_default', 'sorter_word', 'converter_default' ] )
+call unite#filters#default#use( [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
+
+" buffer を開いた時に常に絶対パスで表示させたい。
+call unite#custom_filters( 'buffer', [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
 
 " Unite qf 系用
 " 調整中
@@ -219,13 +243,6 @@ command! -bar -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-c
 
 " =============================================================
 " {{{ その他1行系
-
-" CTRLP
-let g:ctrlp_map='<C-k>'
-
-" accelerated-jk
-nmap <silent>j <Plug>(accelerated_jk_gj)
-nmap <silent>k <Plug>(accelerated_jk_gk)
 
 " }}}
 " =============================================================
