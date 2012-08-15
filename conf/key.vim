@@ -211,7 +211,8 @@ nnoremap <silent> tp :<C-u>tabprev<CR>
 " {{{ バッファ
 
 " Unite buffer で十分
-if 0
+" と、思いきや意外と使いたい時が多かった。
+if 1
 " バッファ操作キー
 nnoremap s <Nop>
 " ファイルリスト表示
@@ -222,6 +223,8 @@ nnoremap <silent> sf :<C-u>hide b#<CR>
 nnoremap <silent> sn :<C-u>hide bn<CR>
 " 前のファイルへ移動
 nnoremap <silent> sp :<C-u>hide bp<CR>
+" ファイルを閉じる
+nnoremap <silent> sc :<C-u>bdel<CR>
 endif
 
 " }}}
