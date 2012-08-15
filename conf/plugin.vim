@@ -12,6 +12,8 @@ NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
+	NeoBundle 'the9ball/ctrlp-gtags'
+	NeoBundle 'mattn/ctrlp-mark'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
@@ -85,6 +87,11 @@ let g:ctrlp_prompt_mappings = {
 	\	'PrtCurLeft()'	:	['<left>', '<c-^>']
 	\}
 
+" ctrlp-gtags
+nnoremap <silent> <space>x :<C-u>CtrlPGtags<CR><C-r><C-w><CR>
+nnoremap <silent> <space>f :<C-u>CtrlPGtagsR<CR><cfile><CR>
+nnoremap <silent> <space>r :<C-u>CtrlPGtagsR<CR><C-r><C-w><CR>
+
 " }}}
 " =============================================================
 
@@ -92,9 +99,9 @@ let g:ctrlp_prompt_mappings = {
 " {{{ unite系
 
 "nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
-nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
-nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -auto-resize -start-insert -no-quit<CR>
-nnoremap <silent> <Space>r :<C-u>Unite -auto-resize -hide-source-names file_mru<CR>
+"nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
+"nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -auto-resize -start-insert -no-quit<CR>
+"nnoremap <silent> <Space>r :<C-u>Unite -auto-resize -hide-source-names file_mru<CR>
 
 call unite#filters#default#use( [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
 
