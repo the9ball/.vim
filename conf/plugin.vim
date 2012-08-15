@@ -88,8 +88,8 @@ let g:ctrlp_prompt_mappings = {
 	\}
 
 " ctrlp-gtags
-nnoremap <silent> <space>x :<C-u>CtrlPGtags<CR><C-r><C-w><CR>
-nnoremap <silent> <space>f :<C-u>CtrlPGtagsR<CR><cfile><CR>
+nnoremap <silent> <space>x :<C-u>CtrlPGtagsX<CR><C-r><C-w><CR>
+nnoremap <silent> <space>f :<C-u>CtrlPGtagsF<CR><cfile><CR>
 nnoremap <silent> <space>r :<C-u>CtrlPGtagsR<CR><C-r><C-w><CR>
 
 " }}}
