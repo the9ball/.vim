@@ -102,6 +102,9 @@ nnoremap <silent> <space>r :<C-u>CtrlPGtagsR<CR>
 " =============================================================
 " {{{ unite系
 
+" いつかまた使うその日まで封印
+" {{{
+
 "nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
 "nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
 "nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -auto-resize -start-insert -no-quit<CR>
@@ -135,6 +138,8 @@ function! g:fVim( pattern, files )
 	call g:fUniteQfHelper( s:temp )
 	cclose
 endfunction
+
+" }}}
 
 " }}}
 " =============================================================
