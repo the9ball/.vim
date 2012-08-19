@@ -2,6 +2,8 @@
 " {{{ 基本設定
 " 長いので分割すべきかも
 
+" scriptencoding utf-8 みたいなのをすべきなのかも。
+
 " カレント .vimrc, .exrc などを読まない
 set noexrc
 
@@ -366,6 +368,7 @@ set statusline+=:%t						" ファイル名
 set statusline+=%m						" 修正フラグ
 set statusline+=%r						" 読み込み専用フラグ
 set statusline+=%w						" プレビューウィンドウフラグ
+set statusline+=%{b:WrapMode()}			" 折り返し
 
 set statusline+=%=						" 左と右の境界
 
@@ -447,6 +450,13 @@ function! b:FuncName()
 	" 関数名を返す。
 	"echo l:result
 	return l:result
+endfunction
+
+function! b:WrapMode()
+	if &wrap
+		return	'[wrap]'
+	endif
+	return	''
 endfunction
 
 " }}}
