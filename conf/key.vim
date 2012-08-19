@@ -150,8 +150,30 @@ nnoremap q <ESC>
 nnoremap Q q
 nnoremap <C-q> q
 
-" 補完できるし意外と便利なのかも。
-nnoremap : q:i
+" {{{ command-line-window
+	" 補完できるし意外と便利なのかも。
+	nnoremap : q:i
+	function! b:MyCmdWinEnter()
+		" ESCで閉じたい。
+		nnoremap <buffer><silent> <Esc> <CR>
+		inoremap <buffer><silent> <Esc> <C-o>o<CR>
+
+		" 履歴の参照
+		" そのうち使わない方を消す。
+		inoremap <buffer><silent> <C-k> <C-g>k
+		inoremap <buffer><silent> <C-p> <C-g>k
+		inoremap <buffer><silent> <C-j> <C-g>j
+		inoremap <buffer><silent> <C-n> <C-g>j
+
+		" 高いと邪魔
+		" なんかエラーだってよ
+		"resize 3
+	endfunction
+	augroup MyCmdwinEnter
+		autocmd!
+		autocmd CmdwinEnter * call b:MyCmdWinEnter()
+	augroup END
+" }}}
 
 " 誤爆防止
 nnoremap S <Nop>
