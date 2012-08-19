@@ -307,8 +307,9 @@ nnoremap sfs :vim /<C-r><C-w>/ **/*.c*<CR>
 nnoremap sfh :vim /<C-r><C-w>/ **/*.h*<CR>
 
 " 検索結果を中央に
-map n nzz
-map N Nzz
+" zvは折りたたみを展開する。
+map n nzzzv
+map N Nzzzv
 map * *N
 map # #N
 map g* g*N
