@@ -226,8 +226,9 @@ set cindent
 set backspace=indent,eol,start
 
 " 改行時にコメントしない
-" なぜか効かない。
-set formatoptions-=ro
+" ftplugin で設定されているため、
+" after/ftplugin/*.vim で設定するようにする。
+"set formatoptions-=ro
 
 " }}}
 " =============================================================
@@ -559,3 +560,4 @@ endif
 "
 " }}}
 " =============================================================
+
