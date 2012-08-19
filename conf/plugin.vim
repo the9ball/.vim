@@ -90,9 +90,9 @@ let g:ctrlp_prompt_mappings = {
 let g:filename_ctrlp_launcher = $HOME.'/.vim/.ctrlp-launcher'
 
 " ctrlp-gtags
-nnoremap <silent> <space>x :<C-u>CtrlPGtagsX<CR><C-r><C-w><CR>
-nnoremap <silent> <space>f :<C-u>CtrlPGtagsF<CR><cfile><CR>
-nnoremap <silent> <space>r :<C-u>CtrlPGtagsR<CR><C-r><C-w><CR>
+nnoremap <silent> <space>x :<C-u>CtrlPGtagsX<CR>
+nnoremap <silent> <space>f :<C-u>CtrlPGtagsF<CR>
+nnoremap <silent> <space>r :<C-u>CtrlPGtagsR<CR>
 
 " 
 
