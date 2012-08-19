@@ -150,6 +150,9 @@ nnoremap q <ESC>
 nnoremap Q q
 nnoremap <C-q> q
 
+" 補完できるし意外と便利なのかも。
+nnoremap : q:i
+
 " 誤爆防止
 nnoremap S <Nop>
 nnoremap s <Nop>
