@@ -159,11 +159,8 @@ nnoremap <C-q> q
 		inoremap <buffer><silent> <Esc> <C-o>o<CR>
 
 		" 履歴の参照
-		" そのうち使わない方を消す。
 		inoremap <buffer><silent> <C-k> <C-g>k
-		inoremap <buffer><silent> <C-p> <C-g>k
 		inoremap <buffer><silent> <C-j> <C-g>j
-		inoremap <buffer><silent> <C-n> <C-g>j
 
 		" 高いと邪魔
 		" なんかエラーだってよ
