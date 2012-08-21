@@ -185,10 +185,6 @@ nnoremap s <Nop>
 " =============================================================
 " {{{ インサートモード
 
-" ファイル名補完ショートカット
-" CTRL+F でファイル名補完
-inoremap <silent> <C-f> <C-x><C-f>
-
 " スペルチェック ON/OFF
 function! s:completeSpellCheckOff()
 	if 0 == pumvisible()
