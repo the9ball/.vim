@@ -76,6 +76,9 @@ nnoremap <silent> <Space>s :<C-u>CtrlPLauncher<CR>
 nnoremap <silent> <Space>m :<C-u>CtrlPMRUFiles<CR>
 nnoremap <silent> <Space>l :<C-u>CtrlPLine<CR>
 nnoremap <silent> <Space>v :<C-u>CtrlPVerboseLet<CR>
+nnoremap <silent> <space>x :<C-u>CtrlPGtagsX<CR>
+nnoremap <silent> <space>f :<C-u>CtrlPGtagsF<CR>
+nnoremap <silent> <space>r :<C-u>CtrlPGtagsR<CR>
 
 " キャッシュ？
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
@@ -88,11 +91,6 @@ let g:ctrlp_prompt_mappings = {
 
 " ctrlp-launcherのファイル指定
 let g:filename_ctrlp_launcher = $HOME.'/.vim/.ctrlp-launcher'
-
-" ctrlp-gtags
-nnoremap <silent> <space>x :<C-u>CtrlPGtagsX<CR>
-nnoremap <silent> <space>f :<C-u>CtrlPGtagsF<CR>
-nnoremap <silent> <space>r :<C-u>CtrlPGtagsR<CR>
 
 " 
 
