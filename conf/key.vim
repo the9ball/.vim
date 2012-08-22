@@ -111,6 +111,10 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+" スクロール
+nnoremap <C-k> <C-y>
+nnoremap <C-j> <C-e>
+
 " 簡単移動
 nnoremap <C-a> <Home>
 nnoremap <C-e> <End>

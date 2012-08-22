@@ -70,7 +70,7 @@ NeoBundle 'kana/vim-submode'
 " =============================================================
 " {{{ CTRLP系
 
-let g:ctrlp_map='<C-k>'
+let g:ctrlp_map='<C-i>'
 nnoremap <silent> <Space>b :<C-u>CtrlPBuffer<CR>
 nnoremap <silent> <Space>s :<C-u>CtrlPLauncher<CR>
 nnoremap <silent> <Space>m :<C-u>CtrlPMRUFiles<CR>
