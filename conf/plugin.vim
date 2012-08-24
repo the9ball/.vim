@@ -145,8 +145,6 @@ endfunction
 " =============================================================
 " {{{ pyclewn
 
-" 一旦読み込み
-source <sfile>:h/pyclewn.vim
 " Pyclewn用キーバインド
 nnoremap <silent> <F4> :<C-u>Pyclewn<CR>
 "nnoremap <F6> :<C-u>call g:TogglePyclewnKeymap()<CR>
