@@ -71,6 +71,9 @@ NeoBundle 'kana/vim-submode'
 " {{{ CTRLP系
 
 let g:ctrlp_map='<Space>p'
+nnoremap <Space>c :<C-u>CtrlP 
+nnoremap <silent> <Space>e :<C-u>CtrlP %:p:h<CR>
+nnoremap <silent> <Space>d :<C-u>CtrlP expand('<pwd>')<CR>
 nnoremap <silent> <Space>b :<C-u>CtrlPBuffer<CR>
 nnoremap <silent> <Space>s :<C-u>CtrlPLauncher<CR>
 nnoremap <silent> <Space>m :<C-u>CtrlPMRUFiles<CR>
