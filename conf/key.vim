@@ -169,6 +169,10 @@ nnoremap <C-q> q
 		" 過去のコマンドをコピー
 		inoremap <buffer><silent> <C-y> <Esc>y$Gi<C-r>0
 
+		" 左右移動したくなった。
+		inoremap <buffer><silent> <C-f> <C-o>gl
+		inoremap <buffer><silent> <C-b> <C-o>gh
+
 		" 高いと邪魔
 		" なんかエラーだってよ
 		"resize 3
