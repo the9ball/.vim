@@ -95,6 +95,10 @@ set shellslash
 " 括弧のペア
 set matchpairs+=<:>
 
+" <C-a>/<C-x> での増減
+" <C-a>を潰している事実が悩みどころ
+" set nrformats=alpha,hex
+
 " swap
 " どうするか考え中
 "set noswapfile
