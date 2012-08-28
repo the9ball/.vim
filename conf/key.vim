@@ -119,14 +119,13 @@ nnoremap <C-j> <C-e>
 nnoremap <C-a> <Home>
 nnoremap <C-e> <End>
 
+" 片手で移動
+nnoremap , <C-u>zz
+nnoremap m <C-d>zz
+
 " D とか C とか互換
 " 標準の Y は yy と同義らしい。
 nnoremap Y y$
-
-" wbでのワード移動時、WBだと行を進めてみる。
-" いまいち
-" nnoremap W jw
-" nnoremap B kb
 
 " ウィンドウサイズを調整
 nnoremap Ov 1<C-w>>
