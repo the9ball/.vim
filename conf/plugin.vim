@@ -16,18 +16,12 @@ NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-verboselet'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'jayed/pyclewn'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
 
 " 試用中
-NeoBundle 'motemen/git-vim'
-NeoBundle 'sgur/unite-qf'
-NeoBundle 'Shougo/unite-build'
-NeoBundle 'vim-scripts/TwitVim'
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kana/vim-submode'
 
 " 使ってみたいリスト {{{
@@ -36,6 +30,11 @@ NeoBundle 'kana/vim-submode'
 
 " 使わないことにしたリスト。{{{
 " 別ファイルにすべきかも。
+
+" Unite系
+" NeoBundle 'Shougo/unite.vim'
+" 	NeoBundle 'sgur/unite-qf'
+" 	NeoBundle 'Shougo/unite-build'
 
 " シンタックスチェッカーだが、誤検出が多い印象
 " NeoBundle 'scrooloose/syntastic'
@@ -61,6 +60,11 @@ NeoBundle 'kana/vim-submode'
 
 " つかいにくかった。
 " NeoBundle 'rhysd/accelerated-jk'
+
+" 結局使わない。
+" NeoBundle 'Lokaltog/vim-easymotion'
+" NeoBundle 'vim-scripts/TwitVim'
+" NeoBundle 'motemen/git-vim'
 
 " }}}
 
@@ -96,51 +100,6 @@ let g:ctrlp_prompt_mappings = {
 let g:filename_ctrlp_launcher = $HOME.'/.vim/.ctrlp-launcher'
 
 " 
-
-" }}}
-" =============================================================
-
-" =============================================================
-" {{{ unite系
-
-" いつかまた使うその日まで封印
-" {{{
-
-"nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
-"nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
-"nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -auto-resize -start-insert -no-quit<CR>
-"nnoremap <silent> <Space>r :<C-u>Unite -auto-resize -hide-source-names file_mru<CR>
-
-call unite#filters#default#use( [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
-
-" buffer を開いた時に常に絶対パスで表示させたい。
-call unite#custom_filters( 'buffer', [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
-
-" Unite qf 系用
-" 調整中
-command! -bar -nargs=1 UniteQfHelper :call g:fUniteQfHelper( <args> )
-function! g:fUniteQfHelper( ope )
-	" スペースをエスケープする。
-	let s:temp = substitute( a:ope, ' ', '\\ ', 'g' )
-
-	" 実行
-	execute "Unite qf:ex=" . s:temp
-endfunction
-
-" vimgrep を Unite で。
-" 調整中
-"手入力の方がよさそう nnoremap <Space>v :<C-u>Vim 
-command! -bar -nargs=+ Vim :call g:fVim( <f-args> )
-command! -bar -nargs=+ VIm :call g:fVim( <f-args> )
-command! -bar -nargs=+ VIM :call g:fVim( <f-args> )
-function! g:fVim( pattern, files )
-	let s:temp = 'vimgrep ' . a:pattern . ' ' . a:files
-	". "--no-empty"
-	call g:fUniteQfHelper( s:temp )
-	cclose
-endfunction
-
-" }}}
 
 " }}}
 " =============================================================
@@ -227,23 +186,6 @@ let g:syntastic_auto_loc_list=2
 " =============================================================
 
 " =============================================================
-" {{{ TwitVim
-
-let twitvim_login_b64 = "dGhlOWJhbGw=:am1rdW05a2o="
-let twitvim_count = 2000
-
-" }}}
-" =============================================================
-
-" =============================================================
-" {{{ EasyMotion
-
-let g:EasyMotion_leader_key	=	','
-
-" }}}
-" =============================================================
-
-" =============================================================
 " {{{ lingr-vim
 
 "まだテスト中
@@ -263,6 +205,77 @@ command! -bar -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-c
 
 " =============================================================
 " {{{ その他1行系
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ 使わなくなった設定達
+" いつの日か使うかもしれないもの。
+
+" =============================================================
+" {{{ unite系
+
+" いつかまた使うその日まで封印
+" {{{
+if 0
+
+"nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
+"nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
+"nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -auto-resize -start-insert -no-quit<CR>
+"nnoremap <silent> <Space>r :<C-u>Unite -auto-resize -hide-source-names file_mru<CR>
+
+call unite#filters#default#use( [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
+
+" buffer を開いた時に常に絶対パスで表示させたい。
+call unite#custom_filters( 'buffer', [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
+
+" Unite qf 系用
+" 調整中
+command! -bar -nargs=1 UniteQfHelper :call g:fUniteQfHelper( <args> )
+function! g:fUniteQfHelper( ope )
+	" スペースをエスケープする。
+	let s:temp = substitute( a:ope, ' ', '\\ ', 'g' )
+
+	" 実行
+	execute "Unite qf:ex=" . s:temp
+endfunction
+
+" vimgrep を Unite で。
+" 調整中
+"手入力の方がよさそう nnoremap <Space>v :<C-u>Vim 
+command! -bar -nargs=+ Vim :call g:fVim( <f-args> )
+command! -bar -nargs=+ VIm :call g:fVim( <f-args> )
+command! -bar -nargs=+ VIM :call g:fVim( <f-args> )
+function! g:fVim( pattern, files )
+	let s:temp = 'vimgrep ' . a:pattern . ' ' . a:files
+	". "--no-empty"
+	call g:fUniteQfHelper( s:temp )
+	cclose
+endfunction
+
+endif
+" }}}
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ EasyMotion
+
+" let g:EasyMotion_leader_key	=	','
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ TwitVim
+
+let twitvim_login_b64 = "dGhlOWJhbGw=:am1rdW05a2o="
+let twitvim_count = 2000
+
+" }}}
+" =============================================================
 
 " }}}
 " =============================================================
