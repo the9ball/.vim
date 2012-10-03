@@ -82,12 +82,14 @@ cnoremap <C-e> <End>
 " {{{ ヴィジュアルモード
 
 " 範囲選択の上書きペーストでレジスタに載せない。
+" 終端を上書きたい時に変な感じになる。
 vnoremap p "_dP
 vnoremap P "_dP
 
 " 範囲選択時のワード単位移動をワードの先頭ではなく、終端に。
 " w連打で次のワードへ移動しないため結局使いにくい。
 " vnoremap w wh
+
 " 範囲選択中に結合させないようにしたい。
 vnoremap J j
 vnoremap <C-j> j
@@ -144,8 +146,8 @@ nnoremap <Space><CR> :<Up><CR>
 "強制全保存終了を無効化
 nnoremap ZZ <Nop>
 
-" 開いているバッファを閉じる
-nnoremap <C-z> :<C-u>bdel<CR>
+" 簡単vimgrep
+nnoremap s :<C-u>vim /<C-r><C-w>/ **/*
 
 " 誤爆防止
 " でも結構頻繁に使う。
@@ -169,8 +171,8 @@ nnoremap <C-q> q
 		inoremap <buffer><silent> <C-y> <Esc>y$Gi<C-r>0
 
 		" 左右移動したくなった。
-		inoremap <buffer><silent> <C-f> <C-o>gl
-		inoremap <buffer><silent> <C-b> <C-o>gh
+		inoremap <buffer><silent> <C-f> <C-o>l
+		inoremap <buffer><silent> <C-b> <C-o>h
 
 		" 高いと邪魔
 		" なんかエラーだってよ
