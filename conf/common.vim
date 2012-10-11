@@ -364,6 +364,8 @@ augroup END
 set statusline=							" 一旦クリア
 set statusline+=[%n]					" バッファ番号
 set statusline+=[%Y]					" ファイル形式
+set statusline+=[%{&ff}]				" 改行コード
+set statusline+=[%{&enc}]				" 文字コード
 set statusline+=:%t						" ファイル名
 
 " 重すぎて使い物にならない。
@@ -377,7 +379,8 @@ set statusline+=%{b:WrapMode()}			" 折り返し
 set statusline+=%=						" 左と右の境界
 
 set statusline+=%{b:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
-set statusline+=%l,%v					" カーソル位置
+set statusline+=(%l,%v)					" カーソル位置
+set statusline+=[%B]					" カーソル下の文字コード
 set statusline+=\ %p%%					" ファイル内のページの位置
 set statusline+=\  
 
