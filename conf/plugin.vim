@@ -91,6 +91,9 @@ nnoremap <silent> <space>r :<C-u>CtrlPGtagsR<CR>
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_clear_cache_on_exit = 0
 
+" 既に開いていた場合
+let g:ctrlp_switch_buffer = 0
+
 " キーマッピング
 let g:ctrlp_prompt_mappings = {
 	\	'PrtCurLeft()'	:	['<left>', '<c-^>']
