@@ -1,5 +1,5 @@
 ./configure \
-	--prefix=/home/syasui/lib/vim/ \
+	--prefix=$HOME/lib/vim/ \
 	--disable-gui \
 	--enable-multibyte \
 	--enable-xim \
