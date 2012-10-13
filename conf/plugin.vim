@@ -70,7 +70,26 @@ NeoBundle 'motemen/git-vim'
 " =============================================================
 
 " =============================================================
+" {{{ プラグイン操作系
+
+" tyruさんから
+function! s:has_plugin(name)
+    let nosuffix = a:name =~? '\.vim$' ? a:name[:-5] : a:name
+    let suffix   = a:name =~? '\.vim$' ? a:name      : a:name . '.vim'
+    return &rtp =~# '\c\<' . nosuffix . '\>'
+    \   || globpath(&rtp, suffix, 1) != ''
+    \   || globpath(&rtp, nosuffix, 1) != ''
+    \   || globpath(&rtp, 'autoload/' . suffix, 1) != ''
+    \   || globpath(&rtp, 'autoload/' . tolower(suffix), 1) != ''
+endfunction
+
+" }}}
+" =============================================================
+
+" =============================================================
 " {{{ CTRLP系
+
+if s:has_plugin( 'CtrlP' )
 
 let g:ctrlp_map='<Space>p'
 nnoremap <Space>c :<C-u>CtrlP 
@@ -100,13 +119,15 @@ let g:ctrlp_prompt_mappings = {
 " ctrlp-launcherのファイル指定
 let g:filename_ctrlp_launcher = $HOME.'/.vim/.ctrlp-launcher'
 
-" 
+endif 
 
 " }}}
 " =============================================================
 
 " =============================================================
 " {{{ pyclewn
+
+if s:has_plugin( 'pyclewn' )
 
 " Pyclewn用キーバインド
 nnoremap <silent> <F4> :<C-u>Pyclewn<CR>
@@ -154,11 +175,15 @@ if 1
 	command! -bar -nargs=1 -complete=file Attach :call g:AttachFunc( <f-args> )
 endif
 
+endif
+
 " }}}
 " =============================================================
 
 " =============================================================
 " {{{ gtags
+
+if s:has_plugin( 'gtags' )
 
 " gtags
 nnoremap <C-g> :Gtags 
@@ -174,14 +199,20 @@ nnoremap <silent> <C-]> :Gtags <C-r><C-w><CR>
 " grep
 " nnoremap <C-g><C-g> :Gtags -g <C-t><C-w><CR><CR><C-o>
 
+endif
+
 " }}}
 " =============================================================
 
 " =============================================================
 " {{{ syntastic
 
+if s:has_plugin( 'syntastic' )
+
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
+
+endif
 
 " }}}
 " =============================================================
@@ -189,17 +220,24 @@ let g:syntastic_auto_loc_list=2
 " =============================================================
 " {{{ lingr-vim
 
-"まだテスト中
-"g:lingr_vim_user=the9ball@gmail.com
+if s:has_plugin( 'lingr-vim' )
+
+let g:lingr_vim_user='Shaula'
+
+endif
 
 " }}}
 " =============================================================
 
 " =============================================================
-" {{{ gitdiff???
+" {{{ git-vim???
+
+if s:has_plugin( 'git-vim' )
 
 " いつ入れたか覚えていない・・・なんの設定？
 command! -bar -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-change <args>
+
+endif
 
 " }}}
 " =============================================================
@@ -217,9 +255,7 @@ command! -bar -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-c
 " =============================================================
 " {{{ unite系
 
-" いつかまた使うその日まで封印
-" {{{
-if 0
+if s:has_plugin( 'unite' )
 
 "nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
 "nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
@@ -255,8 +291,7 @@ function! g:fVim( pattern, files )
 	cclose
 endfunction
 
-endif
-" }}}
+endif 
 
 " }}}
 " =============================================================
@@ -264,7 +299,11 @@ endif
 " =============================================================
 " {{{ EasyMotion
 
-" let g:EasyMotion_leader_key	=	','
+if s:has_plugin( 'EasyMotion' )
+
+let g:EasyMotion_leader_key	=	','
+
+endif
 
 " }}}
 " =============================================================
@@ -272,8 +311,12 @@ endif
 " =============================================================
 " {{{ TwitVim
 
+if s:has_plugin( 'TwitVim' )
+
 let twitvim_login_b64 = "dGhlOWJhbGw=:am1rdW05a2o="
 let twitvim_count = 2000
+
+endif
 
 " }}}
 " =============================================================
