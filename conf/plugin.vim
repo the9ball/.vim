@@ -19,10 +19,12 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'jayed/pyclewn'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
+NeoBundle 'tsukkee/lingr-vim'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'kana/vim-submode'
+NeoBundle 'motemen/git-vim'
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
@@ -45,9 +47,6 @@ NeoBundle 'kana/vim-submode'
 " vim-easymotionがイマイチだったら使ってみる。
 " NeoBundle 'kana/kuy-vim-fuzzyjump'
 
-" なんかエラーだって。調べるのが面倒なので放置。
-" NeoBundle 'tsukkee/lingr-vim'
-
 " vimが固まったし、有用性を感じなかった。
 " NeoBundle 'tsukkee/unite-help'
 
@@ -64,7 +63,6 @@ NeoBundle 'kana/vim-submode'
 " 結局使わない。
 " NeoBundle 'Lokaltog/vim-easymotion'
 " NeoBundle 'vim-scripts/TwitVim'
-" NeoBundle 'motemen/git-vim'
 
 " }}}
 
