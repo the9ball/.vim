@@ -67,7 +67,7 @@ cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 "cnoremap <C-h> <Left>	BSとかぶる。
 cnoremap <C-l> <Right>
-cnoremap <C-a> <Home>
+cnoremap <C-a> ^
 cnoremap <C-e> <End>
 
 " 誤爆というかイライラ防止
@@ -118,7 +118,7 @@ nnoremap <C-k> <C-y>
 nnoremap <C-j> <C-e>
 
 " 簡単移動
-nnoremap <C-a> <Home>
+nnoremap <C-a> ^
 nnoremap <C-e> <End>
 
 " 片手で移動
@@ -215,7 +215,7 @@ command! -bar -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
 inoremap <C-l> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
 
 " 簡単移動
-inoremap <C-a> <Home>
+inoremap <C-a> ^
 inoremap <C-e> <End>
 inoremap <C-f> <C-o>e<C-o>l
 inoremap <C-b> <C-o>b
