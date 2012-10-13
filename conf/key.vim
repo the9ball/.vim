@@ -143,6 +143,9 @@ nnoremap <F2> :<C-u>verbose map<CR>
 " 直前に実行したコマンドを再度実行
 nnoremap <Space><CR> :<Up><CR>
 
+" 上書き
+nnoremap <silent> <Space>w :w<CR>
+
 "強制全保存終了を無効化
 nnoremap ZZ <Nop>
 
