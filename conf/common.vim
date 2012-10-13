@@ -379,7 +379,9 @@ set statusline+=%{b:WrapMode()}			" 折り返し
 
 set statusline+=%=						" 左と右の境界
 
-set statusline+=%{b:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
+"エラーが出たりカーソル位置がずれたり散々だった。
+"set statusline+=%{b:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
+
 set statusline+=(%l,%v)					" カーソル位置
 set statusline+=[%B]					" カーソル下の文字コード
 set statusline+=\ %p%%					" ファイル内のページの位置
