@@ -80,9 +80,10 @@ set splitbelow
 set splitright
 
 " タブ文字、改行文字を表示
-"set list	やっぱ見にくかった。
+set list	"やっぱ見にくかった。
 " 改行、タブ文字の設定
-set listchars=tab:^\ ,trail:-
+"set listchars=tab:^\ ,trail:-
+set listchars=tab:\ \ ,trail:%,extends:>,precedes:<
 "tab:タブ:	
 "trail:行末のスペース: 
 
