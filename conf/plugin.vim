@@ -119,7 +119,13 @@ let g:ctrlp_prompt_mappings = {
 " ctrlp-launcherのファイル指定
 let g:filename_ctrlp_launcher = $HOME.'/.vim/.ctrlp-launcher'
 
-endif 
+" 除外ファイル
+let g:ctrlp_custom_ignore = {
+\ 'dir'  : '\v\.(git|svn|hg)$',
+\ 'file' : '\v.(\.o|\.meta)$',
+\ }
+
+endif
 
 " }}}
 " =============================================================
@@ -291,7 +297,7 @@ function! g:fVim( pattern, files )
 	cclose
 endfunction
 
-endif 
+endif
 
 " }}}
 " =============================================================
