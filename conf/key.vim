@@ -403,7 +403,7 @@ nnoremap <silent> <Space>c :cclose<CR>
 " =============================================================
 " {{{ メモ用設定
 
-nnoremap memo :MemoSeparate<CR>
+nnoremap <silent> memo :MemoSeparate<CR>
 command! -bar -nargs=0 MemoSeparate call s:memoSeparate()
 function! s:memoSeparate()
 	call append( a:firstline-1, "###############################################################" )
