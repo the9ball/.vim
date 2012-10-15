@@ -286,8 +286,9 @@ augroup FoldMethodAutocmd
 	\	|endif
 
 	" 素直に設定すると、コメントアウトされている括弧にも反応してしまう。
+	" ftpluginに書くべき？
 	if 1
-		autocmd FileType c,cpp,h,hpp,php
+		autocmd FileType c,cpp,h,hpp,php,cs
 		\	setlocal fmr={,}
 	else
 		" TODO がんばる
