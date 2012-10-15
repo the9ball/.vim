@@ -92,7 +92,7 @@ endfunction
 if s:has_plugin( 'CtrlP' )
 
 let g:ctrlp_map='<Space>p'
-nnoremap <Space>c :<C-u>CtrlP 
+"nnoremap <Space>c :<C-u>CtrlP 
 nnoremap <silent> <Space>e :<C-u>CtrlP %:p:h<CR>
 nnoremap <silent> <Space>d :<C-u>CtrlP expand('<pwd>')<CR>
 nnoremap <silent> <Space>b :<C-u>CtrlPBuffer<CR>
