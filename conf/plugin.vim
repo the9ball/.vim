@@ -122,7 +122,7 @@ let g:filename_ctrlp_launcher = $HOME.'/.vim/.ctrlp-launcher'
 " 除外ファイル
 let g:ctrlp_custom_ignore = {
 \ 'dir'  : '\v\.(git|svn|hg)$',
-\ 'file' : '\v.(\.o|\.meta)$',
+\ 'file' : '\v\.(o|meta|dep|d)$',
 \ }
 
 endif
