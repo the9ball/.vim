@@ -1,1 +1,3 @@
 C-p ClearCache	CtrlPClearCache
+filetype:cpp	set ft=cpp
+filetype:cs	set ft=cs
