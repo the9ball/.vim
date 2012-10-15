@@ -98,6 +98,48 @@ vnoremap <C-j> j
 vnoremap <silent> > >gv
 vnoremap <silent> < <gv
 
+" ヴィジュアルモード時に選択中の文字列を取得する。
+function! s:GetSelectString()
+	if visualmode() != mode()
+		" ヴィジュアルモード時以外は動作させない。
+		silent normal! gv
+	endif
+
+	" 直接取得できないため、一旦ヤンクする。
+
+	" 古いレジスタを退避
+	let l:old_reg_val	=	getreg('a')
+	let l:old_reg_mod	=	getregtype('a')
+	let l:old_regd_val	=	getreg('"')
+	let l:old_regd_mod	=	getregtype('"')
+
+	" ヤンクしてその内容を習得
+	silent normal! "ay
+	let l:result	=	@a
+
+	" 古いレジスタを戻す
+	call setreg( 'a', l:old_reg_val, l:old_reg_mod )
+	call setreg( '"', l:old_regd_val, l:old_regd_mod )
+
+	" 選択状態を戻す
+	silent normal gv
+
+	return	l:result
+endfunction
+
+" ヴィジュアルモードで選択中の文字数をカウントする。
+function! s:visual_charcnt()
+	" 選択中の文字列を取得して素直にstrlen
+	let l:str	=	s:GetSelectString()
+	let l:len	=	strlen( l:str )
+
+	" 文字数
+	echo "Length : " . l:len
+	call getchar()
+endfunction
+command! -nargs=0 -range Count call s:visual_charcnt()
+vnoremap q :Count<CR>
+
 " }}}
 " =============================================================
 
