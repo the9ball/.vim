@@ -26,6 +26,7 @@ NeoBundle 'tsukkee/lingr-vim'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'motemen/git-vim'
+NeoBundle 'vim-scripts/BufOnly.vim'
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
