@@ -354,9 +354,9 @@ command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <co
 " コード検索
 " 使ってないので削除候補
 " カーソル下の単語をソースから検索
-nnoremap sfs :vim /<C-r><C-w>/ **/*.c*<CR>
+nnoremap sfs :vim /\<<C-r><C-w>\>/ **/*.c*<CR>
 " カーソル下の単語をヘッダから検索
-nnoremap sfh :vim /<C-r><C-w>/ **/*.h*<CR>
+nnoremap sfh :vim /\<<C-r><C-w>\>/ **/*.h*<CR>
 
 " 検索結果を中央に
 " zvは折りたたみを展開する。
