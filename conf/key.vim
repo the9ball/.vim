@@ -90,6 +90,10 @@ vnoremap P "_dP
 " w連打で次のワードへ移動しないため結局使いにくい。
 " vnoremap w wh
 
+" 簡単移動
+nnoremap <C-a> ^
+nnoremap <C-e> <End>
+
 " 範囲選択中に結合させないようにしたい。
 vnoremap J j
 vnoremap <C-j> j
