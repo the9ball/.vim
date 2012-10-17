@@ -107,6 +107,9 @@ set matchpairs+=<:>
 " バックアップ
 set nobackup
 
+" screenと一緒に使った時の表示の崩れがなくなるらしい。
+set t_Co=256
+
 " オプションのトグル
 command! -bar -nargs=1 Tgl call s:toggle_option( '<args>' )
 function! s:toggle_option(option_name)
