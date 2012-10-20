@@ -20,7 +20,6 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'jayed/pyclewn'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
-NeoBundle 'tsukkee/lingr-vim'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
@@ -65,6 +64,9 @@ NeoBundle 'vim-scripts/BufOnly.vim'
 " 結局使わない。
 " NeoBundle 'Lokaltog/vim-easymotion'
 " NeoBundle 'vim-scripts/TwitVim'
+
+" webの方が結局使いやすかった。
+" NeoBundle 'tsukkee/lingr-vim'
 
 " }}}
 
