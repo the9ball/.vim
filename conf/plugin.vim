@@ -96,7 +96,7 @@ endfunction
 if s:has_plugin( 'CtrlP' )
 
 let g:ctrlp_map='<Space>p'
-"nnoremap <Space>c :<C-u>CtrlP 
+"nnoremap <Space>c :<C-u>CtrlP<Space>
 nnoremap <silent> <Space>e :<C-u>CtrlP %:p:h<CR>
 nnoremap <silent> <Space>d :<C-u>CtrlP expand('<pwd>')<CR>
 nnoremap <silent> <Space>b :<C-u>CtrlPBuffer<CR>
@@ -198,7 +198,7 @@ endif
 if s:has_plugin( 'gtags' )
 
 " gtags
-nnoremap <C-g> :Gtags 
+nnoremap <C-g> :Gtags<Space>
 " 次の候補
 nnoremap <silent> <C-n> :cn<CR>
 " 前の候補
@@ -292,7 +292,7 @@ endfunction
 
 " vimgrep を Unite で。
 " 調整中
-"手入力の方がよさそう nnoremap <Space>v :<C-u>Vim 
+"手入力の方がよさそう nnoremap <Space>v :<C-u>Vim<Space>
 command! -bar -nargs=+ Vim :call g:fVim( <f-args> )
 command! -bar -nargs=+ VIm :call g:fVim( <f-args> )
 command! -bar -nargs=+ VIM :call g:fVim( <f-args> )
