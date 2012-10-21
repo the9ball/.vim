@@ -265,7 +265,7 @@ command! -bar -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
 inoremap <C-l> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
 
 " 簡単移動
-inoremap <C-a> ^
+inoremap <C-a> <C-o>^
 inoremap <C-e> <End>
 inoremap <C-f> <C-o>e<C-o>l
 inoremap <C-b> <C-o>b
