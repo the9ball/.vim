@@ -222,6 +222,7 @@ nnoremap <C-q> q
 		" 左右移動したくなった。
 		inoremap <buffer><silent> <C-f> <C-o>l
 		inoremap <buffer><silent> <C-b> <C-o>h
+		inoremap <buffer><silent> <C-l> <C-o>l
 
 		" 高いと邪魔
 		" なんかエラーだってよ
