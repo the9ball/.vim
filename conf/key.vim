@@ -217,7 +217,7 @@ nnoremap <C-q> q
 		inoremap <buffer><silent> <C-j> <C-g>j
 
 		" 過去のコマンドをコピー
-		inoremap <buffer><silent> <C-y> <Esc>y$Gi<C-r>0
+		inoremap <buffer><silent> <C-y> <Esc>"zy$GC<C-r>z
 
 		" 左右移動したくなった。
 		inoremap <buffer><silent> <C-f> <C-o>l
