@@ -91,8 +91,8 @@ vnoremap P "_dP
 " vnoremap w wh
 
 " 簡単移動
-nnoremap <C-a> ^
-nnoremap <C-e> <End>
+vnoremap <C-a> ^
+vnoremap <C-e> <End>
 
 " 範囲選択中に結合させないようにしたい。
 vnoremap J j
