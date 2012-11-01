@@ -2,4 +2,4 @@ C-p ClearCache	CtrlPClearCache
 filetype:cpp	set ft=cpp
 filetype:cs	set ft=cs
 Delete EOL Space	%s/\s\+$//ge
-
+UnSyncScroll	set noscrollbind
