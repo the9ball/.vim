@@ -323,7 +323,7 @@ nnoremap <silent> ss :<C-u>hide edit %<.cpp<CR>
 " いろんなメイク
 " command! -bar -nargs=* Mkcd :execute "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' )
 " command! -bar -nargs=* Mkcdd :execute "make -j8 CCPROG=ccache " . expand( '<args>' )
-nnoremap <S-m> :wa<CR>:<C-u>make obj/%:t:r.o<CR>
+nnoremap <S-m> :wa<CR>:!touch %<CR>:<C-u>make obj/%:t:r.o<CR>
 
 " 指定のプログラムをkill
 command! -bar -nargs=1 Killer :!pgrep <args>|xargs kill -9
