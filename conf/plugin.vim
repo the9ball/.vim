@@ -20,12 +20,12 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'jayed/pyclewn'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
+NeoBundle 'vim-scripts/BufOnly.vim'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kana/vim-submode'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'Shougo/vimshell'
 
 " 使ってみたいリスト {{{
