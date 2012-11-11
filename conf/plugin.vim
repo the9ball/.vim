@@ -27,6 +27,7 @@ NeoBundle 'kana/vim-submode'
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/neosnippet'
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
@@ -201,7 +202,7 @@ let g:neocomplcache_member_prefix_patterns['php'] = '->\|::'
 
 "スニペット補完
 "標準で用意されているスニペットを無効にする。初期化前に設定する
-let g:neocomplcache_snippets_disable_runtime_snippets = 1
+let g:neocomplcache_snippets_disable_runtime_snippets = 0
 "スニペットファイルの置き場所
 let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 
@@ -235,6 +236,30 @@ let g:neocomplcache_omni_patterns['twig']= '<[^>]*'
 inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
 " Tabで一番目の候補を選択
 "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+endif
+
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ neosnippet
+
+if s:has_plugin( 'neosnippet' )
+
+" Plugin key-mappings.
+inoremap <C-k> <Plug>(neosnippet_expand_or_jump)
+snoremap <C-k> <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+inoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+snoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+	set conceallevel=2 concealcursor=i
+endif
 
 endif
 
