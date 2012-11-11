@@ -10,7 +10,7 @@ set noexrc
 " 背景色を指定することで文字色を設定
 set background=dark
 " set background=light
-colorscheme elflord
+colorscheme mycolor
 
 " マウス有効化
 set mouse=nch
