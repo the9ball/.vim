@@ -26,6 +26,7 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-scripts/BufOnly.vim'
+NeoBundle 'Shougo/vimshell'
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
@@ -56,7 +57,6 @@ NeoBundle 'vim-scripts/BufOnly.vim'
 " NeoBundle 'thinca/vim-unite-history'
 
 " 使用しなくなった。
-" NeoBundle 'Shougo/vimshell'
 " NeoBundle 'motemen/git-vim'
 
 " つかいにくかった。
