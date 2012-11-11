@@ -116,7 +116,7 @@ if s:has_plugin( 'neocomplcache' )
 	let g:neocomplcache_enable_smart_case = 1
 	"大文字小文字を区切りとしたあいまい検索を行うかどうか。
 	"DTと入力するとD*T*と解釈され、DateTime等にマッチする。
-	let g:neocomplcache_enable_camel_case_completion = 0
+	let g:neocomplcache_enable_camel_case_completion = 1
 	"アンダーバーを区切りとしたあいまい検索を行うかどうか。
 	"m_sと入力するとm*_sと解釈され、mb_substr等にマッチする。
 	let g:neocomplcache_enable_underbar_completion = 0
