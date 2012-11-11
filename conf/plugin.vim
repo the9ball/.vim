@@ -24,7 +24,7 @@ NeoBundle 'vim-scripts/surround.vim'
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'kana/vim-submode'
-NeoBundle 'motemen/git-vim'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-scripts/BufOnly.vim'
 
 " 使ってみたいリスト {{{
@@ -57,6 +57,7 @@ NeoBundle 'vim-scripts/BufOnly.vim'
 
 " 使用しなくなった。
 " NeoBundle 'Shougo/vimshell'
+" NeoBundle 'motemen/git-vim'
 
 " つかいにくかった。
 " NeoBundle 'rhysd/accelerated-jk'
