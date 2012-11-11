@@ -20,10 +20,10 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'jayed/pyclewn'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
+NeoBundle 'kana/vim-submode'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'kana/vim-submode'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'Shougo/vimshell'
@@ -391,12 +391,24 @@ endif
 " =============================================================
 
 " =============================================================
-" {{{ git-vim???
+" {{{ submode
 
-if s:has_plugin( 'git-vim' )
+if s:has_plugin( 'vim-submode' )
 
-" いつ入れたか覚えていない・・・なんの設定？
-command! -bar -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-change <args>
+" Change GUI window size.
+" call submode#enter_with('guiwinsize', 'n', '', 'mgs', '<Nop>')
+" call submode#leave_with('guiwinsize', 'n', '', '<Esc>')
+" call submode#map       ('guiwinsize', 'n', '', 'j', ':set lines+=1<CR>')
+" call submode#map       ('guiwinsize', 'n', '', 'k', ':set lines-=1<CR>')
+" call submode#map       ('guiwinsize', 'n', '', 'h', ':set columns-=5<CR>')
+" call submode#map       ('guiwinsize', 'n', '', 'l', ':set columns+=5<CR>')
+
+" 画面の左右スクロール
+" あとで何か考える。
+call submode#enter_with( 'scroll', 'n', '', 'zl', '<Nop>' )
+call submode#leave_with( 'scroll', 'n', '', '<Esc>' )
+call submode#map       ( 'scroll', 'n', '', 'l', 'zl')
+call submode#map       ( 'scroll', 'n', '', 'h', 'zh')
 
 endif
 
