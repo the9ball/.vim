@@ -191,12 +191,6 @@ nnoremap m <C-d>zz
 " 標準の Y は yy と同義らしい。
 nnoremap Y y$
 
-" ウィンドウサイズを調整
-nnoremap Ov 1<C-w>>
-nnoremap Ot 1<C-w><
-nnoremap Or 1<C-w>+
-nnoremap Ox 1<C-w>-
-
 " 読み込まれたスクリプト一覧
 nnoremap <F3> :<C-u>scriptnames<CR>
 " マップされたキー一覧

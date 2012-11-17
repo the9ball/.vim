@@ -423,12 +423,12 @@ endif
 if s:has_plugin( 'vim-submode' )
 
 " Change GUI window size.
-" call submode#enter_with('guiwinsize', 'n', '', 'mgs', '<Nop>')
-" call submode#leave_with('guiwinsize', 'n', '', '<Esc>')
-" call submode#map       ('guiwinsize', 'n', '', 'j', ':set lines+=1<CR>')
-" call submode#map       ('guiwinsize', 'n', '', 'k', ':set lines-=1<CR>')
-" call submode#map       ('guiwinsize', 'n', '', 'h', ':set columns-=5<CR>')
-" call submode#map       ('guiwinsize', 'n', '', 'l', ':set columns+=5<CR>')
+call submode#enter_with('guiwinsize', 'n', '', '<S-w>', '<Nop>')
+call submode#leave_with('guiwinsize', 'n', '', '<Esc>')
+call submode#map       ('guiwinsize', 'n', '', 'j', '<C-w>+')
+call submode#map       ('guiwinsize', 'n', '', 'k', '<C-w>-')
+call submode#map       ('guiwinsize', 'n', '', 'h', '<C-w><')
+call submode#map       ('guiwinsize', 'n', '', 'l', '<C-w>>')
 
 " 画面の左右スクロール
 " あとで何か考える。
