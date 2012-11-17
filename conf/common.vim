@@ -7,6 +7,10 @@
 " カレント .vimrc, .exrc などを読まない
 set noexrc
 
+" エンコード云々
+set encoding=utf-8 fileencodings=ucs-bom,iso-2022-jp,euc-jp,cp932
+set fileformat=unix fileformats=unix,dos,mac
+
 " 背景色を指定することで文字色を設定
 set background=dark
 " set background=light
@@ -539,6 +543,20 @@ command!
 \   -bar -nargs=1 -complete=customlist,feature_list_excomplete#complete
 \   Has
 \   echo has(<q-args>)
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ エンコード系
+
+command! -bang -bar -complete=file -nargs=? Cp932 edit<bang> ++encoding=cp932       <args>
+command! -bang -bar -complete=file -nargs=? Eucjp edit<bang> ++encoding=euc-jp      <args>
+command! -bang -bar -complete=file -nargs=? Jis   edit<bang> ++encoding=iso-2022-jp <args>
+command! -bang -bar -complete=file -nargs=? Utf8  edit<bang> ++encoding=utf-8       <args>
+command! -bang -bar -complete=file -nargs=? Dos   edit<bang> ++fileformat=dos       <args>
+command! -bang -bar -complete=file -nargs=? Mac   edit<bang> ++fileformat=mac       <args>
+command! -bang -bar -complete=file -nargs=? Unix  edit<bang> ++fileformat=unix      <args>
 
 " }}}
 " =============================================================
