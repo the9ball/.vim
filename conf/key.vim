@@ -102,47 +102,52 @@ vnoremap <C-j> j
 vnoremap <silent> > >gv
 vnoremap <silent> < <gv
 
-" ヴィジュアルモード時に選択中の文字列を取得する。
-function! s:GetSelectString()
-	if visualmode() != mode()
-		" ヴィジュアルモード時以外は動作させない。
-		silent normal! gv
-	endif
+	" =============================================================
+	" {{{ ヴィジュアルモードで選択中の文字数をカウントする。
 
-	" 直接取得できないため、一旦ヤンクする。
+	" ヴィジュアルモード時に選択中の文字列を取得する。
+	function! s:GetSelectString()
+		if visualmode() != mode()
+			" ヴィジュアルモード時以外は動作させない。
+			silent normal! gv
+		endif
 
-	" 古いレジスタを退避
-	let l:old_reg_val	=	getreg('a')
-	let l:old_reg_mod	=	getregtype('a')
-	let l:old_regd_val	=	getreg('"')
-	let l:old_regd_mod	=	getregtype('"')
+		" 直接取得できないため、一旦ヤンクする。
 
-	" ヤンクしてその内容を習得
-	silent normal! "ay
-	let l:result	=	@a
+		" 古いレジスタを退避
+		let l:old_reg_val	=	getreg('a')
+		let l:old_reg_mod	=	getregtype('a')
+		let l:old_regd_val	=	getreg('"')
+		let l:old_regd_mod	=	getregtype('"')
 
-	" 古いレジスタを戻す
-	call setreg( 'a', l:old_reg_val, l:old_reg_mod )
-	call setreg( '"', l:old_regd_val, l:old_regd_mod )
+		" ヤンクしてその内容を習得
+		silent normal! "ay
+		let l:result	=	@a
 
-	" 選択状態を戻す
-	silent normal gv
+		" 古いレジスタを戻す
+		call setreg( 'a', l:old_reg_val, l:old_reg_mod )
+		call setreg( '"', l:old_regd_val, l:old_regd_mod )
 
-	return	l:result
-endfunction
+		" 選択状態を戻す
+		silent normal gv
 
-" ヴィジュアルモードで選択中の文字数をカウントする。
-function! s:visual_charcnt()
-	" 選択中の文字列を取得して素直にstrlen
-	let l:str	=	s:GetSelectString()
-	let l:len	=	strlen( l:str )
+		return	l:result
+	endfunction
 
-	" 文字数
-	echo "Length : " . l:len
-	call getchar()
-endfunction
-command! -nargs=0 -range Count call s:visual_charcnt()
-vnoremap q :Count<CR>
+	function! s:visual_charcnt()
+		" 選択中の文字列を取得して素直にstrlen
+		let l:str	=	s:GetSelectString()
+		let l:len	=	strlen( l:str )
+
+		" 文字数
+		echo "Length : " . l:len
+		call getchar()
+	endfunction
+	command! -nargs=0 -range Count call s:visual_charcnt()
+	vnoremap q :Count<CR>
+
+	" }}}
+	" =============================================================
 
 	" =============================================================
 	" {{{ ヴィジュアルモード時に行番号を消す。
@@ -165,6 +170,12 @@ vnoremap q :Count<CR>
 
 " =============================================================
 " {{{ ノーマルモード
+
+" 誤爆防止
+" sとか後で定義しなおしてるけど。
+nnoremap S <Nop>
+nnoremap s <Nop>
+nnoremap ZZ <Nop>
 
 " xで削除した時にレジスタに載せない。
 nnoremap x "_x
@@ -201,9 +212,6 @@ nnoremap <Space><CR> :<Up><CR>
 
 " 上書き
 nnoremap <silent> <Space>w :w<CR>
-
-"強制全保存終了を無効化
-nnoremap ZZ <Nop>
 
 " 簡単vimgrep
 nnoremap s :<C-u>vim /<C-r><C-w>/ **/*
@@ -244,10 +252,6 @@ nnoremap <C-q> q
 	augroup END
 " }}}
 
-" 誤爆防止
-nnoremap S <Nop>
-nnoremap s <Nop>
-
 " }}}
 " =============================================================
 
@@ -286,15 +290,18 @@ inoremap <C-b> <C-o>b
 " =============================================================
 " {{{ タブ
 
-" タブ操作キー
-" 新規タブを作成し、移動
-nnoremap <silent> to :<C-u>tabnew<CR>:tabmove<CR>
-" 現在のタブを閉じる
-nnoremap <silent> tc :<C-u>tabclose<CR>
-" 次のタブへ移動
-nnoremap <silent> tn :<C-u>tabnext<CR>
-" 前のタブへ移動
-nnoremap <silent> tp :<C-u>tabprev<CR>
+" そもそもタブ使わない・・・
+if 0
+	" タブ操作キー
+	" 新規タブを作成し、移動
+	nnoremap <silent> to :<C-u>tabnew<CR>:tabmove<CR>
+	" 現在のタブを閉じる
+	nnoremap <silent> tc :<C-u>tabclose<CR>
+	" 次のタブへ移動
+	nnoremap <silent> tn :<C-u>tabnext<CR>
+	" 前のタブへ移動
+	nnoremap <silent> tp :<C-u>tabprev<CR>
+endif
 
 " }}}
 " =============================================================
@@ -304,19 +311,20 @@ nnoremap <silent> tp :<C-u>tabprev<CR>
 
 " Unite buffer で十分
 " と、思いきや意外と使いたい時が多かった。
-if 1
-" バッファ操作キー
-nnoremap s <Nop>
-" ファイルリスト表示
-nnoremap <silent> sl :<C-u>ls<CR>
-" 直前のファイルに飛ぶ
-nnoremap <silent> sf :<C-u>hide b#<CR>
-" 次のファイルへ移動
-nnoremap <silent> sn :<C-u>hide bn<CR>
-" 前のファイルへ移動
-nnoremap <silent> sp :<C-u>hide bp<CR>
-" ファイルを閉じる
-nnoremap <silent> sc :<C-u>bdel<CR>
+" CtrlPBuffer で十分 というか<C-[n|p|i|o]>とかで飛んでるとわけがわからなくなる。
+if 0
+	" バッファ操作キー
+	nnoremap s <Nop>
+	" ファイルリスト表示
+	nnoremap <silent> sl :<C-u>ls<CR>
+	" 直前のファイルに飛ぶ
+	nnoremap <silent> sf :<C-u>hide b#<CR>
+	" 次のファイルへ移動
+	nnoremap <silent> sn :<C-u>hide bn<CR>
+	" 前のファイルへ移動
+	nnoremap <silent> sp :<C-u>hide bp<CR>
+	" ファイルを閉じる
+	nnoremap <silent> sc :<C-u>bdel<CR>
 endif
 
 " }}}
@@ -325,17 +333,14 @@ endif
 " =============================================================
 " {{{ コード入力
 
-" 同じ名前のヘッダを開く
-nnoremap <silent> sh :<C-u>hide edit %<.h<CR>
-" 同じ名前のソースを開く
-nnoremap <silent> ss :<C-u>hide edit %<.cpp<CR>
-
 " いろんなメイク
 " command! -bar -nargs=* Mkcd :execute "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' )
 " command! -bar -nargs=* Mkcdd :execute "make -j8 CCPROG=ccache " . expand( '<args>' )
-nnoremap <S-m> :wa<CR>:!touch %<CR>:<C-u>make obj/%:t:r.o<CR>
+" silentしてないのに履歴に載らない・・・？
+nnoremap <S-m> :wa<CR>:!touch %<CR>:make obj/%:t:r.o<CR>
 
 " 指定のプログラムをkill
+" ご利用は計画的に
 command! -bar -nargs=1 Killer :!pgrep <args>|xargs kill -9
 
 " コメントアウト
@@ -345,6 +350,7 @@ vnoremap <silent> / :s/^\(\s*\)/\1\/\//e<CR>gv:s/^\(\s*\)\/\/\/\//\1/e<CR>:nohls
 " vnoremap <silent> # :s/^\(\s*\)/\1# /e<CR>gv:s/^\(\s*\)# # /\1/e<CR>:nohlsearch<CR>
 
 " 括弧とかとか
+" cpp.vim に移す？
 nnoremap <silent> ;{} :FunctionHelperCommand<CR>
 command! -bar -nargs=* FunctionHelperCommand call s:functionHelper()
 function! s:functionHelper()
@@ -383,8 +389,6 @@ map g* g*N
 map g# g#N
 
 " 検索ハイライトを消す。
-"nnoremap <silent> <C-h> :<C-u>nohlsearch<CR>
-" ESCの方がよさそうだけどもう慣れちゃってるからなぁ・・・。
 nnoremap <silent> <ESC> :<C-u>nohlsearch<CR>
 
 " Quickfixを開閉する。
