@@ -562,6 +562,23 @@ command! -bang -bar -complete=file -nargs=? Unix  edit<bang> ++fileformat=unix  
 " =============================================================
 
 " =============================================================
+" {{{ キーマップ系
+
+" 使わないだろうけどとっておく。
+if 0
+command! -bang -bar -complete=file -nargs=? Cp932 edit<bang> ++encoding=cp932       <args>
+command! -bang -bar -complete=file -nargs=? Eucjp edit<bang> ++encoding=euc-jp      <args>
+command! -bang -bar -complete=file -nargs=? Jis   edit<bang> ++encoding=iso-2022-jp <args>
+command! -bang -bar -complete=file -nargs=? Utf8  edit<bang> ++encoding=utf-8       <args>
+command! -bang -bar -complete=file -nargs=? Dos   edit<bang> ++fileformat=dos       <args>
+command! -bang -bar -complete=file -nargs=? Mac   edit<bang> ++fileformat=mac       <args>
+command! -bang -bar -complete=file -nargs=? Unix  edit<bang> ++fileformat=unix      <args>
+endif
+
+" }}}
+" =============================================================
+
+" =============================================================
 " {{{ やりたいこと。
 "
 " ファイルのオープンを常に相対パスで。
