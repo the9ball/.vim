@@ -504,22 +504,12 @@ augroup END
 " =============================================================
 " {{{ ヴィジュアルモード時に行番号を消す。
 
-if 0
-	command! -bar -nargs=1 VisualModeLineNumber call s:funcVisualModeLineNumber( '<args>' )
-	function! s:funcVisualModeLineNumber( arg )
-		execute 'normal! ' . a:arg
-		"echo 'normal! ' . a:arg
-		if visualmode() != mode()
-			execute 'setlocal number'
-		else
-			execute 'setlocal nonumber'
-		endif
-	endfunction
-	nnoremap <silent> v :<C-u>VisualModeLineNumber v<CR>
-	nnoremap <silent> <C-v> :<C-u>VisualModeLineNumber <C-v><CR>
-	nnoremap <silent> <S-v> :<C-u>VisualModeLineNumber V<CR>
-	vnoremap <silent> <ESC> :<C-u>VisualModeLineNumber <ESC><CR>
-endif
+" TODO 直前に表示状態かどうかを確認して、戻す際にいい感じにする。
+"      どうせ表示してるからとりあえずは気にしない。
+nnoremap <silent> v :<C-u>set nonumber<CR>v
+nnoremap <silent> <C-v> :<C-u>set nonumber<CR><C-v>
+nnoremap <silent> <S-v> :<C-u>set nonumber<CR>V
+vnoremap <silent> <ESC> :<C-u>set number<CR><ESC>
 
 " }}}
 " =============================================================
