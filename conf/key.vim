@@ -144,6 +144,22 @@ endfunction
 command! -nargs=0 -range Count call s:visual_charcnt()
 vnoremap q :Count<CR>
 
+	" =============================================================
+	" {{{ ヴィジュアルモード時に行番号を消す。
+
+	" TODO 直前に表示状態かどうかを確認して、戻す際にいい感じにする。
+	"      どうせ表示してるからとりあえずは気にしない。
+	" と、思ったけどヴィジュアルモードからの出口ありすぎ・・・
+	if 0
+		nnoremap <silent> v :<C-u>set nonumber<CR>v
+		nnoremap <silent> <C-v> :<C-u>set nonumber<CR><C-v>
+		nnoremap <silent> <S-v> :<C-u>set nonumber<CR>V
+		vnoremap <silent> <ESC> :<C-u>set number<CR><ESC>
+	endif
+
+	" }}}
+	" =============================================================
+
 " }}}
 " =============================================================
 
