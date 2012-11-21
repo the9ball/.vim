@@ -222,6 +222,8 @@ nnoremap q <ESC>
 nnoremap Q q
 nnoremap <C-q> q
 
+" 検索は別項目
+
 " {{{ command-line-window
 	" 補完できるし意外と便利なのかも。
 	nnoremap : q:i
@@ -381,15 +383,19 @@ nnoremap sfh :vim /\<<C-r><C-w>\>/ **/*.h*<CR>
 
 " 検索結果を中央に
 " zvは折りたたみを展開する。
-map n nzzzv
-map N Nzzzv
-map * *N
-map # #N
-map g* g*N
-map g# g#N
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" *と#の検索で前後に飛ばないように。
+" 直後にnやNで飛びたいので/レジスタにセットしておく。
+highlight MyQuickSearch ctermbg=grey guibg=grey
+nnoremap <silent> * :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /\<<C-r>/\>/<CR>
+nnoremap <silent> # :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /\<<C-r>/\>/<CR>
+nnoremap <silent> g* :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
+nnoremap <silent> g# :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
 
 " 検索ハイライトを消す。
-nnoremap <silent> <ESC> :<C-u>nohlsearch<CR>
+nnoremap <silent> <ESC> :nohlsearch<CR>:match none<CR>
 
 " Quickfixを開閉する。
 nnoremap <silent> <Space>o :copen<CR>
