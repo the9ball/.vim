@@ -389,8 +389,8 @@ nnoremap N Nzzzv
 " *と#の検索で前後に飛ばないように。
 " 直後にnやNで飛びたいので/レジスタにセットしておく。
 highlight MyQuickSearch ctermbg=grey guibg=grey
-nnoremap <silent> * :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /\<<C-r>/\>/<CR>
-nnoremap <silent> # :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /\<<C-r>/\>/<CR>
+nnoremap <silent> * :let @/ = "\\<<C-r><C-w>\\>"<CR>:match MyQuickSearch /<C-r>//<CR>
+nnoremap <silent> # :let @/ = "\\<<C-r><C-w>\\>"<CR>:match MyQuickSearch /<C-r>//<CR>
 nnoremap <silent> g* :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
 nnoremap <silent> g# :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
 
