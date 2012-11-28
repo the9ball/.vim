@@ -17,12 +17,15 @@ NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-verboselet'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'jayed/pyclewn'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
 NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kana/vim-submode'
+
+" TODO これじゃ動かない？
+"      とりあえず直接落としてきた。.
+"NeoBundle 'jayed/pyclewn'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
@@ -315,7 +318,12 @@ endif
 " =============================================================
 " {{{ pyclewn
 
-if s:has_plugin( 'pyclewn' )
+"if s:has_plugin( 'pyclewn' )
+
+" パスを通す.
+let $PATH=$HOME."/.vim/pyclewn/pyclewn-1.9.py2:".$PATH
+
+source $HOME/.vim/pyclewn/pyclewn-1.9.py2/runtime/plugin/pyclewn.vim
 
 " Pyclewn用キーバインド
 nnoremap <silent> <F4> :<C-u>Pyclewn<CR>
@@ -363,7 +371,7 @@ if 1
 	command! -bar -nargs=1 -complete=file Attach :call g:AttachFunc( <f-args> )
 endif
 
-endif
+"endif
 
 " }}}
 " =============================================================
