@@ -82,7 +82,7 @@ NeoBundle 'Shougo/neosnippet'
 " {{{ プラグイン操作系
 
 " tyruさんから
-function! s:has_plugin(name)
+function! g:has_plugin(name)
     let nosuffix = a:name =~? '\.vim$' ? a:name[:-5] : a:name
     let suffix   = a:name =~? '\.vim$' ? a:name      : a:name . '.vim'
     return &rtp =~# '\c\<' . nosuffix . '\>'
@@ -98,7 +98,7 @@ endfunction
 " =============================================================
 " {{{ Neocomplcache
 
-if s:has_plugin( 'neocomplcache' )
+if g:has_plugin( 'neocomplcache' )
 
 " とりあえずコピペ。
 " http://www.karakaram.com/neocomplcache
@@ -249,7 +249,7 @@ endif
 " =============================================================
 " {{{ neosnippet
 
-if s:has_plugin( 'neosnippet' )
+if g:has_plugin( 'neosnippet' )
 
 " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -272,7 +272,7 @@ endif
 " =============================================================
 " {{{ CTRLP系
 
-if s:has_plugin( 'CtrlP' )
+if g:has_plugin( 'CtrlP' )
 
 let g:ctrlp_map='<Space>p'
 "nnoremap <Space>c :<C-u>CtrlP<Space>
@@ -318,7 +318,7 @@ endif
 " =============================================================
 " {{{ pyclewn
 
-"if s:has_plugin( 'pyclewn' )
+"if g:has_plugin( 'pyclewn' )
 
 " パスを通す.
 let $PATH=$HOME."/.vim/pyclewn/pyclewn-1.9.py2:".$PATH
@@ -379,7 +379,7 @@ endif
 " =============================================================
 " {{{ gtags
 
-if s:has_plugin( 'gtags' )
+if g:has_plugin( 'gtags' )
 
 " gtags
 nnoremap <C-g> :Gtags<Space>
@@ -403,7 +403,7 @@ endif
 " =============================================================
 " {{{ syntastic
 
-if s:has_plugin( 'syntastic' )
+if g:has_plugin( 'syntastic' )
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
@@ -416,7 +416,7 @@ endif
 " =============================================================
 " {{{ lingr-vim
 
-if s:has_plugin( 'lingr-vim' )
+if g:has_plugin( 'lingr-vim' )
 
 let g:lingr_vim_user='Shaula'
 
@@ -428,7 +428,7 @@ endif
 " =============================================================
 " {{{ submode
 
-if s:has_plugin( 'vim-submode' )
+if g:has_plugin( 'vim-submode' )
 
 " Change GUI window size.
 call submode#enter_with('guiwinsize', 'n', '', '<S-w>', '<Nop>')
@@ -463,7 +463,7 @@ endif
 " =============================================================
 " {{{ unite系
 
-if s:has_plugin( 'unite' )
+if g:has_plugin( 'unite' )
 
 "nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
 "nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
@@ -507,7 +507,7 @@ endif
 " =============================================================
 " {{{ EasyMotion
 
-if s:has_plugin( 'EasyMotion' )
+if g:has_plugin( 'EasyMotion' )
 
 let g:EasyMotion_leader_key	=	','
 
@@ -519,7 +519,7 @@ endif
 " =============================================================
 " {{{ TwitVim
 
-if s:has_plugin( 'TwitVim' )
+if g:has_plugin( 'TwitVim' )
 
 let twitvim_login_b64 = "dGhlOWJhbGw=:am1rdW05a2o="
 let twitvim_count = 2000
