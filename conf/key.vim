@@ -243,6 +243,10 @@ nnoremap <C-q> q
 		inoremap <buffer><silent> <C-f> <C-o>l
 		inoremap <buffer><silent> <C-b> <C-o>h
 		inoremap <buffer><silent> <C-l> <C-o>l
+		
+		if g:has_plugin( 'neobundle' )
+			inoremap <buffer><silent> <Tab> <C-n>
+		endif
 
 		" 高いと邪魔
 		" なんかエラーだってよ
