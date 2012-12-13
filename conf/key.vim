@@ -186,6 +186,37 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+" コピー用に・・・
+function! s:_CopyTabClose()
+	" 終了時の挙動
+	nmapclear <buffer>
+	delcommand CopyTabClose
+	augroup COPY_TAB
+		autocmd!
+	augroup END
+	tabclose
+	
+	normal! zv
+endfunction
+function! s:_CopyTab()
+	tabnew %
+	set nonumber
+	normal! "i"
+
+	command CopyTabClose call s:_CopyTabClose()
+
+	" インサートモードから離れたらタブを閉じたい。
+	" でもバッファローカルなautocmdしか定義できないので
+	" 閉じた後にコマンドを未定義状態にする。
+	augroup COPY_TAB
+		autocmd!
+		autocmd InsertLeave <buffer> CopyTabClose
+	augroup END
+	nmap <buffer><silent> <ESC> :CopyTabClose<CR>
+endfunction
+command! CopyTab call s:_CopyTab()
+nnoremap <silent> tt :<C-u>CopyTab<CR>
+
 " スクロール
 nnoremap <C-k> <C-y>
 nnoremap <C-j> <C-e>
