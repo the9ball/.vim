@@ -34,6 +34,7 @@ NeoBundle 'Shougo/neosnippet'
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
+" NeoBundle 'mattn/excitetranslate-vim'
 " }}}
 
 " 使わないことにしたリスト。{{{
