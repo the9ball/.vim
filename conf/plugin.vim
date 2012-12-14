@@ -7,6 +7,14 @@ set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc( '$HOME/.vim/bundle' )
 
 " Vundle が管理するプラグイン
+NeoBundle 'Shougo/vimproc', {
+	\ 'build' : {
+		\     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+		\     'cygwin'  : 'make -f make_cygwin.mak',
+		\     'mac'     : 'make -f make_mac.mak',
+		\     'unix'    : 'make -f make_unix.mak',
+		\    },
+	\ }
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tsaleh/vim-matchit'
@@ -15,7 +23,6 @@ NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-gtags'
 	NeoBundle 'the9ball/ctrlp-verboselet'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
