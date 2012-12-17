@@ -91,8 +91,8 @@ vnoremap P "_dP
 " vnoremap w wh
 
 " 簡単移動
-nnoremap <C-a> ^
-nnoremap <C-e> <End>
+vnoremap <C-a> ^
+vnoremap <C-e> <End>
 
 " 範囲選択中に結合させないようにしたい。
 vnoremap J j
@@ -102,53 +102,80 @@ vnoremap <C-j> j
 vnoremap <silent> > >gv
 vnoremap <silent> < <gv
 
-" ヴィジュアルモード時に選択中の文字列を取得する。
-function! s:GetSelectString()
-	if visualmode() != mode()
-		" ヴィジュアルモード時以外は動作させない。
-		silent normal! gv
+	" =============================================================
+	" {{{ ヴィジュアルモードで選択中の文字数をカウントする。
+
+	" ヴィジュアルモード時に選択中の文字列を取得する。
+	function! s:GetSelectString()
+		if visualmode() != mode()
+			" ヴィジュアルモード時以外は動作させない。
+			silent normal! gv
+		endif
+
+		" 直接取得できないため、一旦ヤンクする。
+
+		" 古いレジスタを退避
+		let l:old_reg_val	=	getreg('a')
+		let l:old_reg_mod	=	getregtype('a')
+		let l:old_regd_val	=	getreg('"')
+		let l:old_regd_mod	=	getregtype('"')
+
+		" ヤンクしてその内容を習得
+		silent normal! "ay
+		let l:result	=	@a
+
+		" 古いレジスタを戻す
+		call setreg( 'a', l:old_reg_val, l:old_reg_mod )
+		call setreg( '"', l:old_regd_val, l:old_regd_mod )
+
+		" 選択状態を戻す
+		silent normal gv
+
+		return	l:result
+	endfunction
+
+	function! s:visual_charcnt()
+		" 選択中の文字列を取得して素直にstrlen
+		let l:str	=	s:GetSelectString()
+		let l:len	=	strlen( l:str )
+
+		" 文字数
+		echo "Length : " . l:len
+		call getchar()
+	endfunction
+	command! -nargs=0 -range Count call s:visual_charcnt()
+	vnoremap q :Count<CR>
+
+	" }}}
+	" =============================================================
+
+	" =============================================================
+	" {{{ ヴィジュアルモード時に行番号を消す。
+
+	" TODO 直前に表示状態かどうかを確認して、戻す際にいい感じにする。
+	"      どうせ表示してるからとりあえずは気にしない。
+	" と、思ったけどヴィジュアルモードからの出口ありすぎ・・・
+	if 0
+		nnoremap <silent> v :<C-u>set nonumber<CR>v
+		nnoremap <silent> <C-v> :<C-u>set nonumber<CR><C-v>
+		nnoremap <silent> <S-v> :<C-u>set nonumber<CR>V
+		vnoremap <silent> <ESC> :<C-u>set number<CR><ESC>
 	endif
 
-	" 直接取得できないため、一旦ヤンクする。
-
-	" 古いレジスタを退避
-	let l:old_reg_val	=	getreg('a')
-	let l:old_reg_mod	=	getregtype('a')
-	let l:old_regd_val	=	getreg('"')
-	let l:old_regd_mod	=	getregtype('"')
-
-	" ヤンクしてその内容を習得
-	silent normal! "ay
-	let l:result	=	@a
-
-	" 古いレジスタを戻す
-	call setreg( 'a', l:old_reg_val, l:old_reg_mod )
-	call setreg( '"', l:old_regd_val, l:old_regd_mod )
-
-	" 選択状態を戻す
-	silent normal gv
-
-	return	l:result
-endfunction
-
-" ヴィジュアルモードで選択中の文字数をカウントする。
-function! s:visual_charcnt()
-	" 選択中の文字列を取得して素直にstrlen
-	let l:str	=	s:GetSelectString()
-	let l:len	=	strlen( l:str )
-
-	" 文字数
-	echo "Length : " . l:len
-	call getchar()
-endfunction
-command! -nargs=0 -range Count call s:visual_charcnt()
-vnoremap q :Count<CR>
+	" }}}
+	" =============================================================
 
 " }}}
 " =============================================================
 
 " =============================================================
 " {{{ ノーマルモード
+
+" 誤爆防止
+" sとか後で定義しなおしてるけど。
+nnoremap S <Nop>
+nnoremap s <Nop>
+nnoremap ZZ <Nop>
 
 " xで削除した時にレジスタに載せない。
 nnoremap x "_x
@@ -158,6 +185,37 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+
+" コピー用に・・・
+function! s:_CopyTabClose()
+	" 終了時の挙動
+	nmapclear <buffer>
+	delcommand CopyTabClose
+	augroup COPY_TAB
+		autocmd!
+	augroup END
+	tabclose
+	
+	normal! zv
+endfunction
+function! s:_CopyTab()
+	tabnew %
+	set nonumber
+	normal! "i"
+
+	command CopyTabClose call s:_CopyTabClose()
+
+	" インサートモードから離れたらタブを閉じたい。
+	" でもバッファローカルなautocmdしか定義できないので
+	" 閉じた後にコマンドを未定義状態にする。
+	augroup COPY_TAB
+		autocmd!
+		autocmd InsertLeave <buffer> CopyTabClose
+	augroup END
+	nmap <buffer><silent> <ESC> :CopyTabClose<CR>
+endfunction
+command! CopyTab call s:_CopyTab()
+nnoremap <silent> tt :<C-u>CopyTab<CR>
 
 " スクロール
 nnoremap <C-k> <C-y>
@@ -175,12 +233,6 @@ nnoremap m <C-d>zz
 " 標準の Y は yy と同義らしい。
 nnoremap Y y$
 
-" ウィンドウサイズを調整
-nnoremap Ov 1<C-w>>
-nnoremap Ot 1<C-w><
-nnoremap Or 1<C-w>+
-nnoremap Ox 1<C-w>-
-
 " 読み込まれたスクリプト一覧
 nnoremap <F3> :<C-u>scriptnames<CR>
 " マップされたキー一覧
@@ -192,9 +244,6 @@ nnoremap <Space><CR> :<Up><CR>
 " 上書き
 nnoremap <silent> <Space>w :w<CR>
 
-"強制全保存終了を無効化
-nnoremap ZZ <Nop>
-
 " 簡単vimgrep
 nnoremap s :<C-u>vim /<C-r><C-w>/ **/*
 
@@ -203,6 +252,8 @@ nnoremap s :<C-u>vim /<C-r><C-w>/ **/*
 nnoremap q <ESC>
 nnoremap Q q
 nnoremap <C-q> q
+
+" 検索は別項目
 
 " {{{ command-line-window
 	" 補完できるし意外と便利なのかも。
@@ -217,12 +268,16 @@ nnoremap <C-q> q
 		inoremap <buffer><silent> <C-j> <C-g>j
 
 		" 過去のコマンドをコピー
-		inoremap <buffer><silent> <C-y> <Esc>y$Gi<C-r>0
+		inoremap <buffer><silent> <C-y> <Esc>"zy$GC<C-r>z
 
 		" 左右移動したくなった。
 		inoremap <buffer><silent> <C-f> <C-o>l
 		inoremap <buffer><silent> <C-b> <C-o>h
 		inoremap <buffer><silent> <C-l> <C-o>l
+		
+		if g:has_plugin( 'neobundle' )
+			inoremap <buffer><silent> <Tab> <C-n>
+		endif
 
 		" 高いと邪魔
 		" なんかエラーだってよ
@@ -233,10 +288,6 @@ nnoremap <C-q> q
 		autocmd CmdwinEnter * call b:MyCmdWinEnter()
 	augroup END
 " }}}
-
-" 誤爆防止
-nnoremap S <Nop>
-nnoremap s <Nop>
 
 " }}}
 " =============================================================
@@ -276,15 +327,18 @@ inoremap <C-b> <C-o>b
 " =============================================================
 " {{{ タブ
 
-" タブ操作キー
-" 新規タブを作成し、移動
-nnoremap <silent> to :<C-u>tabnew<CR>:tabmove<CR>
-" 現在のタブを閉じる
-nnoremap <silent> tc :<C-u>tabclose<CR>
-" 次のタブへ移動
-nnoremap <silent> tn :<C-u>tabnext<CR>
-" 前のタブへ移動
-nnoremap <silent> tp :<C-u>tabprev<CR>
+" そもそもタブ使わない・・・
+if 0
+	" タブ操作キー
+	" 新規タブを作成し、移動
+	nnoremap <silent> to :<C-u>tabnew<CR>:tabmove<CR>
+	" 現在のタブを閉じる
+	nnoremap <silent> tc :<C-u>tabclose<CR>
+	" 次のタブへ移動
+	nnoremap <silent> tn :<C-u>tabnext<CR>
+	" 前のタブへ移動
+	nnoremap <silent> tp :<C-u>tabprev<CR>
+endif
 
 " }}}
 " =============================================================
@@ -294,19 +348,20 @@ nnoremap <silent> tp :<C-u>tabprev<CR>
 
 " Unite buffer で十分
 " と、思いきや意外と使いたい時が多かった。
-if 1
-" バッファ操作キー
-nnoremap s <Nop>
-" ファイルリスト表示
-nnoremap <silent> sl :<C-u>ls<CR>
-" 直前のファイルに飛ぶ
-nnoremap <silent> sf :<C-u>hide b#<CR>
-" 次のファイルへ移動
-nnoremap <silent> sn :<C-u>hide bn<CR>
-" 前のファイルへ移動
-nnoremap <silent> sp :<C-u>hide bp<CR>
-" ファイルを閉じる
-nnoremap <silent> sc :<C-u>bdel<CR>
+" CtrlPBuffer で十分 というか<C-[n|p|i|o]>とかで飛んでるとわけがわからなくなる。
+if 0
+	" バッファ操作キー
+	nnoremap s <Nop>
+	" ファイルリスト表示
+	nnoremap <silent> sl :<C-u>ls<CR>
+	" 直前のファイルに飛ぶ
+	nnoremap <silent> sf :<C-u>hide b#<CR>
+	" 次のファイルへ移動
+	nnoremap <silent> sn :<C-u>hide bn<CR>
+	" 前のファイルへ移動
+	nnoremap <silent> sp :<C-u>hide bp<CR>
+	" ファイルを閉じる
+	nnoremap <silent> sc :<C-u>bdel<CR>
 endif
 
 " }}}
@@ -315,17 +370,14 @@ endif
 " =============================================================
 " {{{ コード入力
 
-" 同じ名前のヘッダを開く
-nnoremap <silent> sh :<C-u>hide edit %<.h<CR>
-" 同じ名前のソースを開く
-nnoremap <silent> ss :<C-u>hide edit %<.cpp<CR>
-
 " いろんなメイク
 " command! -bar -nargs=* Mkcd :execute "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' )
 " command! -bar -nargs=* Mkcdd :execute "make -j8 CCPROG=ccache " . expand( '<args>' )
-nnoremap <S-m> :wa<CR>:<C-u>make obj/%:t:r.o<CR>
+" silentしてないのに履歴に載らない・・・？
+nnoremap <S-m> :wa<CR>:!touch %<CR>:make obj/%:t:r.o<CR>
 
 " 指定のプログラムをkill
+" ご利用は計画的に
 command! -bar -nargs=1 Killer :!pgrep <args>|xargs kill -9
 
 " コメントアウト
@@ -335,6 +387,7 @@ vnoremap <silent> / :s/^\(\s*\)/\1\/\//e<CR>gv:s/^\(\s*\)\/\/\/\//\1/e<CR>:nohls
 " vnoremap <silent> # :s/^\(\s*\)/\1# /e<CR>gv:s/^\(\s*\)# # /\1/e<CR>:nohlsearch<CR>
 
 " 括弧とかとか
+" cpp.vim に移す？
 nnoremap <silent> ;{} :FunctionHelperCommand<CR>
 command! -bar -nargs=* FunctionHelperCommand call s:functionHelper()
 function! s:functionHelper()
@@ -365,17 +418,19 @@ nnoremap sfh :vim /\<<C-r><C-w>\>/ **/*.h*<CR>
 
 " 検索結果を中央に
 " zvは折りたたみを展開する。
-map n nzzzv
-map N Nzzzv
-map * *N
-map # #N
-map g* g*N
-map g# g#N
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" *と#の検索で前後に飛ばないように。
+" 直後にnやNで飛びたいので/レジスタにセットしておく。
+highlight MyQuickSearch ctermbg=grey guibg=grey
+nnoremap <silent> * :let @/ = "\\<<C-r><C-w>\\>"<CR>:match MyQuickSearch /<C-r>//<CR>
+nnoremap <silent> # :let @/ = "\\<<C-r><C-w>\\>"<CR>:match MyQuickSearch /<C-r>//<CR>
+nnoremap <silent> g* :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
+nnoremap <silent> g# :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
 
 " 検索ハイライトを消す。
-"nnoremap <silent> <C-h> :<C-u>nohlsearch<CR>
-" ESCの方がよさそうだけどもう慣れちゃってるからなぁ・・・。
-nnoremap <silent> <ESC> :<C-u>nohlsearch<CR>
+nnoremap <silent> <ESC> :nohlsearch<CR>:match none<CR>
 
 " Quickfixを開閉する。
 nnoremap <silent> <Space>o :copen<CR>

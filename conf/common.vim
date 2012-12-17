@@ -7,6 +7,10 @@
 " カレント .vimrc, .exrc などを読まない
 set noexrc
 
+" エンコード云々
+set encoding=utf-8 fileencodings=utf-8,ucs-bom,iso-2022-jp,euc-jp,cp932
+set fileformat=unix fileformats=unix,dos,mac
+
 " 背景色を指定することで文字色を設定
 set background=dark
 " set background=light
@@ -45,6 +49,8 @@ set ignorecase
 set smartcase
 " 検索が最後の時に最初へ戻らないように
 set nowrapscan
+" リアルタイム検索
+set incsearch
 
 " ステータスバーを常時表示
 set laststatus=2
@@ -498,29 +504,6 @@ augroup END
 " =============================================================
 
 " =============================================================
-" {{{ ヴィジュアルモード時に行番号を消す。
-
-if 0
-	command! -bar -nargs=1 VisualModeLineNumber call s:funcVisualModeLineNumber( '<args>' )
-	function! s:funcVisualModeLineNumber( arg )
-		execute 'normal! ' . a:arg
-		"echo 'normal! ' . a:arg
-		if visualmode() != mode()
-			execute 'setlocal number'
-		else
-			execute 'setlocal nonumber'
-		endif
-	endfunction
-	nnoremap <silent> v :<C-u>VisualModeLineNumber v<CR>
-	nnoremap <silent> <C-v> :<C-u>VisualModeLineNumber <C-v><CR>
-	nnoremap <silent> <S-v> :<C-u>VisualModeLineNumber V<CR>
-	vnoremap <silent> <ESC> :<C-u>VisualModeLineNumber <ESC><CR>
-endif
-
-" }}}
-" =============================================================
-
-" =============================================================
 " {{{カーソルの位置を復元
 
 autocmd BufReadPost *
@@ -544,9 +527,42 @@ command!
 " =============================================================
 
 " =============================================================
+" {{{ エンコード系
+
+command! -bang -bar -complete=file -nargs=? Cp932 edit<bang> ++encoding=cp932       <args>
+command! -bang -bar -complete=file -nargs=? Eucjp edit<bang> ++encoding=euc-jp      <args>
+command! -bang -bar -complete=file -nargs=? Jis   edit<bang> ++encoding=iso-2022-jp <args>
+command! -bang -bar -complete=file -nargs=? Utf8  edit<bang> ++encoding=utf-8       <args>
+command! -bang -bar -complete=file -nargs=? Dos   edit<bang> ++fileformat=dos       <args>
+command! -bang -bar -complete=file -nargs=? Mac   edit<bang> ++fileformat=mac       <args>
+command! -bang -bar -complete=file -nargs=? Unix  edit<bang> ++fileformat=unix      <args>
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ キーマップ系
+
+" 使わないだろうけどとっておく。
+if 0
+command! -bang -bar -complete=file -nargs=? Cp932 edit<bang> ++encoding=cp932       <args>
+command! -bang -bar -complete=file -nargs=? Eucjp edit<bang> ++encoding=euc-jp      <args>
+command! -bang -bar -complete=file -nargs=? Jis   edit<bang> ++encoding=iso-2022-jp <args>
+command! -bang -bar -complete=file -nargs=? Utf8  edit<bang> ++encoding=utf-8       <args>
+command! -bang -bar -complete=file -nargs=? Dos   edit<bang> ++fileformat=dos       <args>
+command! -bang -bar -complete=file -nargs=? Mac   edit<bang> ++fileformat=mac       <args>
+command! -bang -bar -complete=file -nargs=? Unix  edit<bang> ++fileformat=unix      <args>
+endif
+
+" }}}
+" =============================================================
+
+" =============================================================
 " {{{ やりたいこと。
 "
 " ファイルのオープンを常に相対パスで。
+" 置換したあと検索ハイライトしないようにする。
+" -> let @/ = "" で潰す？ -> イベントない・・・orz
 "
 " }}}
 " =============================================================

@@ -7,6 +7,14 @@ set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc( '$HOME/.vim/bundle' )
 
 " Vundle が管理するプラグイン
+NeoBundle 'Shougo/vimproc', {
+	\ 'build' : {
+		\     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+		\     'cygwin'  : 'make -f make_cygwin.mak',
+		\     'mac'     : 'make -f make_mac.mak',
+		\     'unix'    : 'make -f make_unix.mak',
+		\    },
+	\ }
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tsaleh/vim-matchit'
@@ -15,20 +23,25 @@ NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-gtags'
 	NeoBundle 'the9ball/ctrlp-verboselet'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'jayed/pyclewn'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
+NeoBundle 'vim-scripts/BufOnly.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kana/vim-submode'
+
+" TODO これじゃ動かない？
+"      とりあえず直接落としてきた。.
+"NeoBundle 'jayed/pyclewn'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'kana/vim-submode'
-NeoBundle 'motemen/git-vim'
-NeoBundle 'vim-scripts/BufOnly.vim'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/neosnippet'
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
+" NeoBundle 'mattn/excitetranslate-vim'
 " }}}
 
 " 使わないことにしたリスト。{{{
@@ -56,7 +69,7 @@ NeoBundle 'vim-scripts/BufOnly.vim'
 " NeoBundle 'thinca/vim-unite-history'
 
 " 使用しなくなった。
-" NeoBundle 'Shougo/vimshell'
+" NeoBundle 'motemen/git-vim'
 
 " つかいにくかった。
 " NeoBundle 'rhysd/accelerated-jk'
@@ -77,7 +90,7 @@ NeoBundle 'vim-scripts/BufOnly.vim'
 " {{{ プラグイン操作系
 
 " tyruさんから
-function! s:has_plugin(name)
+function! g:has_plugin(name)
     let nosuffix = a:name =~? '\.vim$' ? a:name[:-5] : a:name
     let suffix   = a:name =~? '\.vim$' ? a:name      : a:name . '.vim'
     return &rtp =~# '\c\<' . nosuffix . '\>'
@@ -91,9 +104,183 @@ endfunction
 " =============================================================
 
 " =============================================================
+" {{{ Neocomplcache
+
+if g:has_plugin( 'neocomplcache' )
+
+" とりあえずコピペ。
+" http://www.karakaram.com/neocomplcache
+
+"起動時に有効
+let g:neocomplcache_enable_at_startup = 1
+"ポップアップメニューで表示される候補の数。初期値は100
+let g:neocomplcache_max_list = 5
+"自動補完を行う入力数を設定。初期値は2
+let g:neocomplcache_auto_completion_start_length = 2
+"手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
+let g:neocomplcache_manual_completion_start_length = 3
+"バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_keyword_length = 4
+"シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_syntax_length = 4
+"1:補完候補検索時に大文字・小文字を無視する
+let g:neocomplcache_enable_ignore_case = 1
+"入力に大文字が入力されている場合、大文字小文字の区別をする
+let g:neocomplcache_enable_smart_case = 1
+"大文字小文字を区切りとしたあいまい検索を行うかどうか。
+"DTと入力するとD*T*と解釈され、DateTime等にマッチする。
+let g:neocomplcache_enable_camel_case_completion = 1
+"アンダーバーを区切りとしたあいまい検索を行うかどうか。
+"m_sと入力するとm*_sと解釈され、mb_substr等にマッチする。
+let g:neocomplcache_enable_underbar_completion = 0
+
+
+" TODO:エラー出まくっていたのであとで調べる.
+	"キャッシュディレクトリの場所
+	"RamDiskをキャッシュディレクトリに設定
+	" if has('win32')
+		" let g:neocomplcache_temporary_dir = 'E:/.neocon'
+	" elseif has('macunix')
+		" let g:neocomplcache_temporary_dir = '/Volumes/RamDisk/.neocon'
+	" else
+		" let g:neocomplcache_temporary_dir = '/tmp/.neocon'
+	" endif
+
+"シンタックス補完を無効に
+let g:neocomplcache_plugin_disable = {
+\ 'syntax_complete' : 1, 
+\ }
+
+"補完するためのキーワードパターンを指定
+if !exists('g:neocomplcache_keyword_patterns')
+	let g:neocomplcache_keyword_patterns = {}
+endif
+"日本語を補完候補として取得しないようにする
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+"twigはhtmlと同じに
+let g:neocomplcache_keyword_patterns['twig'] = '</\?\%([[:alnum:]_:-]\+\s*\)\?\%(/\?>\)\?\|&amp;\h\%(\w*;\)\?\|\h[[:alnum:]_-]*="\%([^"]*"\?\)\?\|\h[[:alnum:]_:-]*'
+
+"関数を補完するための区切り文字パターン
+if !exists('g:neocomplcache_delimiter_patterns')
+	let g:neocomplcache_delimiter_patterns = {}
+endif
+let g:neocomplcache_delimiter_patterns['php'] = ['->', '::', '\']
+
+"カーソルより後のキーワードパターンを認識。
+"h|geとなっている状態(|はカーソル)で、hogeを補完したときに後ろのキーワードを認識してho|geと補完する機能。
+"修正するときにかなり便利。
+" g:neocomplcache_next_keyword_patternsは分からないときはいじらないほうが良いです。
+if !exists('g:neocomplcache_next_keyword_patterns')
+	let g:neocomplcache_next_keyword_patterns = {}
+endif
+"よく分からない場合は未設定のほうがよいとのことなので、ひとまずコメントアウト
+"let g:neocomplcache_next_keyword_patterns['php'] =
+"'\h\w*>'
+"twigはhtmlと同じに
+let g:neocomplcache_next_keyword_patterns['twig'] = '[[:alnum:]_:-]*>\|[^"]*"'
+
+
+"ファイルタイプの関連付け
+if !exists('g:neocomplcache_same_filetype_lists')
+	let g:neocomplcache_same_filetype_lists = {}
+endif
+"let g:neocomplcache_same_filetype_lists['ctp'] = 'php'
+"let g:neocomplcache_same_filetype_lists['twig'] =
+"'html'
+
+
+"ディクショナリ補完
+"ファイルタイプごとの辞書ファイルの場所
+let g:neocomplcache_dictionary_filetype_lists = {
+\ 'default' : '',
+\ 'php' : $HOME . '/.vim/dict/php.dict',
+\ 'ctp' : $HOME . '/.vim/dict/php.dict',
+\ 'twig' : $HOME . '/.vim/dict/twig.dict',
+\ 'vimshell' : $HOME . '/.vimshell/command-history',
+\ }
+
+"タグ補完
+"タグファイルの場所
+augroup SetTagsFile
+	autocmd!
+	autocmd FileType php set tags=$HOME/.vim/tags/php.tags
+augroup END
+"タグ補完の呼び出しパターン
+if !exists('g:neocomplcache_member_prefix_patterns')
+	let g:neocomplcache_member_prefix_patterns = {}
+endif
+let g:neocomplcache_member_prefix_patterns['php'] = '->\|::'
+
+"スニペット補完
+"標準で用意されているスニペットを無効にする。初期化前に設定する
+let g:neocomplcache_snippets_disable_runtime_snippets = 0
+"スニペットファイルの置き場所
+let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
+
+"zencoding連携
+let g:use_zen_complete_tag = 1
+
+"オムニ補完
+augroup SetOmniCompletionSetting
+	autocmd!
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType ctp setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType twig setlocal omnifunc=htmlcomplete#CompleteTags
+	"  autocmd FileType
+	"  php setlocal
+	"  omnifunc=phpcomplete#CompletePHP
+augroup END
+
+"オムニ補完のパターンを設定
+if !exists('g:neocomplcache_omni_patterns')
+	let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns['twig']= '<[^>]*'
+"let
+"g:neocomplcache_omni_patterns['php']
+"= '[^.
+"\t]->\h\w*\|\h\w*::'
+
+" Enterで改行
+inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+" Tabで一番目の候補を選択
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+endif
+
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ neosnippet
+
+if g:has_plugin( 'neosnippet' )
+
+" Plugin key-mappings.
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+	set conceallevel=2 concealcursor=i
+endif
+
+endif
+
+" }}}
+" =============================================================
+
+" =============================================================
 " {{{ CTRLP系
 
-if s:has_plugin( 'CtrlP' )
+if g:has_plugin( 'CtrlP' )
 
 let g:ctrlp_map='<Space>p'
 "nnoremap <Space>c :<C-u>CtrlP<Space>
@@ -139,7 +326,12 @@ endif
 " =============================================================
 " {{{ pyclewn
 
-if s:has_plugin( 'pyclewn' )
+"if g:has_plugin( 'pyclewn' )
+
+" パスを通す.
+let $PATH=$HOME."/.vim/pyclewn/pyclewn-1.9.py2:".$PATH
+
+source $HOME/.vim/pyclewn/pyclewn-1.9.py2/runtime/plugin/pyclewn.vim
 
 " Pyclewn用キーバインド
 nnoremap <silent> <F4> :<C-u>Pyclewn<CR>
@@ -187,7 +379,7 @@ if 1
 	command! -bar -nargs=1 -complete=file Attach :call g:AttachFunc( <f-args> )
 endif
 
-endif
+"endif
 
 " }}}
 " =============================================================
@@ -195,7 +387,7 @@ endif
 " =============================================================
 " {{{ gtags
 
-if s:has_plugin( 'gtags' )
+if g:has_plugin( 'gtags' )
 
 " gtags
 nnoremap <C-g> :Gtags<Space>
@@ -219,7 +411,7 @@ endif
 " =============================================================
 " {{{ syntastic
 
-if s:has_plugin( 'syntastic' )
+if g:has_plugin( 'syntastic' )
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
@@ -232,7 +424,7 @@ endif
 " =============================================================
 " {{{ lingr-vim
 
-if s:has_plugin( 'lingr-vim' )
+if g:has_plugin( 'lingr-vim' )
 
 let g:lingr_vim_user='Shaula'
 
@@ -242,12 +434,24 @@ endif
 " =============================================================
 
 " =============================================================
-" {{{ git-vim???
+" {{{ submode
 
-if s:has_plugin( 'git-vim' )
+if g:has_plugin( 'vim-submode' )
 
-" いつ入れたか覚えていない・・・なんの設定？
-command! -bar -nargs=* GitDiffEol GitDiff --ignore-space-at-eol --ignore-space-change <args>
+" Change GUI window size.
+call submode#enter_with('guiwinsize', 'n', '', '<S-w>', '<Nop>')
+call submode#leave_with('guiwinsize', 'n', '', '<Esc>')
+call submode#map       ('guiwinsize', 'n', '', 'j', '<C-w>+')
+call submode#map       ('guiwinsize', 'n', '', 'k', '<C-w>-')
+call submode#map       ('guiwinsize', 'n', '', 'h', '<C-w><')
+call submode#map       ('guiwinsize', 'n', '', 'l', '<C-w>>')
+
+" 画面の左右スクロール
+" あとで何か考える。
+call submode#enter_with( 'scroll', 'n', '', 'zl', '<Nop>' )
+call submode#leave_with( 'scroll', 'n', '', '<Esc>' )
+call submode#map       ( 'scroll', 'n', '', 'l', 'zl')
+call submode#map       ( 'scroll', 'n', '', 'h', 'zh')
 
 endif
 
@@ -267,7 +471,7 @@ endif
 " =============================================================
 " {{{ unite系
 
-if s:has_plugin( 'unite' )
+if g:has_plugin( 'unite' )
 
 "nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
 "nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
@@ -311,7 +515,7 @@ endif
 " =============================================================
 " {{{ EasyMotion
 
-if s:has_plugin( 'EasyMotion' )
+if g:has_plugin( 'EasyMotion' )
 
 let g:EasyMotion_leader_key	=	','
 
@@ -323,7 +527,7 @@ endif
 " =============================================================
 " {{{ TwitVim
 
-if s:has_plugin( 'TwitVim' )
+if g:has_plugin( 'TwitVim' )
 
 let twitvim_login_b64 = "dGhlOWJhbGw=:am1rdW05a2o="
 let twitvim_count = 2000
