@@ -1,6 +1,8 @@
 " マップのクリア
 " mapc
 
+let g:is_win = has("win16") || has("win32") || has("win64")
+
 " プラグイン
 source $HOME/.vim/conf/plugin.vim
 

@@ -36,7 +36,11 @@ NeoBundle 'kana/vim-submode'
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'Shougo/vimshell'
+
+" Win用
+if g:is_win
 NeoBundle 'thinca/vim-singleton'
+endif
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
