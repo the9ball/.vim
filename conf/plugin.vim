@@ -36,6 +36,7 @@ NeoBundle 'kana/vim-submode'
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'thinca/vim-singleton'
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
@@ -538,6 +539,13 @@ endif
 
 " }}}
 " =============================================================
+
+if g:has_plugin( 'vim-singleton' )
+
+" 有効化.
+call singleton#enable()
+
+endif
 
 " }}}
 " =============================================================

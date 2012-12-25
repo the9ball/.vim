@@ -265,6 +265,8 @@ if	1
 	set timeoutlen=200
 endif
 
+" 努力の跡
+set iminsert=0
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 " }}}
