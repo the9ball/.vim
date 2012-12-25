@@ -19,7 +19,6 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'kien/ctrlp.vim'
-	NeoBundle 'sgur/ctrlp-extensions.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-gtags'
 	NeoBundle 'the9ball/ctrlp-verboselet'
@@ -37,7 +36,6 @@ NeoBundle 'kana/vim-submode'
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/neosnippet'
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
@@ -80,6 +78,10 @@ NeoBundle 'Shougo/neosnippet'
 
 " webの方が結局使いやすかった。
 " NeoBundle 'tsukkee/lingr-vim'
+
+" 起動時間もかかるし、使ってない。.
+" NeoBundle 'sgur/ctrlp-extensions.vim'
+" NeoBundle 'Shougo/neosnippet'
 
 " }}}
 
