@@ -40,6 +40,7 @@ NeoBundle 'Shougo/vimshell'
 " Win用
 if g:is_win
 NeoBundle 'thinca/vim-singleton'
+"source $VIMRUNTIME/macros/editexisting.vim
 endif
 
 " 使ってみたいリスト {{{
@@ -106,6 +107,20 @@ function! g:has_plugin(name)
     \   || globpath(&rtp, 'autoload/' . suffix, 1) != ''
     \   || globpath(&rtp, 'autoload/' . tolower(suffix), 1) != ''
 endfunction
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ vim-singleton
+" 真っ先に動かした方がいい気がする。.
+
+if g:has_plugin( 'vim-singleton' )
+
+let g:singleton#opener='drop'
+call singleton#enable()
+
+endif
 
 " }}}
 " =============================================================
@@ -543,13 +558,6 @@ endif
 
 " }}}
 " =============================================================
-
-if g:has_plugin( 'vim-singleton' )
-
-" 有効化.
-call singleton#enable()
-
-endif
 
 " }}}
 " =============================================================
