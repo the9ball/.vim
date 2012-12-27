@@ -23,11 +23,12 @@ NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-gtags'
 	NeoBundle 'the9ball/ctrlp-verboselet'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
 NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kana/vim-submode'
+NeoBundle 'the9ball/gtags.vim'
+NeoBundle 'the9ball/vim-projectdir'
 
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
@@ -467,6 +468,10 @@ endif
 
 " =============================================================
 " {{{ その他1行系
+
+if g:has_plugin( 'vim-projectdir' )
+let g:filename_projectdir_file = '$HOME/projectdir.conf'
+endif
 
 " }}}
 " =============================================================
