@@ -19,16 +19,16 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'kien/ctrlp.vim'
-	NeoBundle 'sgur/ctrlp-extensions.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-gtags'
 	NeoBundle 'the9ball/ctrlp-verboselet'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'vim-scripts/surround.vim'
 NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kana/vim-submode'
+NeoBundle 'the9ball/gtags.vim'
+NeoBundle 'the9ball/vim-projectdir'
 
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
@@ -37,7 +37,17 @@ NeoBundle 'kana/vim-submode'
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/neosnippet'
+
+" カラースキーム
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'w0ng/vim-hybrid'
+"colorscheme hybrid
+
+" Win用
+if g:is_win
+NeoBundle 'thinca/vim-singleton'
+"source $VIMRUNTIME/macros/editexisting.vim
+endif
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
@@ -81,6 +91,10 @@ NeoBundle 'Shougo/neosnippet'
 " webの方が結局使いやすかった。
 " NeoBundle 'tsukkee/lingr-vim'
 
+" 起動時間もかかるし、使ってない。.
+" NeoBundle 'sgur/ctrlp-extensions.vim'
+" NeoBundle 'Shougo/neosnippet'
+
 " }}}
 
 " }}}
@@ -99,6 +113,20 @@ function! g:has_plugin(name)
     \   || globpath(&rtp, 'autoload/' . suffix, 1) != ''
     \   || globpath(&rtp, 'autoload/' . tolower(suffix), 1) != ''
 endfunction
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ vim-singleton
+" 真っ先に動かした方がいい気がする。.
+
+if g:has_plugin( 'vim-singleton' )
+
+let g:singleton#opener='drop'
+call singleton#enable()
+
+endif
 
 " }}}
 " =============================================================
@@ -460,6 +488,10 @@ endif
 
 " =============================================================
 " {{{ その他1行系
+
+if g:has_plugin( 'vim-projectdir' )
+let g:filename_projectdir_file = '$HOME/projectdir.conf'
+endif
 
 " }}}
 " =============================================================

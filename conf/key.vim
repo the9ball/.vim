@@ -374,7 +374,8 @@ endif
 " command! -bar -nargs=* Mkcd :execute "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' )
 " command! -bar -nargs=* Mkcdd :execute "make -j8 CCPROG=ccache " . expand( '<args>' )
 " silentしてないのに履歴に載らない・・・？
-nnoremap <S-m> :wa<CR>:!touch %<CR>:make obj/%:t:r.o<CR>
+nnoremap <S-m> :wa<CR>:!touch %<CR>:make -r obj/%:t:r.o<CR>
+command! -bar -nargs=* Mk :execute "make -r " . expand( '<args>' )
 
 " 指定のプログラムをkill
 " ご利用は計画的に
