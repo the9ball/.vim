@@ -37,7 +37,11 @@ NeoBundle 'the9ball/vim-projectdir'
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'Shougo/vimshell'
+
+" カラースキーム
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'w0ng/vim-hybrid'
+"colorscheme hybrid
 
 " Win用
 if g:is_win
