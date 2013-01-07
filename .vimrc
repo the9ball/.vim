@@ -12,3 +12,6 @@ source $HOME/.vim/conf/plugin.vim
 " キーバインド
 source $HOME/.vim/conf/key.vim
 
+" ここに書かないと自動判定がされないらしい・・・
+filetype on
+
