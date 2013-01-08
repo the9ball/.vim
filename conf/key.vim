@@ -244,9 +244,6 @@ nnoremap <Space><CR> :<Up><CR>
 " 上書き
 nnoremap <silent> <Space>w :w<CR>
 
-" 簡単vimgrep
-nnoremap s :<C-u>vim /<C-r><C-w>/ **/*
-
 " 誤爆防止
 " でも結構頻繁に使う。
 nnoremap q <ESC>
@@ -411,7 +408,8 @@ command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <co
 " {{{ 検索
 
 " コード検索
-" 使ってないので削除候補
+" 簡単vimgrep
+nnoremap s :<C-u>vim /\<<C-r><C-w>\>/ **/*
 " カーソル下の単語をソースから検索
 nnoremap sfs :vim /\<<C-r><C-w>\>/ **/*.c*<CR>
 " カーソル下の単語をヘッダから検索
