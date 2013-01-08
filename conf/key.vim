@@ -340,8 +340,9 @@ function! s:pasteOriginal( word )
 
 	" 直接カーソル位置に文字列を挿入したい・・・
 	" がすぐに発見できなかったのでレジスタを使いまわす
+	" 行末ェ・・・orz
 	call setreg( l:register, l:string )
-	execute 'normal! "' . l:register . 'P'
+	execute 'normal! "' . l:register . 'Pl'
 endfunction
 command! -nargs=1 PasteOriginal call s:pasteOriginal( <args> )
 inoremap <C-r>      <C-o>:<C-u>PasteOriginal 0<CR>
