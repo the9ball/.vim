@@ -318,6 +318,35 @@ inoremap <C-e> <End>
 inoremap <C-f> <C-o>e<C-o>l
 inoremap <C-b> <C-o>b
 
+" 貼り付け時に \<\> の有無を選択できるように。.
+function! s:pasteOriginal( word )
+	" 対象のレジスタの内容を取得
+	echo ( ( 0 == a:word )? 'StringMode' : 'WordMode' ) . ':Register:'
+	let l:register = nr2char( getchar() )
+	if match( l:register, '[a-zA-Z0-9.%#:-\"/]' ) < 0
+		echo l:register . ' is Not Register Name'
+		return
+	endif
+	let l:string = getreg( l:register )
+
+	" \< \> を削除
+	let l:string = substitute( l:string, '^\\<', '', '' )
+	let l:string = substitute( l:string, '\\>$', '', '' )
+
+	" 改めて単語単位なら \< \> で囲む
+	if a:word
+		let l:string = '\<' . l:string . '\>'
+	endif
+
+	" 直接カーソル位置に文字列を挿入したい・・・
+	" がすぐに発見できなかったのでレジスタを使いまわす
+	call setreg( l:register, l:string )
+	execute 'normal! "' . l:register . 'p'
+endfunction
+command! -nargs=1 PasteOriginal call s:pasteOriginal( <args> )
+inoremap <C-r>      <C-o>:<C-u>PasteOriginal 0<CR>
+inoremap <C-r><C-r> <C-o>:<C-u>PasteOriginal 1<CR>
+
 " }}}
 " =============================================================
 
