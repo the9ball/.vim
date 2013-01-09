@@ -340,8 +340,9 @@ function! s:pasteOriginal( word )
 
 	return l:string
 endfunction
-inoremap <expr> <C-r>      <SID>pasteOriginal( 0 )
-inoremap <expr> <C-r><C-r> <SID>pasteOriginal( 1 )
+" 単純に<C-r>でマップするとWinのgvimだと反応が悪かったので・・・。
+inoremap <expr> <C-r><C-e> <SID>pasteOriginal( 0 )
+inoremap <expr> <C-r><C-w> <SID>pasteOriginal( 1 )
 
 " }}}
 " =============================================================
