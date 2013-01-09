@@ -319,7 +319,7 @@ inoremap <C-f> <C-o>e<C-o>l
 inoremap <C-b> <C-o>b
 
 " 貼り付け時に \<\> の有無を選択できるように。.
-function! s:pasteOriginal( word )
+function! s:pasteOriginal( word, head, foot )
 	" 対象のレジスタの内容を取得
 	echo ( ( 0 == a:word )? 'StringMode' : 'WordMode' ) . ':Register:'
 	let l:register = nr2char( getchar() )
@@ -335,14 +335,23 @@ function! s:pasteOriginal( word )
 
 	" 改めて単語単位なら \< \> で囲む
 	if a:word
-		let l:string = '\<' . l:string . '\>'
+		let l:string = a:head . l:string . a:foot
 	endif
 
 	return l:string
 endfunction
+function! s:pasteOriginalHeadFoot()
+	echo 'Head:'
+	let l:head = nr2char( getchar() )
+	echo 'Foot:'
+	let l:foot = nr2char( getchar() )
+	return s:pasteOriginal( 1, l:head, l:foot )
+endfunction
 " 単純に<C-r>でマップするとWinのgvimだと反応が悪かったので・・・。
-inoremap <expr> <C-r><C-e> <SID>pasteOriginal( 0 )
-inoremap <expr> <C-r><C-w> <SID>pasteOriginal( 1 )
+inoremap <expr> <C-r><C-e> <SID>pasteOriginal( 0, '', '' )
+inoremap <expr> <C-r><C-w> <SID>pasteOriginal( 1, '\<', '\>' )
+" surround.vim と微妙に用途がかぶってる気がするけど多分気のせい。
+inoremap <expr> <C-r><C-r> <SID>pasteOriginalHeadFoot()
 
 " }}}
 " =============================================================
