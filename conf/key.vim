@@ -325,7 +325,7 @@ function! s:pasteOriginal( word )
 	let l:register = nr2char( getchar() )
 	if match( l:register, '[a-zA-Z0-9.%#:-\"/]' ) < 0
 		echo l:register . ' is Not Register Name'
-		return
+		return ""
 	endif
 	let l:string = getreg( l:register )
 
@@ -338,15 +338,10 @@ function! s:pasteOriginal( word )
 		let l:string = '\<' . l:string . '\>'
 	endif
 
-	" 直接カーソル位置に文字列を挿入したい・・・
-	" がすぐに発見できなかったのでレジスタを使いまわす
-	" 行末ェ・・・orz
-	call setreg( l:register, l:string )
-	execute 'normal! "' . l:register . 'Pl'
+	return l:string
 endfunction
-command! -nargs=1 PasteOriginal call s:pasteOriginal( <args> )
-inoremap <C-r>      <C-o>:<C-u>PasteOriginal 0<CR>
-inoremap <C-r><C-r> <C-o>:<C-u>PasteOriginal 1<CR>
+inoremap <expr> <C-r>      <SID>pasteOriginal( 0 )
+inoremap <expr> <C-r><C-r> <SID>pasteOriginal( 1 )
 
 " }}}
 " =============================================================
