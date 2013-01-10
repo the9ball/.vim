@@ -12,6 +12,8 @@ source $HOME/.vim/conf/plugin.vim
 " キーバインド
 source $HOME/.vim/conf/key.vim
 
-" ここに書かないと自動判定がされないらしい・・・
+" filetype on した時点で登録済みのファイルタイプしか判定されないらしい。
+" on の時に on にしても意味がないらしい。
+filetype off
 filetype on
 
