@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/neobundle.vim/
 " 管理するフォルダを引数で渡します。
 call neobundle#rc( '$HOME/.vim/bundle' )
 
-" Vundle が管理するプラグイン
+" NeoBundle が管理するプラグイン
 NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
 		\     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
