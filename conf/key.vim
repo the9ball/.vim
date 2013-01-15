@@ -85,6 +85,9 @@ cnoremap <C-e> <End>
 " 終端を上書きたい時に変な感じになる。
 vnoremap p "_dP
 vnoremap P "_dP
+vnoremap c "_c
+vnoremap C "_C
+vnoremap <C-r> "_c<C-r>
 
 " 範囲選択時のワード単位移動をワードの先頭ではなく、終端に。
 " w連打で次のワードへ移動しないため結局使いにくい。
@@ -179,6 +182,8 @@ nnoremap ZZ <Nop>
 
 " xで削除した時にレジスタに載せない。
 nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
 
 " jkでのカーソル移動を表示行単位で行う
 nnoremap j gj
