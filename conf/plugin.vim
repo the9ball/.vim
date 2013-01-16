@@ -164,16 +164,15 @@ let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 0
 
 
-" TODO:エラー出まくっていたのであとで調べる.
-	"キャッシュディレクトリの場所
-	"RamDiskをキャッシュディレクトリに設定
-	" if has('win32')
-		" let g:neocomplcache_temporary_dir = 'E:/.neocon'
-	" elseif has('macunix')
-		" let g:neocomplcache_temporary_dir = '/Volumes/RamDisk/.neocon'
-	" else
-		" let g:neocomplcache_temporary_dir = '/tmp/.neocon'
-	" endif
+"キャッシュディレクトリの場所
+"RamDiskをキャッシュディレクトリに設定
+if has('win32')
+	let g:neocomplcache_temporary_dir = 'D:/.neocon'
+elseif has('macunix')
+	let g:neocomplcache_temporary_dir = '/Volumes/RamDisk/.neocon'
+else
+	let g:neocomplcache_temporary_dir = '/tmp/.neocon'
+endif
 
 "シンタックス補完を無効に
 let g:neocomplcache_plugin_disable = {
