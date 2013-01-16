@@ -83,6 +83,7 @@ endif
 
 " つかいにくかった。
 " NeoBundle 'rhysd/accelerated-jk'
+" NeoBundle 'yuratomo/dbg.vim' pyclewnの方が使いやすい。
 
 " 結局使わない。
 " NeoBundle 'Lokaltog/vim-easymotion'
