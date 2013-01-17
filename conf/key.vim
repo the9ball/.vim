@@ -182,6 +182,7 @@ nnoremap ZZ <Nop>
 
 " xで削除した時にレジスタに載せない。
 nnoremap x "_x
+nnoremap X "_X
 
 " jkでのカーソル移動を表示行単位で行う
 nnoremap j gj
