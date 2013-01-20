@@ -85,6 +85,9 @@ cnoremap <C-e> <End>
 " 終端を上書きたい時に変な感じになる。
 vnoremap p "_dP
 vnoremap P "_dP
+vnoremap c "_c
+vnoremap C "_C
+vnoremap <C-r> "_c<C-r>
 
 " 範囲選択時のワード単位移動をワードの先頭ではなく、終端に。
 " w連打で次のワードへ移動しないため結局使いにくい。
@@ -179,6 +182,7 @@ nnoremap ZZ <Nop>
 
 " xで削除した時にレジスタに載せない。
 nnoremap x "_x
+nnoremap X "_X
 
 " jkでのカーソル移動を表示行単位で行う
 nnoremap j gj
@@ -311,12 +315,6 @@ function! s:completeSpellCheckOn()
 endfunction
 command! -bar -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
 inoremap <C-l> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
-
-" 簡単移動
-inoremap <C-a> <C-o>^
-inoremap <C-e> <End>
-inoremap <C-f> <C-o>e<C-o>l
-inoremap <C-b> <C-o>b
 
 " 貼り付け時に \<\> の有無を選択できるように。.
 function! s:pasteOriginal( word, head, foot )
