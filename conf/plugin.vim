@@ -169,7 +169,7 @@ let g:neocomplcache_enable_underbar_completion = 0
 if has('win32')
 	let g:neocomplcache_temporary_dir = 'D:/.neocon'
 elseif has('macunix')
-	let g:neocomplcache_temporary_dir = '/Volumes/RamDisk/.neocon'
+	let g:neocomplcache_temporary_dir = '/tmp/.neocon'
 else
 	let g:neocomplcache_temporary_dir = '/tmp/.neocon'
 endif
