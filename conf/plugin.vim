@@ -47,6 +47,9 @@ NeoBundle 'w0ng/vim-hybrid'
 if g:is_win
 NeoBundle 'thinca/vim-singleton'
 "source $VIMRUNTIME/macros/editexisting.vim
+
+" TODO:便利そうなので使ってみたい。
+NeoBundle 'rbtnn/winapi.vim'
 endif
 
 " 使ってみたいリスト {{{
