@@ -406,6 +406,7 @@ endif
 " silentしてないのに履歴に載らない・・・？
 nnoremap <S-m> :wa<CR>:!touch %<CR>:make -r obj/%:t:r.o<CR>
 command! -bar -nargs=* Mk :execute "make -r " . expand( '<args>' )
+command! -bar -nargs=0 Temp :!git temp
 
 " 指定のプログラムをkill
 " ご利用は計画的に
