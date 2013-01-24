@@ -20,7 +20,6 @@ NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
-	NeoBundle 'the9ball/ctrlp-gtags'
 	NeoBundle 'the9ball/ctrlp-verboselet'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'vim-scripts/surround.vim'
@@ -36,7 +35,6 @@ NeoBundle 'the9ball/vim-projectdir'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'Shougo/vimshell'
 
 " カラースキーム
 NeoBundle 'altercation/vim-colors-solarized'
@@ -47,6 +45,9 @@ NeoBundle 'w0ng/vim-hybrid'
 if g:is_win
 NeoBundle 'thinca/vim-singleton'
 "source $VIMRUNTIME/macros/editexisting.vim
+
+" TODO:便利そうなので使ってみたい。
+NeoBundle 'rbtnn/winapi.vim'
 endif
 
 " 使ってみたいリスト {{{
@@ -80,6 +81,8 @@ endif
 
 " 使用しなくなった。
 " NeoBundle 'motemen/git-vim'
+" NeoBundle 'Shougo/vimshell'
+" NeoBundle 'the9ball/ctrlp-gtags'
 
 " つかいにくかった。
 " NeoBundle 'rhysd/accelerated-jk'
