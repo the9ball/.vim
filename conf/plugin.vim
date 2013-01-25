@@ -21,6 +21,7 @@ NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-verboselet'
+	NeoBundle 'the9ball/ctrlp-projectdir'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'vim-scripts/surround.vim'
 NeoBundle 'vim-scripts/BufOnly.vim'
@@ -326,6 +327,7 @@ nnoremap <silent> <Space>x :<C-u>CtrlPGtagsX<CR>
 nnoremap <silent> <Space>f :<C-u>CtrlPGtagsF<CR>
 nnoremap <silent> <Space>r :<C-u>CtrlPGtagsR<CR>
 nnoremap <silent> <Space>y :<C-u>CtrlPYankring<CR>
+nnoremap <silent> <Space>p :<C-u>CtrlPProjectDir<CR>
 
 " キャッシュ？
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
