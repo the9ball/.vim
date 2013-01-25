@@ -21,7 +21,6 @@ NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-verboselet'
-	NeoBundle 'the9ball/ctrlp-projectdir'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'vim-scripts/surround.vim'
 NeoBundle 'vim-scripts/BufOnly.vim'
@@ -324,7 +323,7 @@ nnoremap <silent> <Space>m :<C-u>CtrlPMRUFiles<CR>
 nnoremap <silent> <Space>l :<C-u>CtrlPLine<CR>
 nnoremap <silent> <Space>v :<C-u>CtrlPVerboseLet<CR>
 nnoremap <silent> <Space>y :<C-u>CtrlPYankring<CR>
-nnoremap <silent> <Space>p :<C-u>CtrlPProjectDir<CR>
+nnoremap <silent> <Space>p :<C-u>call projectdir#init_ctrlp()<CR>
 
 " nnoremap <silent> <Space>x :<C-u>CtrlPGtagsX<CR>
 " nnoremap <silent> <Space>f :<C-u>CtrlPGtagsF<CR>
