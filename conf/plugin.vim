@@ -313,7 +313,7 @@ endif
 
 if g:has_plugin( 'CtrlP' )
 
-let g:ctrlp_map='<Space>p'
+let g:ctrlp_map='<Space>g'
 "nnoremap <Space>c :<C-u>CtrlP<Space>
 nnoremap <silent> <Space>e :<C-u>CtrlP %:p:h<CR>
 nnoremap <silent> <Space>d :<C-u>CtrlP expand('<pwd>')<CR>
@@ -322,10 +322,12 @@ nnoremap <silent> <Space>s :<C-u>CtrlPLauncher<CR>
 nnoremap <silent> <Space>m :<C-u>CtrlPMRUFiles<CR>
 nnoremap <silent> <Space>l :<C-u>CtrlPLine<CR>
 nnoremap <silent> <Space>v :<C-u>CtrlPVerboseLet<CR>
-nnoremap <silent> <Space>x :<C-u>CtrlPGtagsX<CR>
-nnoremap <silent> <Space>f :<C-u>CtrlPGtagsF<CR>
-nnoremap <silent> <Space>r :<C-u>CtrlPGtagsR<CR>
 nnoremap <silent> <Space>y :<C-u>CtrlPYankring<CR>
+nnoremap <silent> <Space>p :<C-u>call projectdir#init_ctrlp()<CR>
+
+" nnoremap <silent> <Space>x :<C-u>CtrlPGtagsX<CR>
+" nnoremap <silent> <Space>f :<C-u>CtrlPGtagsF<CR>
+" nnoremap <silent> <Space>r :<C-u>CtrlPGtagsR<CR>
 
 " キャッシュ？
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
