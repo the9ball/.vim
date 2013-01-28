@@ -7,6 +7,7 @@ set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc( '$HOME/.vim/bundle' )
 
 " NeoBundle が管理するプラグイン
+NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
 		\     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
