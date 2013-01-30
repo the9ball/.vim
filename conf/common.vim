@@ -129,6 +129,9 @@ set shortmess& shortmess+=I
 " 現在行を下線に変更.
 highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
+" 折り畳みを下線に変更.
+highlight Folded term=underline cterm=underline gui=underline ctermbg=NONE guibg=NONE
+
 " }}}
 " =============================================================
 
