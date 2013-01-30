@@ -126,6 +126,9 @@ endfunction
 "起動時のメッセージを消す
 set shortmess& shortmess+=I
 
+" 現在行を下線に変更.
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
+
 " }}}
 " =============================================================
 
