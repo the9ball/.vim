@@ -473,19 +473,25 @@ endif
 if g:has_plugin( 'vim-submode' )
 
 " Change GUI window size.
-call submode#enter_with('guiwinsize', 'n', '', '<S-w>', '<Nop>')
-call submode#leave_with('guiwinsize', 'n', '', '<Esc>')
-call submode#map       ('guiwinsize', 'n', '', 'j', '<C-w>+')
-call submode#map       ('guiwinsize', 'n', '', 'k', '<C-w>-')
-call submode#map       ('guiwinsize', 'n', '', 'h', '<C-w><')
-call submode#map       ('guiwinsize', 'n', '', 'l', '<C-w>>')
+call submode#enter_with( 'guiwinsize', 'n', '', '<S-w>', '<Nop>' )
+call submode#leave_with( 'guiwinsize', 'n', '', '<Esc>' )
+call submode#map       ( 'guiwinsize', 'n', '', 'j', '<C-w>+' )
+call submode#map       ( 'guiwinsize', 'n', '', 'k', '<C-w>-' )
+call submode#map       ( 'guiwinsize', 'n', '', 'h', '<C-w><' )
+call submode#map       ( 'guiwinsize', 'n', '', 'l', '<C-w>>' )
 
 " 画面の左右スクロール
 " あとで何か考える。
 call submode#enter_with( 'scroll', 'n', '', 'zl', '<Nop>' )
 call submode#leave_with( 'scroll', 'n', '', '<Esc>' )
-call submode#map       ( 'scroll', 'n', '', 'l', 'zl')
-call submode#map       ( 'scroll', 'n', '', 'h', 'zh')
+call submode#map       ( 'scroll', 'n', '', 'l', 'zl' )
+call submode#map       ( 'scroll', 'n', '', 'h', 'zh' )
+
+call submode#enter_with( 'foldjump', 'n', '', 'zj', 'zj' )
+call submode#enter_with( 'foldjump', 'n', '', 'zk', 'zk' )
+call submode#leave_with( 'foldjump', 'n', '', '<Esc>' )
+call submode#map       ( 'foldjump', 'n', '', 'j', 'zj' )
+call submode#map       ( 'foldjump', 'n', '', 'k', 'zk' )
 
 endif
 
