@@ -254,6 +254,9 @@ nnoremap q <ESC>
 nnoremap Q q
 nnoremap <C-q> q
 
+" デフォルト潰すのがあれだけど、<C-w>j/k/l/hで移動するから問題ないはず。
+nnoremap <silent> <C-w><C-w> :<C-u>set wrap!<CR>
+
 " 検索は別項目
 
 " {{{ command-line-window
