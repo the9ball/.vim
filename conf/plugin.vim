@@ -26,7 +26,8 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'vim-scripts/surround.vim'
 NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kana/vim-submode'
+"NeoBundle 'kana/vim-submode'
+NeoBundle 'thinca/vim-submode'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'the9ball/vim-projectdir'
 
@@ -471,6 +472,10 @@ endif
 " {{{ submode
 
 if g:has_plugin( 'vim-submode' )
+
+" 他のキーを押してleave_withした時に他のキーを有効にする。
+" http://d.hatena.ne.jp/thinca/20130131/1359567419
+let g:submode_leave_with_key = 1
 
 " Change GUI window size.
 call submode#enter_with( 'guiwinsize', 'n', '', '<S-w>', '<Nop>' )
