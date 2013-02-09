@@ -102,6 +102,9 @@ set shellslash
 " 括弧のペア
 set matchpairs+=<:>
 
+" ペースト時のインデントを防ぐ
+set paste
+
 " <C-a>/<C-x> での増減
 " <C-a>を潰している事実が悩みどころ
 " set nrformats=alpha,hex
