@@ -144,7 +144,7 @@ function! s:BufAdd()
 
 	" インデントタイプの判定
 	let l:indent='^'
-	for l:i in range( 2, &tabstop )
+	for l:i in range( 1, &tabstop )
 		let l:indent = l:indent . ' '
 	endfor
 	if 0 != search( l:indent, 'n' )
