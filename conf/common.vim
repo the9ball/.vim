@@ -145,6 +145,18 @@ function! s:BufAdd()
 	" 文字コードの自動認識 ついでなんでここに書く。
 	source $HOME/.vim/conf/encode.vim
 
+	" インデントタイプの判定
+	let l:indent='^'
+	for l:i in range( 2, &tabstop )
+		let l:indent = l:indent . ' '
+	endfor
+	if 0 != search( l:indent, 'n' )
+		set expandtab
+	else
+		set noexpandtab
+	endif
+	unlet l:indent
+
 	" =============================================================
 	" {{{ ReadOnly用
 
