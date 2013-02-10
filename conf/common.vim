@@ -1,3 +1,4 @@
+
 " =============================================================
 " {{{ 基本設定
 " 長いので分割すべきかも
@@ -138,21 +139,25 @@ highlight Folded term=underline cterm=underline gui=underline ctermbg=NONE guibg
 " =============================================================
 " {{{ ファイル読み込み時の処理
 
-function! s:BufAdd()
-	" 文字コードの自動認識 ついでなんでここに書く。
-	source $HOME/.vim/conf/encode.vim
-
-	" インデントタイプの判定
+function! s:CheckExpandTab()
 	let l:indent='^'
 	for l:i in range( 1, &tabstop )
 		let l:indent = l:indent . ' '
 	endfor
-	if 0 != search( l:indent, 'n' )
+	if 0 != search( l:indent, 'nw' )
 		set expandtab
 	else
 		set noexpandtab
 	endif
 	unlet l:indent
+endfunction
+
+function! s:BufAdd()
+	" 文字コードの自動認識 ついでなんでここに書く。
+	source $HOME/.vim/conf/encode.vim
+
+	" インデントタイプの判定
+	call s:CheckExpandTab()
 
 	" =============================================================
 	" {{{ ReadOnly用
