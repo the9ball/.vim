@@ -161,7 +161,7 @@ function! s:CheckExpandTab()
 	endfor
 	let l:linespc = s:CountMatch( l:indent )
 	let l:linetab = s:CountMatch( '^\t' )
-	if l:linetab < l:linespc
+	if str2nr( l:linetab ) < str2nr( l:linespc )
 		set expandtab
 	else
 		set noexpandtab
