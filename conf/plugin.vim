@@ -38,6 +38,7 @@ NeoBundle 'the9ball/vim-projectdir'
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'tyru/coolgrep.vim'
 
 " カラースキーム
 NeoBundle 'altercation/vim-colors-solarized'
