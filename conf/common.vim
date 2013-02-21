@@ -15,7 +15,7 @@ set fileformat=unix fileformats=unix,dos,mac
 " 背景色を指定することで文字色を設定
 set background=dark
 " set background=light
-colorscheme elflord
+colorscheme desert
 
 " マウス有効化
 set mouse=nch
