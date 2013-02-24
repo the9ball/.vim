@@ -38,11 +38,22 @@ NeoBundle 'the9ball/vim-projectdir'
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'tyru/coolgrep.vim'
 
 " カラースキーム
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
-"colorscheme hybrid
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/rdark'
+NeoBundle 'vim-scripts/zazen'
+colorscheme wombat
 
 " Win用
 if g:is_win
@@ -62,7 +73,6 @@ endif
 " 別ファイルにすべきかも。
 
 " Unite系
-" NeoBundle 'Shougo/unite.vim'
 " 	NeoBundle 'sgur/unite-qf'
 " 	NeoBundle 'Shougo/unite-build'
 
@@ -534,6 +544,9 @@ if g:has_plugin( 'vim-projectdir' )
 let g:filename_projectdir_file = '$HOME/projectdir.conf'
 endif
 
+if g:has_plugin( 'eregex' )
+let g:eregex_default_enable = 0
+endif
 " }}}
 " =============================================================
 
@@ -551,34 +564,36 @@ if g:has_plugin( 'unite' )
 "nnoremap <silent> <Space>/ :<C-u>Unite -buffer-name=search line -auto-resize -start-insert -no-quit<CR>
 "nnoremap <silent> <Space>r :<C-u>Unite -auto-resize -hide-source-names file_mru<CR>
 
-call unite#filters#default#use( [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
+command! -bar -nargs=0 Colorscheme :Unite colorscheme -auto-preview
+
+"call unite#filters#default#use( [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
 
 " buffer を開いた時に常に絶対パスで表示させたい。
-call unite#custom_filters( 'buffer', [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
+"call unite#custom_filters( 'buffer', [ 'converter_relative_word', 'matcher_default', 'sorter_word', 'converter_relative_abbr' ] )
 
 " Unite qf 系用
 " 調整中
-command! -bar -nargs=1 UniteQfHelper :call g:fUniteQfHelper( <args> )
-function! g:fUniteQfHelper( ope )
-	" スペースをエスケープする。
-	let s:temp = substitute( a:ope, ' ', '\\ ', 'g' )
-
-	" 実行
-	execute "Unite qf:ex=" . s:temp
-endfunction
-
-" vimgrep を Unite で。
-" 調整中
-"手入力の方がよさそう nnoremap <Space>v :<C-u>Vim<Space>
-command! -bar -nargs=+ Vim :call g:fVim( <f-args> )
-command! -bar -nargs=+ VIm :call g:fVim( <f-args> )
-command! -bar -nargs=+ VIM :call g:fVim( <f-args> )
-function! g:fVim( pattern, files )
-	let s:temp = 'vimgrep ' . a:pattern . ' ' . a:files
-	". "--no-empty"
-	call g:fUniteQfHelper( s:temp )
-	cclose
-endfunction
+"command! -bar -nargs=1 UniteQfHelper :call g:fUniteQfHelper( <args> )
+"function! g:fUniteQfHelper( ope )
+"	" スペースをエスケープする。
+"	let s:temp = substitute( a:ope, ' ', '\\ ', 'g' )
+"
+"	" 実行
+"	execute "Unite qf:ex=" . s:temp
+"endfunction
+"
+"" vimgrep を Unite で。
+"" 調整中
+""手入力の方がよさそう nnoremap <Space>v :<C-u>Vim<Space>
+"command! -bar -nargs=+ Vim :call g:fVim( <f-args> )
+"command! -bar -nargs=+ VIm :call g:fVim( <f-args> )
+"command! -bar -nargs=+ VIM :call g:fVim( <f-args> )
+"function! g:fVim( pattern, files )
+"	let s:temp = 'vimgrep ' . a:pattern . ' ' . a:files
+"	". "--no-empty"
+"	call g:fUniteQfHelper( s:temp )
+"	cclose
+"endfunction
 
 endif
 

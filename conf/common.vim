@@ -15,7 +15,7 @@ set fileformat=unix fileformats=unix,dos,mac
 " 背景色を指定することで文字色を設定
 set background=dark
 " set background=light
-colorscheme elflord
+colorscheme desert
 
 " マウス有効化
 set mouse=nch
@@ -161,7 +161,7 @@ function! s:CheckExpandTab()
 	endfor
 	let l:linespc = s:CountMatch( l:indent )
 	let l:linetab = s:CountMatch( '^\t' )
-	if l:linetab < l:linespc
+	if str2nr( l:linetab ) < str2nr( l:linespc )
 		set expandtab
 	else
 		set noexpandtab
