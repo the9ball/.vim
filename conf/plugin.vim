@@ -544,6 +544,9 @@ if g:has_plugin( 'vim-projectdir' )
 let g:filename_projectdir_file = '$HOME/projectdir.conf'
 endif
 
+if g:has_plugin( 'eregex' )
+let g:eregex_default_enable = 0
+endif
 " }}}
 " =============================================================
 
