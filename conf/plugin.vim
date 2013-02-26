@@ -39,6 +39,7 @@ NeoBundle 'the9ball/vim-projectdir'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tyru/coolgrep.vim'
+NeoBundle 'the9ball/vim-cycle', 'autoload'
 
 " カラースキーム
 NeoBundle 'Shougo/unite.vim'
@@ -547,6 +548,14 @@ endif
 if g:has_plugin( 'eregex' )
 let g:eregex_default_enable = 0
 endif
+
+if g:has_plugin( 'vim-cycle' ) || g:has_plugin( 'vim-cycle_autoload' )
+let g:cycle_no_mappings=0 " 勝手にマッピングをしない.
+nnoremap <silent> <C-t> :<C-u>call cycle#CycleNext()<CR>
+call cycle#AddCycleGroup( ['hoge', 'fuga', 'piyo', 'hogera', 'hogehoge'] )
+call cycle#AddCycleGroup( ['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'xyzzy', 'thud'] )
+endif
+
 " }}}
 " =============================================================
 
