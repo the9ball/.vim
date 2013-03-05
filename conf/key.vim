@@ -279,7 +279,7 @@ nnoremap <silent> bn :<C-u>bnext<CR>
 		inoremap <buffer><silent> <C-y> <Esc>"zy$GC<C-r>z
 
 		" 左右移動したくなった。
-		inoremap <buffer><silent> <C-f> <C-o>l
+		inoremap <buffer><silent> <C-f> <C-o>a
 		inoremap <buffer><silent> <C-b> <C-o>h
 		inoremap <buffer><silent> <C-l> <C-o>l
 		
