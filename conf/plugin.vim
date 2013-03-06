@@ -542,18 +542,18 @@ endif
 " {{{ その他1行系
 
 if g:has_plugin( 'vim-projectdir' )
-let g:filename_projectdir_file = '$HOME/projectdir.conf'
+	let g:filename_projectdir_file = '$HOME/projectdir.conf'
 endif
 
 if g:has_plugin( 'eregex' )
-let g:eregex_default_enable = 0
+	let g:eregex_default_enable = 0
 endif
 
 if g:has_plugin( 'vim-cycle' ) || g:has_plugin( 'vim-cycle_autoload' )
-let g:cycle_no_mappings=1 " 勝手にマッピングをしない.
-nnoremap <silent> <C-t> :<C-u>call cycle#CycleNext()<CR>
-call cycle#AddCycleGroup( ['hoge', 'fuga', 'piyo', 'hogera', 'hogehoge'] )
-call cycle#AddCycleGroup( ['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'xyzzy', 'thud'] )
+	let g:cycle_no_mappings=1 " 勝手にマッピングをしない.
+	nnoremap <silent> <C-t> :<C-u>call cycle#CycleNext()<CR>
+	call cycle#AddCycleGroup( ['hoge', 'fuga', 'piyo', 'hogera', 'hogehoge'] )
+	call cycle#AddCycleGroup( ['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'xyzzy', 'thud'] )
 endif
 
 " }}}
