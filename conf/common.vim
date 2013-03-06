@@ -143,42 +143,6 @@ highlight Folded term=underline cterm=underline gui=underline ctermbg=NONE guibg
 
 " =============================================================
 " {{{ ファイル読み込み時の処理
-
-" インデントタイプの判定
-function! s:CountMatch(expr)
-	silent! redir => l:result
-	silent! execute '%s/' . a:expr . '/&/gne'
-	silent! redir END
-
-	if '' == l:result
-		" 1つもなかった
-		return 0
-	endif
-
-	" 結果をパースして個数だけを返す
-	let l:list = split( substitute( l:result, '\n', '', 'g' ), ' ' )
-	return l:list[0]
-endfunction
-function! s:CheckExpandTab()
-	let l:indent='^'
-	for l:i in range( 1, &tabstop )
-		let l:indent = l:indent . ' '
-	endfor
-	let l:linespc = s:CountMatch( l:indent )
-	let l:linetab = s:CountMatch( '^\t' )
-	if str2nr( l:linetab ) < str2nr( l:linespc )
-		set expandtab
-	else
-		set noexpandtab
-	endif
-	unlet l:indent
-endfunction
-augroup CheckExpandTab
-	au!
-	au BufEnter * call s:CheckExpandTab()
-augroup END
-call s:CheckExpandTab()
-
 function! s:BufAdd()
 	" 文字コードの自動認識 ついでなんでここに書く。
 	source $HOME/.vim/conf/encode.vim

@@ -30,6 +30,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-submode'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'the9ball/vim-projectdir'
+NeoBundle 'the9ball/vim-auto-expandtab'
 
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
