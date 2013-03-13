@@ -83,8 +83,8 @@ cnoremap <C-e> <End>
 
 " 範囲選択の上書きペーストでレジスタに載せない。
 " 終端を上書きたい時に変な感じになる。
-vnoremap p "_dP
-vnoremap P "_dP
+vnoremap p "_dP=`]
+vnoremap P "_dP=`]
 vnoremap c "_c
 vnoremap C "_C
 vnoremap <C-r> "_c<C-r>
@@ -183,6 +183,10 @@ nnoremap ZZ <Nop>
 " xで削除した時にレジスタに載せない。
 nnoremap x "_x
 nnoremap X "_X
+
+" ペースト時に自動インデント調整
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
 
 " jkでのカーソル移動を表示行単位で行う
 nnoremap j gj
