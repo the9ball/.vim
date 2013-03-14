@@ -490,6 +490,9 @@ if g:has_plugin( 'vim-submode' )
 " http://d.hatena.ne.jp/thinca/20130131/1359567419
 let g:submode_leave_with_key = 1
 
+" タイムアウトしない
+let g:submode_timeout = 0
+
 " Change GUI window size.
 call submode#enter_with( 'guiwinsize', 'n', '', '<S-w>', '<Nop>' )
 call submode#leave_with( 'guiwinsize', 'n', '', '<Esc>' )
