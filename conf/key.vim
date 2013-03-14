@@ -294,7 +294,7 @@ function! s:_CopyTab()
 	" 閉じた後にコマンドを未定義状態にする。
 	augroup COPY_TAB
 		autocmd!
-		autocmd InsertLeave <buffer> CopyTabClose
+		autocmd InsertLeave <buffer> silent CopyTabClose
 	augroup END
 	nmap <buffer><silent> <ESC> :CopyTabClose<CR>
 endfunction
