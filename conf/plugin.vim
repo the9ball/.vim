@@ -494,7 +494,7 @@ let g:submode_leave_with_key = 1
 let g:submode_timeout = 0
 
 " Change GUI window size.
-call submode#enter_with( 'guiwinsize', 'n', '', '<S-w>', '<Nop>' )
+call submode#enter_with( 'guiwinsize', 'n', '', '<S-w>' )
 call submode#leave_with( 'guiwinsize', 'n', '', '<Esc>' )
 call submode#map       ( 'guiwinsize', 'n', '', 'j', '<C-w>+' )
 call submode#map       ( 'guiwinsize', 'n', '', 'k', '<C-w>-' )
@@ -503,7 +503,8 @@ call submode#map       ( 'guiwinsize', 'n', '', 'l', '<C-w>>' )
 
 " 画面の左右スクロール
 " あとで何か考える。
-call submode#enter_with( 'scroll', 'n', '', 'zl', '<Nop>' )
+call submode#enter_with( 'scroll', 'n', '', 'zl', 'zl' )
+call submode#enter_with( 'scroll', 'n', '', 'zh', 'zh' )
 call submode#leave_with( 'scroll', 'n', '', '<Esc>' )
 call submode#map       ( 'scroll', 'n', '', 'l', 'zl' )
 call submode#map       ( 'scroll', 'n', '', 'h', 'zh' )
