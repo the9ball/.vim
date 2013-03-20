@@ -31,6 +31,7 @@ NeoBundle 'thinca/vim-submode'
 NeoBundle 'the9ball/gtags.vim'
 NeoBundle 'the9ball/vim-projectdir'
 NeoBundle 'the9ball/vim-auto-expandtab'
+NeoBundle 'the9ball/vim-cycle', 'autoload'
 
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
@@ -40,7 +41,6 @@ NeoBundle 'the9ball/vim-auto-expandtab'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tyru/coolgrep.vim'
-NeoBundle 'the9ball/vim-cycle', 'autoload'
 
 " カラースキーム
 NeoBundle 'Shougo/unite.vim'
