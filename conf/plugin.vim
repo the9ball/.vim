@@ -41,6 +41,7 @@ NeoBundle 'the9ball/vim-cycle', 'autoload'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tyru/coolgrep.vim'
+NeoBundle 'mattn/vdbi-vim'
 
 " カラースキーム
 NeoBundle 'Shougo/unite.vim'
