@@ -43,6 +43,11 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
 
+" 動かし方を調べる。.
+NeoBundle 'mattn/vim-metarw'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/vim-metarw-simplenote'
+
 " カラースキーム
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
