@@ -515,11 +515,15 @@ call submode#leave_with( 'scroll', 'n', '', '<Esc>' )
 call submode#map       ( 'scroll', 'n', '', 'l', 'zl' )
 call submode#map       ( 'scroll', 'n', '', 'h', 'zh' )
 
+" 折り畳みの移動
 call submode#enter_with( 'foldjump', 'n', '', 'zj', 'zj' )
 call submode#enter_with( 'foldjump', 'n', '', 'zk', 'zk' )
 call submode#leave_with( 'foldjump', 'n', '', '<Esc>' )
 call submode#map       ( 'foldjump', 'n', '', 'j', 'zj' )
 call submode#map       ( 'foldjump', 'n', '', 'k', 'zk' )
+call submode#map       ( 'foldjump', 'n', '', 'O', 'zO' )
+call submode#map       ( 'foldjump', 'n', '', 'o', 'zo' )
+call submode#map       ( 'foldjump', 'n', '', 'c', 'zc' )
 
 endif
 
