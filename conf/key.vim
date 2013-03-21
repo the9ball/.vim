@@ -302,6 +302,17 @@ command! CopyTab call s:_CopyTab()
 nnoremap <silent> tt :<C-u>CopyTab<CR>
 " }}}
 
+" Win用
+if g:is_win
+" .gvimrc に書くべきかもしれないけど
+" マッピングを検索しやすいように・・・。
+" ウィンドウ最大化
+"nnoremap <silent> <C-w><Tab> :<C-u>simalt ~x
+" 自動化の方がいい？
+au GuiEnter * simalt ~x
+" 「simalt ~n」 で最小化
+endif
+
 " }}}
 " =============================================================
 
