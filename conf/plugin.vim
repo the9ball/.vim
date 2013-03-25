@@ -43,6 +43,7 @@ NeoBundle 'the9ball/vim-cycle', 'autoload'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
+NeoBundle 'itchyny/thumbnail.vim'
 
 " 動かし方を調べる。.
 NeoBundle 'mattn/vim-metarw'
