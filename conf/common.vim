@@ -2,7 +2,7 @@
 " {{{ 基本設定
 " 長いので分割すべきかも
 
-" scriptencoding utf-8 みたいなのをすべきなのかも。
+scriptencoding utf-8
 
 " カレント .vimrc, .exrc などを読まない
 set noexrc
