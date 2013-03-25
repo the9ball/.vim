@@ -30,7 +30,7 @@ NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'kana/vim-submode'
 NeoBundle 'thinca/vim-submode'
-NeoBundle 'the9ball/gtags.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'the9ball/vim-projectdir'
 NeoBundle 'the9ball/vim-auto-expandtab'
 NeoBundle 'the9ball/vim-cycle', 'autoload'
@@ -41,7 +41,6 @@ NeoBundle 'the9ball/vim-cycle', 'autoload'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
 
@@ -50,7 +49,7 @@ NeoBundle 'mattn/vim-metarw'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/vim-metarw-simplenote'
 
-" カラースキーム
+" カラースキーム {{{
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'nanotech/jellybeans.vim'
@@ -64,6 +63,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 NeoBundle 'vim-scripts/zazen'
 colorscheme wombat
+" }}}
 
 " Win用
 if g:is_win
@@ -118,9 +118,12 @@ endif
 " webの方が結局使いやすかった。
 " NeoBundle 'tsukkee/lingr-vim'
 
-" 起動時間もかかるし、使ってない。.
+" 起動時間もかかるし、使ってない。
 " NeoBundle 'sgur/ctrlp-extensions.vim'
 " NeoBundle 'Shougo/neosnippet'
+
+" gtags使わなくなった。
+" NeoBundle 'the9ball/gtags.vim'
 
 " }}}
 
