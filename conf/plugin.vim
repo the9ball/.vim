@@ -43,7 +43,10 @@ NeoBundle 'the9ball/vim-cycle', 'autoload'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
-NeoBundle 'itchyny/thumbnail.vim'
+
+" 便利だけど、新タブで開かれるのがうざい。
+" ので、あとで詳しく調べる。
+"NeoBundle 'itchyny/thumbnail.vim'
 
 " 動かし方を調べる。.
 NeoBundle 'mattn/vim-metarw'
@@ -344,13 +347,16 @@ let g:ctrlp_map='<Space>g'
 "nnoremap <Space>c :<C-u>CtrlP<Space>
 nnoremap <silent> <Space>e :<C-u>CtrlP %:p:h<CR>
 nnoremap <silent> <Space>d :<C-u>CtrlP expand('<pwd>')<CR>
-nnoremap <silent> <Space>b :<C-u>CtrlPBuffer<CR>
 nnoremap <silent> <Space>s :<C-u>CtrlPLauncher<CR>
 nnoremap <silent> <Space>m :<C-u>CtrlPMRUFiles<CR>
 nnoremap <silent> <Space>l :<C-u>CtrlPLine<CR>
 nnoremap <silent> <Space>v :<C-u>CtrlPVerboseLet<CR>
 nnoremap <silent> <Space>y :<C-u>CtrlPYankring<CR>
 nnoremap <silent> <Space>p :<C-u>call projectdir#init_ctrlp()<CR>
+
+if !g:has_plugin( 'Thumbnail' )
+nnoremap <silent> <Space>b :<C-u>CtrlPBuffer<CR>
+endif
 
 " nnoremap <silent> <Space>x :<C-u>CtrlPGtagsX<CR>
 " nnoremap <silent> <Space>f :<C-u>CtrlPGtagsF<CR>
@@ -575,6 +581,10 @@ if g:has_plugin( 'vim-cycle' ) || g:has_plugin( 'vim-cycle_autoload' )
 	nnoremap <silent> <C-t> :<C-u>call cycle#CycleNext()<CR>
 	call cycle#AddCycleGroup( ['hoge', 'fuga', 'piyo', 'hogera', 'hogehoge'] )
 	call cycle#AddCycleGroup( ['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'xyzzy', 'thud'] )
+endif
+
+if g:has_plugin( 'Thumbnail' )
+	nnoremap <silent> <Space>b :<C-u>Thumbnail<CR>
 endif
 
 " }}}
