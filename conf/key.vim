@@ -376,6 +376,10 @@ inoremap <expr> <C-r><C-w> <SID>pasteOriginal( 1, '\<', '\>' )
 " surround.vim と微妙に用途がかぶってる気がするけど多分気のせい。
 inoremap <expr> <C-r><C-r> <SID>pasteOriginalHeadFoot()
 
+" コマンドモードでも。
+cnoremap <expr> <C-r><C-e> <SID>pasteOriginal( 0, '', '' )
+cnoremap <expr> <C-r><C-w> <SID>pasteOriginal( 1, '\<', '\>' )
+
 " }}}
 " =============================================================
 
