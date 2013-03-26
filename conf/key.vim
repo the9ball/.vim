@@ -321,7 +321,7 @@ endif
 " =============================================================
 " {{{ インサートモード
 
-" スペルチェック ON/OFF
+" スペルチェック ON/OFF {{{
 function! s:completeSpellCheckOff()
 	if 0 == pumvisible()
 		" ポップアップメニューが出ていない。
@@ -340,8 +340,9 @@ function! s:completeSpellCheckOn()
 endfunction
 command! -bar -nargs=* CompleteSpellCheck :call s:completeSpellCheckOn()
 inoremap <C-l> <C-o>:<C-u>CompleteSpellCheck<CR><C-x><C-s>
+" }}}
 
-" 貼り付け時に \<\> の有無を選択できるように。.
+" 貼り付け時に \<\> の有無を選択できるように。 {{{
 function! s:pasteOriginal( word, head, foot )
 	" 対象のレジスタの内容を取得
 	echo ( ( 0 == a:word )? 'StringMode' : 'WordMode' ) . ':Register:'
@@ -379,6 +380,7 @@ inoremap <expr> <C-r><C-r> <SID>pasteOriginalHeadFoot()
 " コマンドモードでも。
 cnoremap <expr> <C-r><C-e> <SID>pasteOriginal( 0, '', '' )
 cnoremap <expr> <C-r><C-w> <SID>pasteOriginal( 1, '\<', '\>' )
+" }}}
 
 " }}}
 " =============================================================
@@ -386,9 +388,9 @@ cnoremap <expr> <C-r><C-w> <SID>pasteOriginal( 1, '\<', '\>' )
 " =============================================================
 " {{{ タブ
 
+" タブ操作キー {{{
 " そもそもタブ使わない・・・
 if 0
-	" タブ操作キー
 	" 新規タブを作成し、移動
 	nnoremap <silent> to :<C-u>tabnew<CR>:tabmove<CR>
 	" 現在のタブを閉じる
@@ -398,6 +400,7 @@ if 0
 	" 前のタブへ移動
 	nnoremap <silent> tp :<C-u>tabprev<CR>
 endif
+" }}}
 
 " }}}
 " =============================================================
@@ -429,13 +432,14 @@ endif
 " =============================================================
 " {{{ コード入力
 
-" いろんなメイク
+" いろんなメイク {{{
 " command! -bar -nargs=* Mkcd :execute "make -j8 CCPROG=ccache RELEASE=1 " . expand( '<args>' )
 " command! -bar -nargs=* Mkcdd :execute "make -j8 CCPROG=ccache " . expand( '<args>' )
 " silentしてないのに履歴に載らない・・・？
 nnoremap <S-m> :wa<CR>:!touch %<CR>:make -r obj/%:t:r.o<CR>
 command! -bar -nargs=* Mk :execute "make -r " . expand( '<args>' )
 command! -bar -nargs=0 Temp :!git temp
+" }}}
 
 " 指定のプログラムをkill
 " ご利用は計画的に
