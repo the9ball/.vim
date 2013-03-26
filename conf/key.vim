@@ -463,6 +463,10 @@ command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <co
 " =============================================================
 " {{{ 検索
 
+" 正規表現を正規っぽく
+nnoremap / /\v
+nnoremap ? ?\v
+
 " コード検索
 " 簡単vimgrep
 nnoremap s :<C-u>vim /\<<C-r><C-w>\>/ **/*
