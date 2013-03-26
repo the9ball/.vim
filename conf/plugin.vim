@@ -511,31 +511,36 @@ let g:submode_leave_with_key = 1
 " タイムアウトしない
 let g:submode_timeout = 0
 
-" Change GUI window size.
+" Change GUI window size. {{{
 call submode#enter_with( 'guiwinsize', 'n', '', '<S-w>' )
 call submode#leave_with( 'guiwinsize', 'n', '', '<Esc>' )
 call submode#map       ( 'guiwinsize', 'n', '', 'j', '<C-w>+' )
 call submode#map       ( 'guiwinsize', 'n', '', 'k', '<C-w>-' )
 call submode#map       ( 'guiwinsize', 'n', '', 'h', '<C-w><' )
 call submode#map       ( 'guiwinsize', 'n', '', 'l', '<C-w>>' )
+" }}}
 
-" 画面の左右スクロール
+" 画面の左右スクロール {{{
 " あとで何か考える。
 call submode#enter_with( 'scroll', 'n', '', 'zl', 'zl' )
 call submode#enter_with( 'scroll', 'n', '', 'zh', 'zh' )
 call submode#leave_with( 'scroll', 'n', '', '<Esc>' )
 call submode#map       ( 'scroll', 'n', '', 'l', 'zl' )
 call submode#map       ( 'scroll', 'n', '', 'h', 'zh' )
+" }}}
 
-" 折り畳みの移動
+" 折り畳みの移動 {{{
 call submode#enter_with( 'foldjump', 'n', '', 'zj', 'zj' )
 call submode#enter_with( 'foldjump', 'n', '', 'zk', 'zk' )
 call submode#leave_with( 'foldjump', 'n', '', '<Esc>' )
 call submode#map       ( 'foldjump', 'n', '', 'j', 'zj' )
 call submode#map       ( 'foldjump', 'n', '', 'k', 'zk' )
 call submode#map       ( 'foldjump', 'n', '', 'O', 'zO' )
+call submode#map       ( 'foldjump', 'n', '', 'zo', 'zo' )
+call submode#map       ( 'foldjump', 'n', '', 'zc', 'zc' )
 call submode#map       ( 'foldjump', 'n', '', 'o', 'zo' )
 call submode#map       ( 'foldjump', 'n', '', 'c', 'zc' )
+"}}}
 
 endif
 
