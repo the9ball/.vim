@@ -447,17 +447,6 @@ vnoremap <silent> / :s/^\(\s*\)/\1\/\//e<CR>gv:s/^\(\s*\)\/\/\/\//\1/e<CR>:nohls
 " なぜか効かない・・・？
 " vnoremap <silent> # :s/^\(\s*\)/\1# /e<CR>gv:s/^\(\s*\)# # /\1/e<CR>:nohlsearch<CR>
 
-" 括弧とかとか
-" cpp.vim に移す？
-nnoremap <silent> ;{} :FunctionHelperCommand<CR>
-command! -bar -nargs=* FunctionHelperCommand call s:functionHelper()
-function! s:functionHelper()
-	silent! exec 's/;$//'
-	silent normal! o{
-	silent normal! o}
-	exec 'nohlsearch'
-endfunction
-
 " 縦に連番を入力する
 " https://sites.google.com/site/fudist/Home/vim-nihongo-ban/tips#TOC--7
 "nnoremap <silent> co :ContinuousNumber <C-a><CR>
