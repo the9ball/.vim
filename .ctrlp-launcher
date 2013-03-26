@@ -1,4 +1,4 @@
-C-p ClearCache	CtrlPClearCache
+Ctrlp ClearCache	CtrlPClearCache
 filetype:cpp	set ft=cpp
 filetype:cs	set ft=cs
 filetype:vim	set ft=vim
