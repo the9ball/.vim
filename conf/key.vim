@@ -244,6 +244,7 @@ nnoremap <silent> bn :<C-u>bnext<CR>
 " {{{ command-line-window
 	" 補完できるし意外と便利なのかも。
 	nnoremap : q:i
+	set cmdwinheight=3
 	function! b:MyCmdWinEnter()
 		" ESCで閉じたい。
 		nnoremap <buffer><silent> <Esc> <CR>
@@ -259,15 +260,12 @@ nnoremap <silent> bn :<C-u>bnext<CR>
 		" 左右移動したくなった。
 		inoremap <buffer><silent> <C-f> <C-o>a
 		inoremap <buffer><silent> <C-b> <C-o>h
-		inoremap <buffer><silent> <C-l> <C-o>l
+		inoremap <buffer><silent> <C-a> <C-o>I
+		inoremap <buffer><silent> <C-e> <C-o>A
 		
 		if g:has_plugin( 'neobundle' )
 			inoremap <buffer><silent> <Tab> <C-n>
 		endif
-
-		" 高いと邪魔
-		" なんかエラーだってよ
-		"resize 3
 	endfunction
 	augroup MyCmdwinEnter
 		autocmd!
