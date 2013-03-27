@@ -6,4 +6,4 @@ fileformat:dos	edit ++ff=dos
 fileformat:unix	edit ++ff=unix
 UnSyncScroll	set noscrollbind
 Delete EOL Space	%s/\s\+$//ge
-
+Reload VIMRC	source ~/.vim/.vimrc
