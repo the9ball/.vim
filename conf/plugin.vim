@@ -586,6 +586,7 @@ if g:has_plugin( 'vim-cycle' ) || g:has_plugin( 'vim-cycle_autoload' )
 	nnoremap <silent> <C-t> :<C-u>call cycle#CycleNext()<CR>
 	call cycle#AddCycleGroup( ['hoge', 'fuga', 'piyo', 'hogera', 'hogehoge'] )
 	call cycle#AddCycleGroup( ['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'xyzzy', 'thud'] )
+	call cycle#AddCycleGroup( ['On', 'Off'] )
 endif
 
 if g:has_plugin( 'Thumbnail' )
