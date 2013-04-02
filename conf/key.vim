@@ -195,6 +195,10 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+" QuickFixの移動
+nnoremap <silent> <C-n> :<C-u>cnext<CR>zv
+nnoremap <silent> <C-p> :<C-u>cprevious<CR>zv
+
 " スクロール
 nnoremap <C-k> <C-y>
 nnoremap <C-j> <C-e>
