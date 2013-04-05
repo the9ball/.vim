@@ -546,6 +546,7 @@ endfunction
 " {{{ コマンド系 別ファイル作る？
 
 command! Allbd bufdo :bd
+command! Reloadvimrc :source $HOME/.vim/.vimrc
 
 " }}}
 " =============================================================
