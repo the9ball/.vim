@@ -261,12 +261,6 @@ nnoremap <silent> bn :<C-u>bnext<CR>
 		" 過去のコマンドをコピー
 		inoremap <buffer><silent> <C-y> <Esc>"zy$GC<C-r>z
 
-		" 左右移動したくなった。
-		inoremap <buffer><silent> <C-f> <C-o>a
-		inoremap <buffer><silent> <C-b> <C-o>h
-		inoremap <buffer><silent> <C-a> <C-o>I
-		inoremap <buffer><silent> <C-e> <C-o>A
-		
 		if g:has_plugin( 'neobundle' )
 			inoremap <buffer><silent> <Tab> <C-n>
 		endif
@@ -386,6 +380,14 @@ inoremap <expr> <C-r><C-r> <SID>pasteOriginalHeadFoot()
 cnoremap <expr> <C-r><C-e> <SID>pasteOriginal( 0, '', '' )
 cnoremap <expr> <C-r><C-w> <SID>pasteOriginal( 1, '\<', '\>' )
 " }}}
+
+inoremap <silent> <C-f> <C-o>a
+inoremap <silent> <C-b> <C-o>h
+if !g:has_plugin( 'neocomplcache' )
+"plugin.vim にてneocomplcacheとの兼ね合いをした設定を行っている。
+inoremap <silent> <C-a> <C-o>I
+inoremap <silent> <C-e> <C-o>A
+endif
 
 " }}}
 " =============================================================
