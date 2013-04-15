@@ -43,6 +43,7 @@ NeoBundle 'the9ball/vim-cycle', 'autoload'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
+NeoBundle 'h1mesuke/vim-alignta'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
@@ -543,6 +544,12 @@ endif
 
 if g:has_plugin( 'Thumbnail' )
 	nnoremap <silent> <Space>b :<C-u>Thumbnail<CR>
+endif
+
+if g:has_plugin( 'vim-alignta' )
+	vnoremap <silent> === :Align @1 =<CR>gv:Align @1 //<CR>
+	vnoremap <silent> == :Align @1 =<CR>
+	vnoremap <silent> =/ :Align @1 //<CR>
 endif
 
 " }}}
