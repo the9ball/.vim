@@ -108,6 +108,9 @@ set shellslash
 " 括弧のペア
 set matchpairs+=<:>
 
+" 修正個数の報告
+set report=0
+
 " <C-a>/<C-x> での増減
 " <C-a>を潰している事実が悩みどころ
 " set nrformats=alpha,hex
