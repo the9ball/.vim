@@ -34,6 +34,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'the9ball/vim-projectdir'
 NeoBundle 'the9ball/vim-auto-expandtab'
 NeoBundle 'the9ball/vim-cycle', 'autoload'
+NeoBundle 'h1mesuke/vim-alignta'
 
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
@@ -43,7 +44,6 @@ NeoBundle 'the9ball/vim-cycle', 'autoload'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
-NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'fuenor/qfixgrep'
 
 " 便利だけど、新タブで開かれるのがうざい。
