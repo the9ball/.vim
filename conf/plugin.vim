@@ -44,6 +44,7 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
 NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'fuenor/qfixgrep'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
@@ -550,6 +551,15 @@ if g:has_plugin( 'vim-alignta' )
 	vnoremap <silent> === :Align @1 =<CR>gv:Align @1 //<CR>
 	vnoremap <silent> == :Align @1 =<CR>
 	vnoremap <silent> =/ :Align @1 //<CR>
+endif
+
+if g:has_plugin( 'qfixgrep' )
+	" 簡単vimgrep
+	nnoremap s :<C-u>RGrep "<C-r><C-w>" *
+	" カーソル下の単語をソースから検索
+	nnoremap sfs :<C-u>RGrep "<C-r><C-w>" *.c*<CR>
+	" カーソル下の単語をヘッダから検索
+	nnoremap sfh :<C-u>RGrep "<C-r><C-w>" *.h*<CR>
 endif
 
 " }}}

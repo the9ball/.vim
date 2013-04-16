@@ -475,20 +475,13 @@ nnoremap / /\v
 nnoremap ? ?\v
 
 " コード検索
-if 1
+if !g:has_plugin( 'qfixgrep' )
 	" 簡単vimgrep
 	nnoremap s :<C-u>vim /\<<C-r><C-w>\>/j **/*
 	" カーソル下の単語をソースから検索
 	nnoremap sfs :<C-u>vim /\<<C-r><C-w>\>/j **/*.c*<CR>
 	" カーソル下の単語をヘッダから検索
 	nnoremap sfh :<C-u>vim /\<<C-r><C-w>\>/j **/*.h*<CR>
-else
-	" 簡単vimgrep
-	nnoremap s :<C-u>grep -r "<C-r><C-w>" *
-	" カーソル下の単語をソースから検索
-	nnoremap sfs :<C-u>grep -r "<C-r><C-w>" *.c*<CR>
-	" カーソル下の単語をヘッダから検索
-	nnoremap sfh :<C-u>grep -r "<C-r><C-w>" *.h*<CR>
 endif
 
 " 検索結果を中央に
