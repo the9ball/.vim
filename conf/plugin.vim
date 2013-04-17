@@ -555,11 +555,11 @@ endif
 
 if g:has_plugin( 'qfixgrep' )
 	" 簡単vimgrep
-	nnoremap s :<C-u>RGrep "<C-r><C-w>" *
+	nnoremap s :<C-u>RGrep -E "\<<C-r><C-w>\>" *
 	" カーソル下の単語をソースから検索
-	nnoremap sfs :<C-u>RGrep "<C-r><C-w>" *.c*<CR>
+	nnoremap sfs :<C-u>RGrep -E "\<<C-r><C-w>\>" *.c*<CR>
 	" カーソル下の単語をヘッダから検索
-	nnoremap sfh :<C-u>RGrep "<C-r><C-w>" *.h*<CR>
+	nnoremap sfh :<C-u>RGrep -E "\<<C-r><C-w>\>" *.h*<CR>
 endif
 
 " }}}
