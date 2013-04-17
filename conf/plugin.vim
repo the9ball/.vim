@@ -554,6 +554,11 @@ if g:has_plugin( 'vim-alignta' )
 endif
 
 if g:has_plugin( 'qfixgrep' )
+	" QuickFixウィンドウでプレビューを有効にする
+	let QFix_PreviewEnable = 0
+	" QuickFixウィンドウの高さ
+	let QFix_Height = 5
+
 	" 簡単vimgrep
 	nnoremap s :<C-u>RGrep -E "\<<C-r><C-w>\>" *
 	" カーソル下の単語をソースから検索
