@@ -75,7 +75,7 @@ set sidescrolloff=10
 " vimgrep コマンドの結果を quickfix に出力
 " au QuickfixCmdPost vimgrep cw
 " 各種Quickfixを処理する際に、結果がある時だけウィンドウを開く。
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen|resize 5 | endif
 
 " omni補完ON?
 filetype plugin on
