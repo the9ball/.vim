@@ -263,6 +263,12 @@ inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <silent><expr> <C-a> pumvisible()? neocomplcache#close_popup() : "\<C-o>I"
 inoremap <silent><expr> <C-e> pumvisible()? neocomplcache#close_popup() : "\<C-o>A"
 
+" 何故かcompletefuncが空になることがあるので・・・。
+augroup neocomplcache_completefunc
+	autocmd!
+	autocmd WinEnter,InsertEnter * set completefunc=neocomplcache#complete#manual_complete
+augroup END
+
 endif
 
 
