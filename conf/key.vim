@@ -181,9 +181,9 @@ vnoremap s :s/\v
 
 " 誤爆防止
 " sとか後で定義しなおしてるけど。
-nnoremap S <Nop>
-nnoremap s <Nop>
-nnoremap ZZ <Nop>
+silent! nnoremap <unique> S <Nop>
+silent! nnoremap <unique> s <Nop>
+silent! nnoremap <unique> ZZ <Nop>
 
 " xで削除した時にレジスタに載せない。
 nnoremap x "_x
@@ -420,7 +420,7 @@ endif
 " CtrlPBuffer で十分 というか<C-[n|p|i|o]>とかで飛んでるとわけがわからなくなる。
 if 0
 	" バッファ操作キー
-	nnoremap s <Nop>
+	silent! nnoremap <unique> s <Nop>
 	" ファイルリスト表示
 	nnoremap <silent> sl :<C-u>ls<CR>
 	" 直前のファイルに飛ぶ
