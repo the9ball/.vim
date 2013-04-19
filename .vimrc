@@ -14,6 +14,12 @@ source $HOME/.vim/conf/plugin.vim
 " キーバインド
 source $HOME/.vim/conf/key.vim
 
+" ローカル用設定
+let s:localvimrc = ".vimrc.local"
+if filereadable( '' . s:localvimrc )
+	execute 'source ' . s:localvimrc
+endif
+
 " filetype on した時点で登録済みのファイルタイプしか判定されないらしい。
 " on の時に on にしても意味がないらしい。
 filetype off

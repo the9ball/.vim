@@ -1,2 +1,3 @@
+.vimrc.local
 bundle/*
 pyclewn/pyclewn-1.9.py2/clewn/*.pyc
