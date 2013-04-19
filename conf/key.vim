@@ -227,7 +227,7 @@ nnoremap <Space><CR> :<Up><CR>
 nnoremap <silent> <Space>w :w<CR>
 
 " ファイル名のヤンク
-nnoremap <silent> yf :call setreg( '"', expand( '%:t' ) )<CR>
+nnoremap <silent> yn :call setreg( '"', expand( '%:t' ) )<CR>
 nnoremap <silent> yp :call setreg( '"', expand( '%:p' ) )<CR>
 
 " 誤爆防止
