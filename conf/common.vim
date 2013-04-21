@@ -578,8 +578,15 @@ command! -bang -bar -complete=file -nargs=? Unix  edit<bang> ++fileformat=unix  
 " {{{ やりたいこと。
 "
 " ファイルのオープンを常に相対パスで。
+
 " 置換したあと検索ハイライトしないようにする。
 " -> let @/ = "" で潰す？ -> イベントない・・・orz
-"
+
+" 最後に残っていたウィンドウがquickfixだった場合はそのまま閉じる
+" -> BufWipeout/BufDelete/BufUnloadじゃダメっぽい
+" -> できたら起動直後にcopenいれちゃう？
+
+" :bdeleteしてもウィンドウを閉じず、:bnext あたりを実行
+
 " }}}
 " =============================================================
