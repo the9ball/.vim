@@ -558,6 +558,7 @@ if g:has_plugin( 'vim-alignta' )
 	vnoremap <silent> == :Align @1 =<CR>
 	vnoremap <silent> =/ :Align @1 //<CR>
 	vnoremap <silent> =m :Align <- m_<CR>
+	vnoremap <silent> =M :Align <- m_<CR>
 	vnoremap <silent> =<Space> :s/\v  +/ /ge<CR>:nohlsearch<CR>gv:Align @0 \ <CR>
 endif
 
