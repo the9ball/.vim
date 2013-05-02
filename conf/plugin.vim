@@ -44,7 +44,6 @@ NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
-NeoBundle 'fuenor/qfixgrep'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
@@ -130,6 +129,9 @@ endif
 
 " gtags使わなくなった。
 " NeoBundle 'the9ball/gtags.vim'
+
+" 検索に引っかからないことが多い？要調査
+" NeoBundle 'fuenor/qfixgrep'
 
 " }}}
 
