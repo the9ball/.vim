@@ -243,6 +243,9 @@ nnoremap <silent> <C-w><C-w> :<C-u>set wrap!<CR>
 nnoremap <silent> bp :<C-u>bprevious<CR>
 nnoremap <silent> bn :<C-u>bnext<CR>
 
+" ファイル名フルパス表示
+nnoremap <C-g> 1<C-g>
+
 " 検索は別項目
 
 " {{{ command-line-window
