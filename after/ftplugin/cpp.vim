@@ -12,3 +12,15 @@ function! s:functionHelper()
 	silent normal! o}
 	exec 'nohlsearch'
 endfunction
+
+" コード検索
+if !g:has_plugin( 'qfixgrep' )
+	" カーソル下の単語をソースから検索
+	nnoremap sfs :<C-u>vim /\<<C-r><C-w>\>/j **/*.cpp<CR>
+	" カーソル下の単語をヘッダから検索
+	nnoremap sfh :<C-u>vim /\<<C-r><C-w>\>/j **/*.h<CR>
+	" カーソル下の単語をヘッダから検索
+	" 多分使う機会はないだろうけど、ライブラリ検索用
+	nnoremap sfl :<C-u>vim /\<<C-r><C-w>\>/j **/*.hpp<CR>
+endif
+
