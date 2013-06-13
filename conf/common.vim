@@ -175,6 +175,9 @@ augroup MyFileOpen
 	au BufNewFile,BufRead,FileReadPost,FilterReadPost,StdinReadPost * call s:BufAdd()
 augroup END
 
+" quickfixをbnextなどの対象にしない
+autocmd FileType qf setlocal nobuflisted
+
 " }}}
 " =============================================================
 
