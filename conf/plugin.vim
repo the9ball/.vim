@@ -82,6 +82,7 @@ endif
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
 " NeoBundle 'mattn/excitetranslate-vim'
+" NeoBundle 'deris/vim-rengbang'
 " }}}
 
 " 使わないことにしたリスト。{{{
