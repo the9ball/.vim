@@ -415,6 +415,7 @@ set statusline+=%=						" 左と右の境界
 "エラーが出たりカーソル位置がずれたり散々だった。
 "set statusline+=%{b:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
 
+set statusline+=%{b:SearchPos()}		" 検索位置
 set statusline+=(%l,%v)					" カーソル位置
 set statusline+=[%B]					" カーソル下の文字コード
 set statusline+=\ %p%%					" ファイル内のページの位置
@@ -460,7 +461,14 @@ function! b:WrapMode()
 	if &wrap
 		return	'[wrap]'
 	endif
-	return	''
+	return ''
+endfunction
+
+function! b:SearchPos()
+	if g:has_plugin( 'vim-anzu' )
+		return anzu#search_status()
+	endif
+	return ''
 endfunction
 
 " }}}

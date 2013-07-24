@@ -44,6 +44,7 @@ NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
+NeoBundle 'osyo-manga/vim-anzu'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
@@ -577,6 +578,13 @@ if g:has_plugin( 'qfixgrep' )
 	nnoremap sfs :<C-u>RGrep -E "\<<C-r><C-w>\>" *.c*<CR>
 	" カーソル下の単語をヘッダから検索
 	nnoremap sfh :<C-u>RGrep -E "\<<C-r><C-w>\>" *.h*<CR>
+endif
+
+if g:has_plugin( 'vim-anzu' )
+	nmap <silent> n <plug>(anzu-n)zzzv
+	nmap <silent> N <plug>(anzu-N)zzzv
+	" nmap * <plug>(anzu-star)N
+	" nmap # <plug>(anzu-sharp)n
 endif
 
 " }}}
