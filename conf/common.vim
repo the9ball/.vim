@@ -424,7 +424,7 @@ set statusline+=\
 " 最初の1回がなぜかうまくいかないので・・・
 silent normal! vv
 
-" 今いるところの関数名を取得
+" 今いるところの関数名を取得 {{{
 " namespaceとかclassとかそういうのは未対応
 function! b:FuncName()
 	" 今居る位置を保存
@@ -456,20 +456,25 @@ function! b:FuncName()
 	"echo l:result
 	return l:result
 endfunction
+" }}}
 
+" wrap表示 {{{
 function! b:WrapMode()
 	if &wrap
 		return	'[wrap]'
 	endif
 	return ''
 endfunction
+" }}}
 
+" searchPos {{{
 function! b:SearchPos()
 	if g:has_plugin( 'vim-anzu' )
 		return anzu#search_status()
 	endif
 	return ''
 endfunction
+" }}}
 
 " }}}
 " =============================================================
