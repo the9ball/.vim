@@ -583,8 +583,8 @@ endif
 if g:has_plugin( 'vim-anzu' )
 	nmap <silent> n <plug>(anzu-n)zzzv
 	nmap <silent> N <plug>(anzu-N)zzzv
-	" nmap * <plug>(anzu-star)N
-	" nmap # <plug>(anzu-sharp)n
+	nmap <silent> * <plug>(anzu-star)<plug>(anzu-N)
+	nmap <silent> # <plug>(anzu-sharp)<plug>(anzu-n)
 endif
 
 " }}}

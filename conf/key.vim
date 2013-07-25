@@ -485,16 +485,20 @@ endif
 
 " 検索結果を中央に
 " zvは折りたたみを展開する。
-nnoremap n nzzzv
-nnoremap N Nzzzv
+if "" == maparg( "n", "n" ) && "" == maparg( "N", "n" )
+	nnoremap <unique> n nzzzv
+	nnoremap <unique> N Nzzzv
+endif
 
 " *と#の検索で前後に飛ばないように。
 " 直後にnやNで飛びたいので/レジスタにセットしておく。
-highlight MyQuickSearch ctermbg=grey guibg=grey
-nnoremap <silent> * :let @/ = "\\<<C-r><C-w>\\>"<CR>:match MyQuickSearch /<C-r>//<CR>
-nnoremap <silent> # :let @/ = "\\<<C-r><C-w>\\>"<CR>:match MyQuickSearch /<C-r>//<CR>
-nnoremap <silent> g* :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
-nnoremap <silent> g# :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
+if "" == maparg( "*", "n" ) && "" == maparg( "#", "n" )
+	highlight MyQuickSearch ctermbg=grey guibg=grey
+	nnoremap <silent> * :let @/ = "\\<<C-r><C-w>\\>"<CR>:match MyQuickSearch /<C-r>//<CR>
+	nnoremap <silent> # :let @/ = "\\<<C-r><C-w>\\>"<CR>:match MyQuickSearch /<C-r>//<CR>
+	nnoremap <silent> g* :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
+	nnoremap <silent> g# :let @/ = "<C-r><C-w>"<CR>:match MyQuickSearch /<C-r>/<CR>
+endif
 
 " 検索ハイライトを消す。
 nnoremap <silent> <ESC> :nohlsearch<CR>:match none<CR>
