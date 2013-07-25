@@ -54,6 +54,7 @@ NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'mattn/vim-metarw'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/vim-metarw-simplenote'
+NeoBundle 'osyo-manga/vim-milfeulle'
 
 " カラースキーム {{{
 NeoBundle 'Shougo/unite.vim'
