@@ -35,6 +35,7 @@ NeoBundle 'the9ball/vim-projectdir'
 NeoBundle 'the9ball/vim-auto-expandtab'
 NeoBundle 'the9ball/vim-cycle', 'autoload'
 NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'osyo-manga/vim-anzu'
 
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
@@ -44,7 +45,6 @@ NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
-NeoBundle 'osyo-manga/vim-anzu'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
