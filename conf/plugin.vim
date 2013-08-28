@@ -45,7 +45,6 @@ NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
-NeoBundle 'cohama/vim-insert-linenr'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
@@ -119,6 +118,7 @@ endif
 " つかいにくかった。
 " NeoBundle 'rhysd/accelerated-jk'
 " NeoBundle 'yuratomo/dbg.vim' pyclewnの方が使いやすい。
+" NeoBundle 'cohama/vim-insert-linenr'
 
 " 結局使わない。
 " NeoBundle 'Lokaltog/vim-easymotion'
