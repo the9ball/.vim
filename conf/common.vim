@@ -559,6 +559,13 @@ command!
 \   Has
 \   echo has(<q-args>)
 
+" plugin のディレクトリにある .vim ファイルを :source した時に
+" g:loaded_xxx 変数を削除する
+augroup remove_g_loaded_xxx
+	autocmd!
+	autocmd SourcePre */plugin/*.vim unlet! g:loaded_{expand("<afile>:t:r")}
+augroup END
+
 " }}}
 " =============================================================
 
