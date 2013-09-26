@@ -566,6 +566,31 @@ augroup remove_g_loaded_xxx
 	autocmd SourcePre */plugin/*.vim unlet! g:loaded_{expand("<afile>:t:r")}
 augroup END
 
+
+" {{{ ヘルプ記述支援
+function! s:help()
+	augroup my-help
+	autocmd! * <buffer>
+		" Insert に入った時に表示し
+		autocmd InsertEnter <buffer> :setlocal conceallevel=0
+		" Insert から抜けるを非表示にする
+		autocmd InsertLeave <buffer> :setlocal conceallevel=2
+	augroup END
+
+	" 常に表示する場合はこっち
+	"     if &buftype !=#
+	"     'help'
+	"         setlocal
+	"         conceallevel=0
+	"     endif
+endfunction
+
+augroup my-vimrc
+	autocmd!
+	autocmd FileType help call s:help()
+augroup END
+" }}}
+
 " }}}
 " =============================================================
 
