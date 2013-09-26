@@ -243,6 +243,9 @@ nnoremap <silent> <C-w><C-w> :<C-u>set wrap!<CR>
 nnoremap <silent> bp :<C-u>bprevious<CR>
 nnoremap <silent> bn :<C-u>bnext<CR>
 
+" 単語のリネーム
+nnoremap <Space>r :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+
 " ファイル名フルパス表示
 nnoremap <C-g> 1<C-g>
 
