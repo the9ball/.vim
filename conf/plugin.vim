@@ -476,7 +476,7 @@ let g:submode_leave_with_key = 1
 let g:submode_timeout = 0
 
 " Change GUI window size. {{{
-call submode#enter_with( 'guiwinsize', 'n', '', '<S-w>' )
+call submode#enter_with( 'guiwinsize', 'n', '', '<C-w><Space>' )
 call submode#leave_with( 'guiwinsize', 'n', '', '<Esc>' )
 call submode#map       ( 'guiwinsize', 'n', '', 'j', '<C-w>+' )
 call submode#map       ( 'guiwinsize', 'n', '', 'k', '<C-w>-' )
