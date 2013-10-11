@@ -239,6 +239,9 @@ nnoremap <C-q> q
 " デフォルト潰すのがあれだけど、<C-w>j/k/l/hで移動するから問題ないはず。
 nnoremap <silent> <C-w><C-w> :<C-u>set wrap!<CR>
 
+" 他のバッファを閉じる
+command! -nargs=0 BO :BufOnly
+
 " バッファ移動
 nnoremap <silent> bp :<C-u>bprevious<CR>
 nnoremap <silent> bn :<C-u>bnext<CR>
