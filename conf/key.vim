@@ -188,6 +188,8 @@ silent! nnoremap <unique> ZZ <Nop>
 " xで削除した時にレジスタに載せない。
 nnoremap x "_x
 nnoremap X "_X
+nnoremap c "_c
+nnoremap C "_C
 
 " jkでのカーソル移動を表示行単位で行う
 nnoremap j gj
