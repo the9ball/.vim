@@ -619,6 +619,12 @@ command! -bang -bar -complete=file -nargs=? Unix  edit<bang> ++fileformat=unix  
 " :messageの結果に追加
 " echomsg ...
 
+" :source % したときだけ処理する
+" デバッグコードを埋め込むのに最適？
+" if expand("%:p") == expand("<sfile>:p")
+" 	echo "sourced"
+" endif
+
 " }}}
 " =============================================================
 
