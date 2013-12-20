@@ -26,7 +26,7 @@ NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-verboselet'
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'vim-scripts/surround.vim'
 NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'tpope/vim-fugitive'
@@ -174,105 +174,105 @@ endif
 " =============================================================
 
 " =============================================================
-" {{{ Neocomplcache
+" {{{ neocomplete
 
-if g:has_plugin( 'neocomplcache' )
+if g:has_plugin( 'neocomplete' )
 
 set completeopt+=longest
 
 "起動時に有効
-let g:neocomplcache_enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 1
 "ポップアップメニューで表示される候補の数。初期値は100
-let g:neocomplcache_max_list = 5
+let g:neocomplete#max_list = 5
 "自動補完を行う入力数を設定。初期値は2
-let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplete#auto_completion_start_length = 3
 "手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
-let g:neocomplcache_manual_completion_start_length = 3
+let g:neocomplete#manual_completion_start_length = 3
 "バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-let g:neocomplcache_min_keyword_length = 4
+let g:neocomplete#min_keyword_length = 4
 "シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-let g:neocomplcache_min_syntax_length = 4
+let g:neocomplete#min_syntax_length = 4
 "1:補完候補検索時に大文字・小文字を無視する
-let g:neocomplcache_enable_ignore_case = 1
+let g:neocomplete#enable_ignore_case = 1
 "入力に大文字が入力されている場合、大文字小文字の区別をする
-let g:neocomplcache_enable_smart_case = 1
+let g:neocomplete#enable_smart_case = 1
 
 "大文字小文字を区切りとしたあいまい検索を行うかどうか。
 "DTと入力するとD*T*と解釈され、DateTime等にマッチする。
-let g:neocomplcache_enable_camel_case_completion = 0
+let g:neocomplete#enable_camel_case_completion = 0
 "アンダーバーを区切りとしたあいまい検索を行うかどうか。
 "m_sと入力するとm*_sと解釈され、mb_substr等にマッチする。
-let g:neocomplcache_enable_underbar_completion = 0
+let g:neocomplete#enable_underbar_completion = 0
 "ファジー補間
-"g:neocomplcache_enable_underbar_completion and
-"g:neocomplcache_enable_camel_case_completion is disabled.
-let g:neocomplcache_enable_fuzzy_completion = 1
+"g:neocomplete#enable_underbar_completion and
+"g:neocomplete#enable_camel_case_completion is disabled.
+let g:neocomplete#enable_fuzzy_completion = 1
 
 if 1 " 以下を有効にするとシェルっぽい補間に。 {{{
-	let g:neocomplcache_enable_auto_select = 1
-	let g:neocomplcache_disable_auto_complete = 1
+	let g:neocomplete#enable_auto_select = 1
+	let g:neocomplete#disable_auto_complete = 1
 	inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>"
 endif " }}}
 
 "キャッシュディレクトリの場所
 "RamDiskをキャッシュディレクトリに設定
 if has('win32')
-	let g:neocomplcache_temporary_dir = 'D:/.neocon'
+	let g:neocomplete#temporary_dir = 'D:/.neocon'
 elseif has('macunix')
-	let g:neocomplcache_temporary_dir = '/tmp/.neocon'
+	let g:neocomplete#temporary_dir = '/tmp/.neocon'
 else
-	let g:neocomplcache_temporary_dir = '/tmp/.neocon'
+	let g:neocomplete#temporary_dir = '/tmp/.neocon'
 endif
 
 "シンタックス補完を無効に
-let g:neocomplcache_plugin_disable = {
+let g:neocomplete#plugin_disable = {
 \ 'syntax_complete' : 1, 
 \ }
 
 "補完するためのキーワードパターンを指定
-if !exists('g:neocomplcache_keyword_patterns')
-	let g:neocomplcache_keyword_patterns = {}
+if !exists('g:neocomplete#keyword_patterns')
+	let g:neocomplete#keyword_patterns = {}
 endif
 "日本語を補完候補として取得しないようにする
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 "関数を補完するための区切り文字パターン
-if !exists('g:neocomplcache_delimiter_patterns')
-	let g:neocomplcache_delimiter_patterns = {}
+if !exists('g:neocomplete#delimiter_patterns')
+	let g:neocomplete#delimiter_patterns = {}
 endif
-let g:neocomplcache_delimiter_patterns['php'] = ['->', '::', '\']
-let g:neocomplcache_delimiter_patterns['cpp'] = ['\.', '->', '::']
-let g:neocomplcache_delimiter_patterns['cs']  = ['\.']
+let g:neocomplete#delimiter_patterns['php'] = ['->', '::', '\']
+let g:neocomplete#delimiter_patterns['cpp'] = ['\.', '->', '::']
+let g:neocomplete#delimiter_patterns['cs']  = ['\.']
 
 "カーソルより後のキーワードパターンを認識。
 "h|geとなっている状態(|はカーソル)で、hogeを補完したときに後ろのキーワードを認識してho|geと補完する機能。
 "修正するときにかなり便利。
-" g:neocomplcache_next_keyword_patternsは分からないときはいじらないほうが良いです。
-if !exists('g:neocomplcache_next_keyword_patterns')
-	let g:neocomplcache_next_keyword_patterns = {}
+" g:neocomplete#next_keyword_patternsは分からないときはいじらないほうが良いです。
+if !exists('g:neocomplete#next_keyword_patterns')
+	let g:neocomplete#next_keyword_patterns = {}
 endif
 
 "ファイルタイプの関連付け
-if !exists('g:neocomplcache_same_filetype_lists')
-	let g:neocomplcache_same_filetype_lists = {}
+if !exists('g:neocomplete#same_filetype_lists')
+	let g:neocomplete#same_filetype_lists = {}
 endif
 
 "オムニ補完のパターンを設定
-if !exists('g:neocomplcache_omni_patterns')
-	let g:neocomplcache_omni_patterns = {}
+if !exists('g:neocomplete#omni_patterns')
+	let g:neocomplete#omni_patterns = {}
 endif
 
 " Enterで改行
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><CR> neocomplete#smart_close_popup() . "\<CR>"
 
 " 先頭/終端へのジャンプ及び、補間キャンセル
-inoremap <silent><expr> <C-a> pumvisible()? neocomplcache#close_popup() : "\<C-o>I"
-inoremap <silent><expr> <C-e> pumvisible()? neocomplcache#close_popup() : "\<C-o>A"
+inoremap <silent><expr> <C-a> pumvisible()? neocomplete#close_popup() : "\<C-o>I"
+inoremap <silent><expr> <C-e> pumvisible()? neocomplete#close_popup() : "\<C-o>A"
 
 " 何故かcompletefuncが空になることがあるので・・・。
-augroup neocomplcache_completefunc
+augroup neocomplete#completefunc
 	autocmd!
-	autocmd WinEnter,InsertEnter * set completefunc=neocomplcache#complete#manual_complete
+	autocmd WinEnter,InsertEnter * set completefunc=neocomplete#complete#manual_complete
 augroup END
 
 endif
