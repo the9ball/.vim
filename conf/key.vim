@@ -392,6 +392,10 @@ cnoremap <expr> <C-r><C-e> <SID>pasteOriginal( 0, '', '' )
 cnoremap <expr> <C-r><C-w> <SID>pasteOriginal( 1, '\<', '\>' )
 " }}}
 
+" ペースト時にUndoブロックを切る。
+inoremap <C-r> <C-g>u<C-r>
+inoremap <C-e> <C-o><Undo>
+
 inoremap <silent> <C-f> <C-o>a
 inoremap <silent> <C-b> <C-o>h
 if !g:has_plugin( 'neocomplcache' )
