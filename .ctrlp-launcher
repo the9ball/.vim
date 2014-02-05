@@ -2,6 +2,7 @@ Ctrlp ClearCache	CtrlPClearCache
 filetype:cpp	set ft=cpp
 filetype:cs	set ft=cs
 filetype:vim	set ft=vim
+filetype:php	set ft=php
 fileformat:dos	edit ++ff=dos
 fileformat:unix	edit ++ff=unix
 UnSyncScroll	set noscrollbind
