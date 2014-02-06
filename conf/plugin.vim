@@ -185,7 +185,7 @@ let g:neocomplete#enable_at_startup = 1
 "ポップアップメニューで表示される候補の数。初期値は100
 let g:neocomplete#max_list = 5
 "自動補完を行う入力数を設定。初期値は2
-let g:neocomplete#auto_completion_start_length = 3
+let g:neocomplete#auto_completion_start_length = 2
 "手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
 let g:neocomplete#manual_completion_start_length = 3
 "バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
@@ -199,10 +199,10 @@ let g:neocomplete#enable_smart_case = 1
 
 "大文字小文字を区切りとしたあいまい検索を行うかどうか。
 "DTと入力するとD*T*と解釈され、DateTime等にマッチする。
-let g:neocomplete#enable_camel_case_completion = 0
+let g:neocomplete#enable_camel_case_completion = 1
 "アンダーバーを区切りとしたあいまい検索を行うかどうか。
 "m_sと入力するとm*_sと解釈され、mb_substr等にマッチする。
-let g:neocomplete#enable_underbar_completion = 0
+let g:neocomplete#enable_underbar_completion = 1
 "ファジー補間
 "g:neocomplete#enable_underbar_completion and
 "g:neocomplete#enable_camel_case_completion is disabled.
@@ -248,22 +248,19 @@ let g:neocomplete#delimiter_patterns['cs']  = ['\.']
 "h|geとなっている状態(|はカーソル)で、hogeを補完したときに後ろのキーワードを認識してho|geと補完する機能。
 "修正するときにかなり便利。
 " g:neocomplete#next_keyword_patternsは分からないときはいじらないほうが良いです。
-if !exists('g:neocomplete#next_keyword_patterns')
-	let g:neocomplete#next_keyword_patterns = {}
-endif
-
-"ファイルタイプの関連付け
-if !exists('g:neocomplete#same_filetype_lists')
-	let g:neocomplete#same_filetype_lists = {}
-endif
-
-"オムニ補完のパターンを設定
-if !exists('g:neocomplete#omni_patterns')
-	let g:neocomplete#omni_patterns = {}
-endif
-
-" Enterで改行
-inoremap <expr><CR> neocomplete#smart_close_popup() . "\<CR>"
+"if !exists('g:neocomplete#next_keyword_patterns')
+"	let g:neocomplete#next_keyword_patterns = {}
+"endif
+"
+""ファイルタイプの関連付け
+"if !exists('g:neocomplete#same_filetype_lists')
+"	let g:neocomplete#same_filetype_lists = {}
+"endif
+"
+""オムニ補完のパターンを設定
+"if !exists('g:neocomplete#omni_patterns')
+"	let g:neocomplete#omni_patterns = {}
+"endif
 
 " 先頭/終端へのジャンプ及び、補間キャンセル
 inoremap <silent><expr> <C-a> pumvisible()? neocomplete#close_popup() : "\<C-o>I"
