@@ -10,3 +10,4 @@ Reload VIMRC	source ~/.vim/.vimrc
 PutDot	%s-\(//.*[^\.]\)$-\1.-
 ChangeMidTab	%s/\v([^\t])\t+/\1 /ge
 noexpandtab	set noexpandtab
+check:php	!php -l %
