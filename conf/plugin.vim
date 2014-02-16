@@ -28,7 +28,6 @@ NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-verboselet'
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'kana/vim-submode'
@@ -43,6 +42,10 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
+
+if has('lua')
+	NeoBundle 'Shougo/neocomplete.vim'
+endif
 
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
