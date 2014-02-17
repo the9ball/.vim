@@ -29,7 +29,6 @@ NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-verboselet'
 NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'vim-scripts/surround.vim'
 NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'kana/vim-submode'
@@ -44,6 +43,14 @@ NeoBundle 'osyo-manga/vim-anzu'
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
 "NeoBundle 'jayed/pyclewn'
+
+" textobject系
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'vim-scripts/surround.vim'
+NeoBundle 'kana/vim-textobj-function'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-underscore'
+NeoBundle 'thinca/vim-textobj-comment'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
