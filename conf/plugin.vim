@@ -8,6 +8,8 @@ set rtp+=~/.vim/bundle/neobundle.vim/
 " 管理するフォルダを引数で渡します。
 call neobundle#rc( '$HOME/.vim/bundle' )
 
+let g:neobundle_default_git_protocol="git"
+
 " NeoBundle が管理するプラグイン
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
