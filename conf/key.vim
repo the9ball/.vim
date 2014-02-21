@@ -197,6 +197,9 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+" 暴発するので・・・
+nnoremap K gk
+
 " QuickFixの移動
 nnoremap <silent> <C-n> :<C-u>cnext<CR>zv
 nnoremap <silent> <C-p> :<C-u>cprevious<CR>zv
