@@ -275,9 +275,6 @@ let g:neocomplete#delimiter_patterns['cs']  = ['\.']
 inoremap <silent><expr> <C-a> pumvisible()? neocomplete#close_popup() : "\<C-o>I"
 inoremap <silent><expr> <C-e> pumvisible()? neocomplete#close_popup() : "\<C-o>A"
 
-" 改行
-inoremap <silent><expr> <CR> neocomplete#close_popup() . "\<CR>"
-
 " 何故かcompletefuncが空になることがあるので・・・。
 augroup neocomplete#completefunc
 	autocmd!
