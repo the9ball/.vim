@@ -355,6 +355,11 @@ if g:has_plugin( 'quickrun' )
 		if g:has_plugin( 'vim-hier' )
 			execute "highlight watchdogs ctermbg=DarkGray gui=undercurl guisp=Red"
 			let g:hier_highlight_group_qf = "watchdogs"
+
+			augroup watchdogs-hier
+				autocmd!
+				autocmd TextChangedI * HierClear
+			augroup END
 		endif
 
 	endif
