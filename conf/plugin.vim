@@ -310,9 +310,6 @@ endif
 
 if g:has_plugin( 'quickrun' )
 
-execute "highlight ucurl_my ctermbg=red gui=undercurl guisp=Red"
-let g:hier_highlight_group_qf = "ucurl_my"
-
 let g:quickrun_config = {
 \    '_' : {
 \       'runner' : 'vimproc',
@@ -354,6 +351,11 @@ call watchdogs#setup( g:quickrun_config )
 
 " 書き込み時のシンタックスチェック
 let g:watchdogs_check_BufWritePost_enable = 1
+
+if g:has_plugin( 'vim-hier' )
+execute "highlight watchdogs ctermbg=DarkGray gui=undercurl guisp=Red"
+let g:hier_highlight_group_qf = "watchdogs"
+endif
 
 endif
 
