@@ -39,6 +39,10 @@ NeoBundle 'the9ball/vim-auto-expandtab'
 NeoBundle 'the9ball/vim-cycle', 'autoload'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'jceb/vim-hier'
+NeoBundle 'osyo-manga/shabadou.vim'
+NeoBundle 'osyo-manga/vim-watchdogs'
 
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
@@ -296,6 +300,66 @@ if has('conceal')
 	set conceallevel=2 concealcursor=i
 endif
 
+endif
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ quickrun
+
+if g:has_plugin( 'quickrun' )
+
+execute "highlight ucurl_my ctermbg=red gui=undercurl guisp=Red"
+let g:hier_highlight_group_qf = "ucurl_my"
+
+let g:quickrun_config = {
+\    '_' : {
+\       'runner' : 'vimproc',
+\       'runner/vimproc/updatetime' : 60,
+\       "outputter" : "error",
+\       "outputter/error/success" : "buffer",
+\       "outputter/error/error"   : "quickfix",
+\       "outputter/buffer/split" : ":botright 8sp",
+\       "outputter/quickfix/open_cmd" : "copen",
+\       "outputter/buffer/running_mark" : "ﾊﾞﾝ（∩`･ω･）ﾊﾞﾝﾊﾞﾝﾊﾞﾝﾊﾞﾝﾞﾝ",
+\   },
+\   'watchdogs_checker/_' : {
+\       "hook/hier_update/enable_exit" : 1,
+\       "hook/close_quickfix/enable_exit" : 1,
+\   },
+\}
+
+" {{{ :QuickRun 時に quickfix の中身をクリアする
+" こうしておかないと quickfix の中身が残ったままになってしまうため
+let s:hook = {
+\   "name" : "clear_quickfix",
+\   "kind" : "hook",
+\}
+
+function! s:hook.on_normalized(session, context)
+	call setqflist([])
+endfunction
+
+call quickrun#module#register(s:hook, 1)
+unlet s:hook
+" }}}
+
+" =============================================================
+" {{{ watchdogs
+
+if g:has_plugin( 'vim-watchdogs' )
+
+call watchdogs#setup( g:quickrun_config )
+
+" 書き込み時のシンタックスチェック
+let g:watchdogs_check_BufWritePost_enable = 1
+
+endif
+
+" }}}
+" =============================================================
+	
 endif
 
 " }}}
