@@ -242,6 +242,7 @@ endif
 let g:neocomplete#delimiter_patterns['php'] = ['->', '::', '\']
 let g:neocomplete#delimiter_patterns['cpp'] = ['\.', '->', '::']
 let g:neocomplete#delimiter_patterns['cs']  = ['\.']
+let g:neocomplete#delimiter_patterns['vim']  = ['#']
 
 "カーソルより後のキーワードパターンを認識。
 "h|geとなっている状態(|はカーソル)で、hogeを補完したときに後ろのキーワードを認識してho|geと補完する機能。
