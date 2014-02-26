@@ -278,6 +278,9 @@ nnoremap <C-g> 1<C-g>
 		if g:has_plugin( 'neobundle' )
 			inoremap <buffer><silent> <Tab> <C-n>
 		endif
+		if g:has_plugin( 'neocomplete' )
+			inoremap <expr><buffer><silent> <CR> pumvisible()? neocomplete#smart_close_popup() : "\<CR>"
+		endif
 	endfunction
 	augroup MyCmdwinEnter
 		autocmd!
