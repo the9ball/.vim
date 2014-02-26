@@ -310,57 +310,57 @@ endif
 
 if g:has_plugin( 'quickrun' )
 
-let g:quickrun_config = {
-\    '_' : {
-\       'runner' : 'vimproc',
-\       'runner/vimproc/updatetime' : 60,
-\       "outputter" : "error",
-\       "outputter/error/success" : "buffer",
-\       "outputter/error/error"   : "quickfix",
-\       "outputter/buffer/split" : ":botright 8sp",
-\       "outputter/quickfix/open_cmd" : "copen",
-\       "outputter/buffer/running_mark" : "ﾊﾞﾝ（∩`･ω･）ﾊﾞﾝﾊﾞﾝﾊﾞﾝﾊﾞﾝﾞﾝ",
-\   },
-\   'watchdogs_checker/_' : {
-\       "hook/hier_update/enable_exit" : 1,
-\       "hook/close_quickfix/enable_exit" : 1,
-\   },
-\}
+	let g:quickrun_config = {
+	\    '_' : {
+	\       'runner' : 'vimproc',
+	\       'runner/vimproc/updatetime' : 60,
+	\       "outputter" : "error",
+	\       "outputter/error/success" : "buffer",
+	\       "outputter/error/error"   : "quickfix",
+	\       "outputter/buffer/split" : ":botright 8sp",
+	\       "outputter/quickfix/open_cmd" : "copen",
+	\       "outputter/buffer/running_mark" : "ﾊﾞﾝ（∩`･ω･）ﾊﾞﾝﾊﾞﾝﾊﾞﾝﾊﾞﾝﾞﾝ",
+	\   },
+	\   'watchdogs_checker/_' : {
+	\       "hook/hier_update/enable_exit" : 1,
+	\       "hook/close_quickfix/enable_exit" : 1,
+	\   },
+	\}
 
-" {{{ :QuickRun 時に quickfix の中身をクリアする
-" こうしておかないと quickfix の中身が残ったままになってしまうため
-let s:hook = {
-\   "name" : "clear_quickfix",
-\   "kind" : "hook",
-\}
+	" {{{ :QuickRun 時に quickfix の中身をクリアする
+	" こうしておかないと quickfix の中身が残ったままになってしまうため
+	let s:hook = {
+	\   "name" : "clear_quickfix",
+	\   "kind" : "hook",
+	\}
 
-function! s:hook.on_normalized(session, context)
-	call setqflist([])
-endfunction
+	function! s:hook.on_normalized(session, context)
+		call setqflist([])
+	endfunction
 
-call quickrun#module#register(s:hook, 1)
-unlet s:hook
-" }}}
+	call quickrun#module#register(s:hook, 1)
+	unlet s:hook
+	" }}}
 
-" =============================================================
-" {{{ watchdogs
+	" =============================================================
+	" {{{ watchdogs
 
-if g:has_plugin( 'vim-watchdogs' )
+	if g:has_plugin( 'vim-watchdogs' )
 
-call watchdogs#setup( g:quickrun_config )
+		call watchdogs#setup( g:quickrun_config )
 
-" 書き込み時のシンタックスチェック
-let g:watchdogs_check_BufWritePost_enable = 1
+		" 書き込み時のシンタックスチェック
+		let g:watchdogs_check_BufWritePost_enable = 1
 
-if g:has_plugin( 'vim-hier' )
-execute "highlight watchdogs ctermbg=DarkGray gui=undercurl guisp=Red"
-let g:hier_highlight_group_qf = "watchdogs"
-endif
+		if g:has_plugin( 'vim-hier' )
+			execute "highlight watchdogs ctermbg=DarkGray gui=undercurl guisp=Red"
+			let g:hier_highlight_group_qf = "watchdogs"
+		endif
 
-endif
+	endif
 
-" }}}
-" =============================================================
+	" }}}
+	" =============================================================
 	
 endif
 
