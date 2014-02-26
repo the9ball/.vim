@@ -223,16 +223,6 @@ if 1 " 以下を有効にするとシェルっぽい補間に。 {{{
 	inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>"
 endif " }}}
 
-"キャッシュディレクトリの場所
-"RamDiskをキャッシュディレクトリに設定
-if has('win32')
-	let g:neocomplete#temporary_dir = 'D:/.neocon'
-elseif has('macunix')
-	let g:neocomplete#temporary_dir = '/tmp/.neocon'
-else
-	let g:neocomplete#temporary_dir = '/tmp/.neocon'
-endif
-
 "シンタックス補完を無効に
 let g:neocomplete#plugin_disable = {
 \ 'syntax_complete' : 1, 
