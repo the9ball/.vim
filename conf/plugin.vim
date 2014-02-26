@@ -103,9 +103,6 @@ endif
 " 	NeoBundle 'sgur/unite-qf'
 " 	NeoBundle 'Shougo/unite-build'
 
-" シンタックスチェッカーだが、誤検出が多い印象
-" NeoBundle 'scrooloose/syntastic'
-
 " rubyのバージョンが古かった・・・。
 " NeoBundle 'astashov/vim-ruby-debugger'
 
@@ -434,19 +431,6 @@ nnoremap <silent> <C-p> :cp<CR>
 nnoremap <silent> <C-]> :Gtags <C-r><C-w><CR>
 " grep
 " nnoremap <C-g><C-g> :Gtags -g <C-t><C-w><CR><CR><C-o>
-
-endif
-
-" }}}
-" =============================================================
-
-" =============================================================
-" {{{ syntastic
-
-if g:has_plugin( 'syntastic' )
-
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
 
 endif
 
