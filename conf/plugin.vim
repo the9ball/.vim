@@ -332,7 +332,7 @@ let g:quickrun_config = {
 \       'outputter' : 'buffer',
 \       'outputter/buffer/split' : 'vertical 35',
 \       'outputter/buffer/running_mark' : '',
-\       'cmdopt' : '',
+\       'cmdopt' : '--no-configuration',
 \       'exec': '%c %o %s'
 \   },
 \   'watchdogs_checker/_' : {
