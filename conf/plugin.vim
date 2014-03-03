@@ -327,6 +327,14 @@ let g:quickrun_config = {
 \       'command' : 'go',
 \       'exec': 'go run %s'
 \   },
+\   'phpunit' : {
+\       'command' : 'phpunit',
+\       'outputter' : 'buffer',
+\       'outputter/buffer/split' : 'vertical 35',
+\       'outputter/buffer/running_mark' : '',
+\       'cmdopt' : '',
+\       'exec': '%c %o %s'
+\   },
 \   'watchdogs_checker/_' : {
 \       "hook/hier_update/enable_exit" : 1,
 \       "hook/close_quickfix/enable_exit" : 1,
