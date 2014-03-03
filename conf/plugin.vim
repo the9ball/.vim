@@ -42,6 +42,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
+NeoBundle 'dannyob/quickfixstatus'
 
 if has('lua')
 	NeoBundle 'Shougo/neocomplete.vim'
