@@ -268,11 +268,11 @@ let g:neocomplete#delimiter_patterns['vim']  = ['#']
 "endif
 
 " 先頭/終端へのジャンプ及び、補間キャンセル
-inoremap <silent><expr> <C-a> pumvisible()? neocomplete#close_popup() : "\<C-o>I"
-inoremap <silent><expr> <C-e> pumvisible()? neocomplete#close_popup() : "\<C-o>A"
+inoremap <silent><expr> <C-a> pumvisible()? neocomplete#smart_close_popup() : "\<C-o>I"
+inoremap <silent><expr> <C-e> pumvisible()? neocomplete#smart_close_popup() : "\<C-o>A"
 
 " 改行で確定
-inoremap <silent><expr> <CR> pumvisible()? neocomplete#close_popup() : "\<CR>"
+inoremap <silent><expr> <CR> pumvisible()? neocomplete#smart_close_popup() : "\<CR>"
 
 " 何故かcompletefuncが空になることがあるので・・・。
 augroup neocomplete#completefunc
