@@ -74,6 +74,7 @@ NeoBundle 'mattn/vim-metarw'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/vim-metarw-simplenote'
 NeoBundle 'osyo-manga/vim-milfeulle'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 " カラースキーム {{{
 NeoBundle 'Shougo/unite.vim'
@@ -609,6 +610,21 @@ endif
 " =============================================================
 
 " =============================================================
+" {{{ EasyMotion
+
+if g:has_plugin( 'EasyMotion' )
+
+let g:EasyMotion_leader_key = '-'
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_migemo = 1
+let g:EasyMotion_startofline = 0
+
+endif
+
+" }}}
+" =============================================================
+
+" =============================================================
 " {{{ その他1行系
 
 if g:has_plugin( 'vim-projectdir' )
@@ -709,18 +725,6 @@ command! -bar -nargs=0 Colorscheme :Unite colorscheme -auto-preview
 "	call g:fUniteQfHelper( s:temp )
 "	cclose
 "endfunction
-
-endif
-
-" }}}
-" =============================================================
-
-" =============================================================
-" {{{ EasyMotion
-
-if g:has_plugin( 'EasyMotion' )
-
-let g:EasyMotion_leader_key	=	','
 
 endif
 
