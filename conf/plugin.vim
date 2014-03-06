@@ -339,6 +339,9 @@ let g:quickrun_config = {
 \       "hook/hier_update/enable_exit" : 1,
 \       "hook/close_quickfix/enable_exit" : 1,
 \   },
+\   'phpunit/watchdogs_checker' : {
+\       'type' : 'watchdogs_checker/php',
+\   },
 \}
 
 " {{{ :QuickRun 時に quickfix の中身をクリアする
