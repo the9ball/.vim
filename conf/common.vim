@@ -308,7 +308,8 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 " 設定 """""""""""""""""""""""""""""""""""""""""""
 
 " 基本はマーカー ( {{{ や }}} ) で折り畳み
-set fdm=marker
+set foldmethod=marker
+set foldminlines=2
 
 augroup FoldMethodAutocmd
 	au! *
