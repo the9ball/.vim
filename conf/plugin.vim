@@ -43,6 +43,7 @@ NeoBundle 'jceb/vim-hier'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'dannyob/quickfixstatus'
+NeoBundleLazy 'osyo-manga/vim-textobj-blockwise'
 
 if has('lua')
 	NeoBundle 'Shougo/neocomplete.vim'
