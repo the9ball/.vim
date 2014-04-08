@@ -43,6 +43,7 @@ NeoBundle 'jceb/vim-hier'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'dannyob/quickfixstatus'
+NeoBundle 'sjl/gundo.vim'
 NeoBundleLazy 'osyo-manga/vim-textobj-blockwise'
 
 if has('lua')
@@ -706,6 +707,10 @@ if g:has_plugin( 'vim-anzu' )
 	nmap <silent> N <plug>(anzu-N)zzzv
 	" nmap <silent> * <plug>(anzu-star)<plug>(anzu-N)
 	" nmap <silent> # <plug>(anzu-sharp)<plug>(anzu-n)
+endif
+
+if g:has_plugin( 'gundo.vim' )
+	nnoremap U :<C-u>GundoToggle<CR>
 endif
 
 " }}}
