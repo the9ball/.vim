@@ -572,6 +572,8 @@ call submode#map       ( 'scroll', 'n', '', 'h', 'zh' )
 " 折り畳みの移動 {{{
 call submode#enter_with( 'foldjump', 'n', '', 'zj', 'zj' )
 call submode#enter_with( 'foldjump', 'n', '', 'zk', 'zk' )
+call submode#enter_with( 'foldjump', 'n', '', 'zo', 'zo' )
+call submode#enter_with( 'foldjump', 'n', '', 'zc', 'zc' )
 call submode#leave_with( 'foldjump', 'n', '', '<Esc>' )
 call submode#map       ( 'foldjump', 'n', '', 'j', 'zj' )
 call submode#map       ( 'foldjump', 'n', '', 'k', 'zk' )
