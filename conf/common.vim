@@ -249,6 +249,23 @@ set backspace=indent,eol,start
 " after/ftplugin/*.vim で設定するようにする。
 "set formatoptions-=ro
 
+" {{{ 行単位で逆順にする
+	function! <SID>:ReverseLine() range
+		if a:lastline == a:firstline
+			return
+		elseif a:lastline < a:firstline
+			let l:tmp = a:lastline
+			let a:lastline = a:firstline
+			let a:firstline = l:tmp
+		endif
+		for l:i in reverse( range( a:firstline, a:lastline-1 ) )
+			call append( a:lastline, getline( l:i ) )
+			execute "silent! ".l:i."delete"
+		endfor
+	endfunction
+	vnoremap <silent> _R :call <SID>:ReverseLine()<CR>
+" }}}
+
 " }}}
 " =============================================================
 
