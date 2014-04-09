@@ -494,7 +494,7 @@ nnoremap ? ?\v
 " コード検索
 if !g:has_plugin( 'qfixgrep' )
 	" 簡単vimgrep
-	nnoremap s :<C-u>vim /\<<C-r><C-w>\>/j **/*
+	nnoremap S :<C-u>vim /\<<C-r><C-w>\>/j **/*
 endif
 
 " 検索結果を中央に
