@@ -627,6 +627,8 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_migemo = 1
 let g:EasyMotion_startofline = 0
 
+silent! nmap <unique> s <Plug>(easymotion-s)
+
 endif
 
 " }}}
