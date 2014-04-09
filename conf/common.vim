@@ -253,6 +253,27 @@ set backspace=indent,eol,start
 	command! -bar -range=% ReverseLine <line1>,<line2>g/^/m<line1>-1
 	vnoremap <silent> _R :ReverseLine<CR>
 " }}}
+
+" {{{ 単語単位で逆順にする
+	" ( c, b, a )
+	function! <SID>ReverseWord()
+		let l:tmp = @a
+		try
+			normal! gv"ad
+			let @a = substitute( @a, '\s\+', '', 'g' )
+
+			echo "expand character:"
+			let l:c = nr2char( getchar() )
+
+			let l:list = reverse( split( @a, l:c ) )
+			let @a = ' ' . join( l:list, l:c.' ' ) . ' '
+
+			normal! "aP
+		finally
+			let @a = l:tmp
+		endtry
+	endfunction
+	vnoremap <silent> _W :call <SID>ReverseWord()<CR>
 " }}}
 
 " }}}
