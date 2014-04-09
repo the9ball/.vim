@@ -673,6 +673,7 @@ if g:has_plugin( 'vim-cycle' ) || g:has_plugin( 'vim-cycle_autoload' )
 	call cycle#AddCycleGroup( ['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'xyzzy', 'thud'] )
 	call cycle#AddCycleGroup( ['On', 'Off'] )
 	call cycle#AddCycleGroup( ['pick', 'fixup', 'reword', 'squash', 'edit', 'exec'] )
+	call cycle#AddCycleGroup( ['１', '２', '３', '４', '５', '６', '７', '８', '９', '０'] )
 endif
 
 if g:has_plugin( 'Thumbnail' )
