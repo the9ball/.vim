@@ -262,7 +262,7 @@ nnoremap <C-g> 1<C-g>
 	" 補完できるし意外と便利なのかも。
 	nnoremap : q:i
 	set cmdwinheight=3
-	function! b:MyCmdWinEnter()
+	function! <SID>MyCmdWinEnter()
 		" ESCで閉じたい。
 		nnoremap <buffer><silent> <Esc> <CR>
 		inoremap <buffer><silent> <Esc> <C-o>o<CR>
@@ -274,13 +274,13 @@ nnoremap <C-g> 1<C-g>
 		" 過去のコマンドをコピー
 		inoremap <buffer><silent> <C-y> <Esc>"zy$GC<C-r>z
 
-		if g:has_plugin( 'neobundle' )
+		if HasPlugin( 'neobundle' )
 			inoremap <buffer><silent> <Tab> <C-n>
 		endif
 	endfunction
 	augroup MyCmdwinEnter
 		autocmd!
-		autocmd CmdwinEnter * call b:MyCmdWinEnter()
+		autocmd CmdwinEnter * call <SID>MyCmdWinEnter()
 	augroup END
 " }}}
 
@@ -400,7 +400,7 @@ inoremap <C-e> <C-o><Undo>
 
 inoremap <silent> <C-f> <C-o>a
 inoremap <silent> <C-b> <C-o>h
-if !g:has_plugin( 'neocomplcache' )
+if !HasPlugin( 'neocomplcache' )
 "plugin.vim にてneocomplcacheとの兼ね合いをした設定を行っている。
 inoremap <silent> <C-a> <C-o>I
 inoremap <silent> <C-e> <C-o>A
@@ -492,7 +492,7 @@ nnoremap / /\v
 nnoremap ? ?\v
 
 " コード検索
-if !g:has_plugin( 'qfixgrep' )
+if !HasPlugin( 'qfixgrep' )
 	" 簡単vimgrep
 	nnoremap S :<C-u>vim /\<<C-r><C-w>\>/j **/*
 endif
@@ -575,7 +575,7 @@ command! Reloadvimrc :source $HOME/.vim/.vimrc
 " =============================================================
 " {{{ 
 
-"if g:has_plugin( '' )
+"if HasPlugin( '' )
 
 "endif
 

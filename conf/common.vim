@@ -436,14 +436,14 @@ set statusline+=:%t						" ファイル名
 set statusline+=%m						" 修正フラグ
 set statusline+=%r						" 読み込み専用フラグ
 set statusline+=%w						" プレビューウィンドウフラグ
-set statusline+=%{b:WrapMode()}			" 折り返し
+set statusline+=%{WrapMode()}			" 折り返し
 
 set statusline+=%=						" 左と右の境界
 
 "エラーが出たりカーソル位置がずれたり散々だった。
-"set statusline+=%{b:visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
+"set statusline+=%{visual_charcnt()}\ 	" ヴィジュアルモード時に選択している文字の数
 
-set statusline+=%{b:SearchPos()}		" 検索位置
+set statusline+=%{SearchPos()}		" 検索位置
 set statusline+=(%l,%v)					" カーソル位置
 set statusline+=[%B]					" カーソル下の文字コード
 set statusline+=\ %p%%					" ファイル内のページの位置
@@ -454,7 +454,7 @@ silent normal! vv
 
 " 今いるところの関数名を取得 {{{
 " namespaceとかclassとかそういうのは未対応
-function! b:FuncName()
+function! FuncName()
 	" 今居る位置を保存
 	let l:oldpos=getpos('.')
 
@@ -487,7 +487,7 @@ endfunction
 " }}}
 
 " wrap表示 {{{
-function! b:WrapMode()
+function! WrapMode()
 	if &wrap
 		return	'[wrap]'
 	endif
@@ -496,8 +496,8 @@ endfunction
 " }}}
 
 " searchPos {{{
-function! b:SearchPos()
-	if g:has_plugin( 'vim-anzu' )
+function! SearchPos()
+	if HasPlugin( 'vim-anzu' )
 		return anzu#search_status()
 	endif
 	return ''
@@ -744,13 +744,4 @@ command! -bang -bar -complete=file -nargs=? Unix  edit<bang> ++fileformat=unix  
 
 " }}}
 " =============================================================
-
-" =============================================================
-" {{{ 
-
-"if g:has_plugin( '' )
-
-"endif
-
-" }}}
-" =============================================================
+"

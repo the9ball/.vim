@@ -163,7 +163,7 @@ endif
 " {{{ プラグイン操作系
 
 " tyruさんから
-function! g:has_plugin(name)
+function! HasPlugin(name)
     let nosuffix = a:name =~? '\.vim$' ? a:name[:-5] : a:name
     let suffix   = a:name =~? '\.vim$' ? a:name      : a:name . '.vim'
     return &rtp =~# '\c\<' . nosuffix . '\>'
@@ -180,7 +180,7 @@ endfunction
 " {{{ vim-singleton
 " 真っ先に動かした方がいい気がする。.
 
-if g:has_plugin( 'vim-singleton' )
+if HasPlugin( 'vim-singleton' )
 
 let g:singleton#opener='drop'
 call singleton#enable()
@@ -193,7 +193,7 @@ endif
 " =============================================================
 " {{{ neocomplete
 
-if g:has_plugin( 'neocomplete' )
+if HasPlugin( 'neocomplete' )
 
 set completeopt+=longest
 
@@ -292,7 +292,7 @@ endif
 " =============================================================
 " {{{ neosnippet
 
-if g:has_plugin( 'neosnippet' )
+if HasPlugin( 'neosnippet' )
 
 " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -315,7 +315,7 @@ endif
 " =============================================================
 " {{{ quickrun
 
-if g:has_plugin( 'quickrun' )
+if HasPlugin( 'quickrun' )
 
 let g:quickrun_config = {
 \    '_' : {
@@ -365,14 +365,14 @@ unlet s:hook
 " =============================================================
 " {{{ watchdogs
 
-if g:has_plugin( 'vim-watchdogs' )
+if HasPlugin( 'vim-watchdogs' )
 
 	call watchdogs#setup( g:quickrun_config )
 
 	" 書き込み時のシンタックスチェック
 	let g:watchdogs_check_BufWritePost_enable = 1
 
-	if g:has_plugin( 'vim-hier' )
+	if HasPlugin( 'vim-hier' )
 		execute "highlight watchdogs ctermbg=DarkGray gui=undercurl guisp=Red"
 		let g:hier_highlight_group_qf = "watchdogs"
 
@@ -395,7 +395,7 @@ endif
 " =============================================================
 " {{{ CTRLP系
 
-if g:has_plugin( 'CtrlP' )
+if HasPlugin( 'CtrlP' )
 
 let g:ctrlp_map='<Space>g'
 "nnoremap <Space>c :<C-u>CtrlP<Space>
@@ -408,7 +408,7 @@ nnoremap <silent> <Space>v :<C-u>CtrlPVerboseLet<CR>
 nnoremap <silent> <Space>y :<C-u>CtrlPYankring<CR>
 nnoremap <silent> <Space>p :<C-u>call projectdir#init_ctrlp()<CR>
 
-if !g:has_plugin( 'Thumbnail' )
+if !HasPlugin( 'Thumbnail' )
 nnoremap <silent> <Space>b :<C-u>CtrlPBuffer<CR>
 endif
 
@@ -446,7 +446,7 @@ endif
 " =============================================================
 " {{{ pyclewn
 
-"if g:has_plugin( 'pyclewn' )
+"if HasPlugin( 'pyclewn' )
 
 " パスを通す.
 let $PATH=$HOME."/.vim/pyclewn/pyclewn-1.9.py2:".$PATH
@@ -507,7 +507,7 @@ endif
 " =============================================================
 " {{{ gtags
 
-if g:has_plugin( 'gtags' )
+if HasPlugin( 'gtags' )
 
 " gtags
 nnoremap <C-g> :Gtags<Space>
@@ -531,7 +531,7 @@ endif
 " =============================================================
 " {{{ lingr-vim
 
-if g:has_plugin( 'lingr-vim' )
+if HasPlugin( 'lingr-vim' )
 
 let g:lingr_vim_user='Shaula'
 
@@ -543,7 +543,7 @@ endif
 " =============================================================
 " {{{ submode
 
-if g:has_plugin( 'vim-submode' )
+if HasPlugin( 'vim-submode' )
 
 " 他のキーを押してleave_withした時に他のキーを有効にする。
 " http://d.hatena.ne.jp/thinca/20130131/1359567419
@@ -578,7 +578,7 @@ endif
 " =============================================================
 " {{{ vim-indent-guides
 
-if g:has_plugin( 'vim-indent-guides' )
+if HasPlugin( 'vim-indent-guides' )
 
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#121212 ctermbg=233
@@ -601,7 +601,7 @@ endif
 " =============================================================
 " {{{ EasyMotion
 
-if g:has_plugin( 'EasyMotion' )
+if HasPlugin( 'EasyMotion' )
 
 let g:EasyMotion_leader_key = '-'
 let g:EasyMotion_smartcase = 1
@@ -618,7 +618,7 @@ endif
 " =============================================================
 " {{{ vimprocでいろいろ
 
-if g:has_plugin( 'vimproc' )
+if HasPlugin( 'vimproc' )
 
 " =============================================================
 " {{{ ctagsを自動作成
@@ -641,15 +641,15 @@ endif
 " =============================================================
 " {{{ その他1行系
 
-if g:has_plugin( 'vim-projectdir' )
+if HasPlugin( 'vim-projectdir' )
 	let g:filename_projectdir_file = '$HOME/projectdir.conf'
 endif
 
-if g:has_plugin( 'eregex' )
+if HasPlugin( 'eregex' )
 	let g:eregex_default_enable = 0
 endif
 
-if g:has_plugin( 'vim-cycle' ) || g:has_plugin( 'vim-cycle_autoload' )
+if HasPlugin( 'vim-cycle' ) || HasPlugin( 'vim-cycle_autoload' )
 	let g:cycle_no_mappings=1 " 勝手にマッピングをしない.
 	nnoremap <silent> <C-i> :<C-u>call cycle#CycleNext()<CR>
 	call cycle#AddCycleGroup( ['hoge', 'fuga', 'piyo', 'hogera', 'hogehoge'] )
@@ -659,11 +659,11 @@ if g:has_plugin( 'vim-cycle' ) || g:has_plugin( 'vim-cycle_autoload' )
 	call cycle#AddCycleGroup( ['１', '２', '３', '４', '５', '６', '７', '８', '９', '０'] )
 endif
 
-if g:has_plugin( 'Thumbnail' )
+if HasPlugin( 'Thumbnail' )
 	nnoremap <silent> <Space>b :<C-u>Thumbnail<CR>
 endif
 
-if g:has_plugin( 'vim-alignta' )
+if HasPlugin( 'vim-alignta' )
 	vnoremap <silent> === :Align @1 =<CR>gv:Align @1 //<CR>
 	vnoremap <silent> == :Align @1 =<CR>
 	vnoremap <silent> =/ :Align @1 //<CR>
@@ -672,7 +672,7 @@ if g:has_plugin( 'vim-alignta' )
 	vnoremap <silent> =<Space> :s/\v  +/ /ge<CR>:nohlsearch<CR>gv:Align @0 \ <CR>
 endif
 
-if g:has_plugin( 'qfixgrep' )
+if HasPlugin( 'qfixgrep' )
 	" qfixgrep独自のquickfix制御は無効にする
 	let g:disable_QFixWin = 1
 	" qfixgrep用のキーマップを使用しない
@@ -686,14 +686,14 @@ if g:has_plugin( 'qfixgrep' )
 	nnoremap sfh :<C-u>RGrep -E "\<<C-r><C-w>\>" *.h*<CR>
 endif
 
-if g:has_plugin( 'vim-anzu' )
+if HasPlugin( 'vim-anzu' )
 	nmap <silent> n <plug>(anzu-n)zzzv
 	nmap <silent> N <plug>(anzu-N)zzzv
 	" nmap <silent> * <plug>(anzu-star)<plug>(anzu-N)
 	" nmap <silent> # <plug>(anzu-sharp)<plug>(anzu-n)
 endif
 
-if g:has_plugin( 'gundo.vim' )
+if HasPlugin( 'gundo.vim' )
 	nnoremap U :<C-u>GundoToggle<CR>
 endif
 
@@ -707,7 +707,7 @@ endif
 " =============================================================
 " {{{ unite系
 
-if g:has_plugin( 'unite' )
+if HasPlugin( 'unite' )
 
 "nnoremap <silent> <Space>b :<C-u>Unite -auto-resize -hide-source-names buffer<CR>
 "nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -auto-resize -hide-source-names file<CR>
@@ -753,7 +753,7 @@ endif
 " =============================================================
 " {{{ TwitVim
 
-if g:has_plugin( 'TwitVim' )
+if HasPlugin( 'TwitVim' )
 
 let twitvim_login_b64 = "dGhlOWJhbGw=:am1rdW05a2o="
 let twitvim_count = 2000
@@ -769,7 +769,7 @@ endif
 " =============================================================
 " {{{ 
 
-"if g:has_plugin( '' )
+"if HasPlugin( '' )
 
 "endif
 
