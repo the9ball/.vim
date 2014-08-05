@@ -67,6 +67,7 @@ NeoBundle 'thinca/vim-textobj-comment'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
+NeoBundle 'gregsexton/gitv'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
