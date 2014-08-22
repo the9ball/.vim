@@ -422,11 +422,12 @@ if 0
 	nnoremap <silent> to :<C-u>tabnew<CR>:tabmove<CR>
 	" 現在のタブを閉じる
 	nnoremap <silent> tc :<C-u>tabclose<CR>
-	" 次のタブへ移動
-	nnoremap <silent> tn :<C-u>tabnext<CR>
-	" 前のタブへ移動
-	nnoremap <silent> tp :<C-u>tabprev<CR>
 endif
+
+" 次のタブへ移動
+nnoremap <silent> tn :<C-u>tabnext<CR>
+" 前のタブへ移動
+nnoremap <silent> tp :<C-u>tabprev<CR>
 " }}}
 
 " }}}
