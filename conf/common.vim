@@ -115,6 +115,9 @@ set matchpairs+=<:>
 " 修正個数の報告
 set report=0
 
+" syntax処理を行う文字数を設定(軽量化)
+set synmaxcol=20
+
 " <C-a>/<C-x> での増減
 " <C-a>を潰している事実が悩みどころ
 " set nrformats=alpha,hex
