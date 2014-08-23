@@ -248,9 +248,7 @@ set cindent
 set backspace=indent,eol,start
 
 " 改行時にコメントしない
-" ftplugin で設定されているため、
-" after/ftplugin/*.vim で設定するようにする。
-"set formatoptions-=ro
+autocmd FileType * setlocal formatoptions-=ro
 
 " {{{ 行単位で逆順にする
 	command! -bar -range=% ReverseLine <line1>,<line2>g/^/m<line1>-1
