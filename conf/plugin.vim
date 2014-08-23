@@ -50,6 +50,7 @@ NeoBundleLazy 'thinca/vim-threes'
 
 if has('lua')
 	NeoBundle 'Shougo/neocomplete.vim'
+	NeoBundle 'osyo-manga/vim-marching'
 endif
 
 " TODO これじゃ動かない？
@@ -198,96 +199,53 @@ endif
 
 if HasPlugin( 'neocomplete' )
 
-set completeopt+=longest
-
-"起動時に有効
 let g:neocomplete#enable_at_startup = 1
-"ポップアップメニューで表示される候補の数。初期値は100
-let g:neocomplete#max_list = 5
-"自動補完を行う入力数を設定。初期値は2
+let g:neocomplete#max_list = 100
+let g:neocomplete#max_keyword_width = 40
 let g:neocomplete#auto_completion_start_length = 2
-"手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
-let g:neocomplete#manual_completion_start_length = 3
-"バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-let g:neocomplete#min_keyword_length = 4
-"シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-let g:neocomplete#min_syntax_length = 4
-"1:補完候補検索時に大文字・小文字を無視する
+let g:neocomplete#manual_completion_start_length = 1
+let g:neocomplete#min_keyword_length = 3
 let g:neocomplete#enable_ignore_case = 1
-"入力に大文字が入力されている場合、大文字小文字の区別をする
 let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#force_overwrite_completefunc = 1 " 0でもいいかも
+let g:neocomplete#use_vimproc = 0 " 1でもいいかも
+let g:neocomplete#data_directory = "~/neocomplete"
 
-"大文字小文字を区切りとしたあいまい検索を行うかどうか。
-"DTと入力するとD*T*と解釈され、DateTime等にマッチする。
-let g:neocomplete#enable_camel_case_completion = 1
-"アンダーバーを区切りとしたあいまい検索を行うかどうか。
-"m_sと入力するとm*_sと解釈され、mb_substr等にマッチする。
-let g:neocomplete#enable_underbar_completion = 1
-"ファジー補間
-"g:neocomplete#enable_underbar_completion and
-"g:neocomplete#enable_camel_case_completion is disabled.
-let g:neocomplete#enable_fuzzy_completion = 1
-
-if 1 " 以下を有効にするとシェルっぽい補間に。 {{{
-	let g:neocomplete#enable_auto_select = 1
-	let g:neocomplete#disable_auto_complete = 1
-	inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>"
-endif " }}}
-
-"シンタックス補完を無効に
-let g:neocomplete#plugin_disable = {
-\ 'syntax_complete' : 1, 
-\ }
-
-"補完するためのキーワードパターンを指定
-if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
-endif
-"日本語を補完候補として取得しないようにする
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-"関数を補完するための区切り文字パターン
-if !exists('g:neocomplete#delimiter_patterns')
-	let g:neocomplete#delimiter_patterns = {}
-endif
-let g:neocomplete#delimiter_patterns['php'] = ['->', '::', '\']
-let g:neocomplete#delimiter_patterns['cpp'] = ['\.', '->', '::']
-let g:neocomplete#delimiter_patterns['cs']  = ['\.']
-let g:neocomplete#delimiter_patterns['vim']  = ['#']
-
-"カーソルより後のキーワードパターンを認識。
-"h|geとなっている状態(|はカーソル)で、hogeを補完したときに後ろのキーワードを認識してho|geと補完する機能。
-"修正するときにかなり便利。
-" g:neocomplete#next_keyword_patternsは分からないときはいじらないほうが良いです。
-"if !exists('g:neocomplete#next_keyword_patterns')
-"	let g:neocomplete#next_keyword_patterns = {}
-"endif
-"
-""ファイルタイプの関連付け
-"if !exists('g:neocomplete#same_filetype_lists')
-"	let g:neocomplete#same_filetype_lists = {}
-"endif
-"
-""オムニ補完のパターンを設定
-"if !exists('g:neocomplete#omni_patterns')
-"	let g:neocomplete#omni_patterns = {}
-"endif
-
-" 先頭/終端へのジャンプ及び、補間キャンセル
-inoremap <silent><expr> <C-a> pumvisible()? neocomplete#smart_close_popup() : "\<C-o>I"
-inoremap <silent><expr> <C-e> pumvisible()? neocomplete#smart_close_popup() : "\<C-o>A"
-
-" 改行で確定
-inoremap <silent><expr> <CR> pumvisible()? neocomplete#smart_close_popup() : "\<CR>"
-
-" 何故かcompletefuncが空になることがあるので・・・。
-augroup neocomplete#completefunc
-	autocmd!
-	autocmd WinEnter,InsertEnter * set completefunc=neocomplete#complete#manual_complete
-augroup END
+nnoremap <Leader>ne :<C-u>NeoCompleteEnable<CR>
+nnoremap <Leader>nd :<C-u>NeoCompleteDisable<CR>
+nnoremap <Leader>nt :<C-u>NeoCompleteToggle<CR>
 
 endif
 
+
+" }}}
+" =============================================================
+
+" =============================================================
+" {{{ marching
+
+if HasPlugin( 'marching' )
+
+" 非同期ではなくて同期処理で補完する
+let g:marching_backend = "sync_clang_command"
+
+" オプションの設定
+" これは clang のコマンドに渡される
+let g:marching_clang_command_option="-std=c++1y"
+
+
+" neocomplete.vim と併用して使用する場合
+" neocomplete.vim を使用すれば自動補完になる
+let g:marching_enable_neocomplete = 1
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+	let g:neocomplete#force_omni_input_patterns = {}
+endif
+
+let g:neocomplete#force_omni_input_patterns.cpp =
+	\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+
+endif
 
 " }}}
 " =============================================================
