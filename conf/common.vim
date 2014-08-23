@@ -244,6 +244,7 @@ set cindent
 	" set cinoptions+=t0
 
 	set cinkeys-=0#
+	set cinkeys-=:
 " }}}
 
 " <BS>で文字が消えない問題の対応
