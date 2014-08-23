@@ -46,6 +46,7 @@ NeoBundle 'osyo-manga/vim-brightest'
 NeoBundle 'dannyob/quickfixstatus'
 NeoBundle 'sjl/gundo.vim'
 NeoBundleLazy 'osyo-manga/vim-textobj-blockwise'
+NeoBundleLazy 'thinca/vim-threes'
 
 if has('lua')
 	NeoBundle 'Shougo/neocomplete.vim'
