@@ -242,6 +242,8 @@ set cindent
 	" set cinoptions+=i0
 	" 戻り値の指定???
 	" set cinoptions+=t0
+
+	set cinkeys-=0#
 " }}}
 
 " <BS>で文字が消えない問題の対応
