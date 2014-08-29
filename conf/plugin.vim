@@ -24,7 +24,7 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'vim-jp/cpp-vim', {
 	\ 'autoload' : {'filetypes' : 'cpp'}
 	\ }
-NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'tmhedberg/matchit'
 NeoBundle 'kien/ctrlp.vim'
 	NeoBundle 'the9ball/ctrlp-launcher'
 	NeoBundle 'the9ball/ctrlp-verboselet'
