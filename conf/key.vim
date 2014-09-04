@@ -425,9 +425,10 @@ if 0
 endif
 
 " 次のタブへ移動
-nnoremap <silent> tn :<C-u>tabnext<CR>
+nnoremap <silent> <C-t>n :<C-u>tabnext<CR>
 " 前のタブへ移動
-nnoremap <silent> tp :<C-u>tabprev<CR>
+nnoremap <silent> <C-t>p :<C-u>tabprev<CR>
+
 " }}}
 
 " }}}
