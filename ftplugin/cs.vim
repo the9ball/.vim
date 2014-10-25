@@ -11,6 +11,11 @@ if HasPlugin('Omnisharp')
 	endif
 	let g:neocomplcache_force_omni_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
 
-	inoremap <C-o><C-m> <C-o>q:OmniSharp
+	nnoremap <silent> MD :<C-u>OmniSharpGotoDefinition<CR>
+	nnoremap <silent> MU :<C-u>OmniSharpFindUsages<CR>
+	nnoremap <silent> MI :<C-u>OmniSharpFindImplementations<CR>
+	nnoremap <silent> MR :<C-u>OmniSharpRename<CR>
+	nnoremap <silent> MX :<C-u>OmniSharpGetCodeActions<CR>
+"	nnoremap <silent> M :<C-u><CR>
 endif
 
