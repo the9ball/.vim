@@ -280,6 +280,9 @@ autocmd FileType * setlocal formatoptions-=ro
 	vnoremap <silent> _W :call <SID>ReverseWord()<CR>
 " }}}
 
+" オムニ補間時にpreviewが出るのがうざいので
+set completeopt=menuone
+
 " }}}
 " =============================================================
 
