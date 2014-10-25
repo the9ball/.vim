@@ -5,11 +5,19 @@ if !HasPlugin( 'qfixgrep' )
 endif
 
 if HasPlugin('Omnisharp')
-	" omini sharp用
-	if !exists('g:neocomplcache_force_omni_patterns')
-		let g:neocomplcache_force_omni_patterns = {}
+	autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+
+	" omini sharp用 neocomplete設定
+	if HasPlugin('neocomplete')
+		if !exists('g:neocomplete#sources#omni#input_patterns')
+			let g:neocomplete#sources#omni#input_patterns = {}
+		endif
+		if !exists('g:neocomplete#sources')
+			let g:neocomplete#sources = {}
+		endif
+		let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
+		let g:neocomplete#sources.cs = ['omni']
 	endif
-	let g:neocomplcache_force_omni_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
 
 	nnoremap <silent> MD :<C-u>OmniSharpGotoDefinition<CR>
 	nnoremap <silent> MU :<C-u>OmniSharpFindUsages<CR>
