@@ -79,6 +79,7 @@ NeoBundleLazy 'nosami/Omnisharp', {
 \     'unix': 'xbuild server/OmniSharp.sln',
 \   }
 \ }
+NeoBundle 'tyru/capture.vim'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
