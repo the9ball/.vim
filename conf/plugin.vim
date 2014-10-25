@@ -6,7 +6,7 @@ scriptencoding utf-8
 filetype off
 set rtp+=~/.vim/bundle/neobundle.vim/
 " 管理するフォルダを引数で渡します。
-call neobundle#rc( '$HOME/.vim/bundle' )
+call neobundle#begin( '$HOME/.vim/bundle' )
 
 let g:neobundle_default_git_protocol="git"
 
@@ -167,6 +167,8 @@ endif
 " NeoBundle 'fuenor/qfixgrep'
 
 " }}}
+
+call neobundle#end()
 
 " }}}
 " =============================================================
