@@ -47,6 +47,7 @@ NeoBundle 'dannyob/quickfixstatus'
 NeoBundle 'sjl/gundo.vim'
 NeoBundleLazy 'osyo-manga/vim-textobj-blockwise'
 NeoBundleLazy 'thinca/vim-threes'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 if has('lua')
 	NeoBundle 'Shougo/neocomplete.vim'
@@ -80,7 +81,6 @@ NeoBundle 'mattn/vim-metarw'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/vim-metarw-simplenote'
 NeoBundle 'osyo-manga/vim-milfeulle'
-NeoBundle 'Lokaltog/vim-easymotion'
 
 " カラースキーム {{{
 NeoBundle 'Shougo/unite.vim'
@@ -142,7 +142,6 @@ endif
 " NeoBundle 'cohama/vim-insert-linenr'
 
 " 結局使わない。
-" NeoBundle 'Lokaltog/vim-easymotion'
 " NeoBundle 'vim-scripts/TwitVim'
 
 " webの方が結局使いやすかった。
