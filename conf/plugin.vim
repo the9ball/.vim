@@ -104,7 +104,7 @@ NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 NeoBundle 'vim-scripts/zazen'
-colorscheme wombat
+colorscheme desert
 " }}}
 
 " Win用
