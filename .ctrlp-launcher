@@ -13,3 +13,4 @@ ChangeMidTab	%s/\v([^\t])\t+/\1 /ge
 noexpandtab	set noexpandtab
 check:php	!php -l %
 clean:swapfiles	!find . -name '.*.sw*' -print0 | xargs -0 rm
+
