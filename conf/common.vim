@@ -128,6 +128,8 @@ set synmaxcol=160
 
 " バックアップ
 set nobackup
+" crontab編集用
+set backupskip=/tmp/*,/private/tmp/*
 
 " screenと一緒に使った時の表示の崩れがなくなるらしい。
 set t_Co=256
