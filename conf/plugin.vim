@@ -80,6 +80,14 @@ NeoBundleLazy 'nosami/Omnisharp', {
 \   }
 \ }
 NeoBundle 'tyru/capture.vim'
+NeoBundle 'jeaye/color_coded'
+NeoBundleLazy 'jeaye/color_coded', {
+		\ 'build': {
+		\   'unix': 'cmake . && make && make install',
+		\ },
+		\ 'autoload' : { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
+		\ 'build_commands' : ['cmake', 'make']
+	\}
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
