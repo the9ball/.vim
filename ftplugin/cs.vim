@@ -23,7 +23,8 @@ if HasPlugin('Omnisharp')
 	nnoremap <silent> MU :<C-u>OmniSharpFindUsages<CR>
 	nnoremap <silent> MI :<C-u>OmniSharpFindImplementations<CR>
 	nnoremap <silent> MR :<C-u>OmniSharpRename<CR>
-	nnoremap <silent> MX :<C-u>OmniSharpGetCodeActions<CR>
+	nnoremap <silent> MA :<C-u>OmniSharpGetCodeActions<CR>
+	nnoremap <silent> MT :<C-u>OmniSharpTypeLookup<CR>
 "	nnoremap <silent> M :<C-u><CR>
 endif
 
