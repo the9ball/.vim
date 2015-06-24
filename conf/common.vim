@@ -99,7 +99,11 @@ set splitright
 set list	"やっぱ見にくかった。
 " 改行、タブ文字の設定
 "set listchars=tab:^\ ,trail:-
-set listchars=tab:»\ ,trail:«,extends:>,precedes:<
+if g:is_win
+	set listchars=tab:>\ ,trail:<,extends:>,precedes:<
+else
+	set listchars=tab:»\ ,trail:«,extends:>,precedes:<
+endif
 "tab:タブ:	
 "trail:行末のスペース: 
 
