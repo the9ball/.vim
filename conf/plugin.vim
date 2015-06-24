@@ -80,14 +80,6 @@ NeoBundleLazy 'nosami/Omnisharp', {
 \   }
 \ }
 NeoBundle 'tyru/capture.vim'
-NeoBundle 'jeaye/color_coded'
-NeoBundleLazy 'jeaye/color_coded', {
-		\ 'build': {
-		\   'unix': 'cmake . && make && make install',
-		\ },
-		\ 'autoload' : { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
-		\ 'build_commands' : ['cmake', 'make']
-	\}
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
@@ -174,6 +166,15 @@ endif
 " 検索に引っかからないことが多い？要調査
 " NeoBundle 'fuenor/qfixgrep'
 
+" ビルドが必要だし、そもそもC++を書かなくなった。
+" NeoBundle 'jeaye/color_coded'
+" NeoBundleLazy 'jeaye/color_coded', {
+" 		\ 'build': {
+" 		\   'unix': 'cmake . && make && make install',
+" 		\ },
+" 		\ 'autoload' : { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
+" 		\ 'build_commands' : ['cmake', 'make']
+" 	\}
 " }}}
 
 call neobundle#end()
