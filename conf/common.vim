@@ -8,7 +8,7 @@
 set noexrc
 
 " エンコード云々
-set encoding=utf-8 fileencodings=utf-8,ucs-bom,iso-2022-jp,euc-jp,cp932
+set encoding=utf-8 bomb fileencodings=utf-8,ucs-bom,iso-2022-jp,euc-jp,cp932
 set fileformat=unix fileformats=unix,dos,mac
 
 " 背景色を指定することで文字色を設定
