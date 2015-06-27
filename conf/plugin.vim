@@ -67,6 +67,15 @@ if has('lua')
 	NeoBundle 'osyo-manga/vim-marching'
 endif
 
+NeoBundleLazy 'nosami/Omnisharp', {
+\   'autoload': {'filetypes': ['cs']},
+\   'build': {
+\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
+\     'mac': 'xbuild server/OmniSharp.sln',
+\     'unix': 'xbuild server/OmniSharp.sln',
+\   }
+\ }
+
 " TODO これじゃ動かない？
 "      とりあえず直接落としてきた。.
 "NeoBundle 'jayed/pyclewn'
@@ -89,14 +98,6 @@ NeoBundleLazy 'cohama/agit.vim'
 NeoBundleLazy 'thinca/vim-threes'
 
 " 試用中
-NeoBundleLazy 'nosami/Omnisharp', {
-\   'autoload': {'filetypes': ['cs']},
-\   'build': {
-\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
-\     'mac': 'xbuild server/OmniSharp.sln',
-\     'unix': 'xbuild server/OmniSharp.sln',
-\   }
-\ }
 NeoBundle 'tyru/capture.vim'
 
 " 便利だけど、新タブで開かれるのがうざい。
