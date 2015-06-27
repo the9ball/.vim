@@ -73,9 +73,6 @@ NeoBundleLazy 'cohama/agit.vim'
 NeoBundleLazy 'thinca/vim-threes'
 
 " 試用中
-NeoBundle 'othree/eregex.vim'
-NeoBundle 'tyru/coolgrep.vim'
-NeoBundle 'mattn/vdbi-vim'
 NeoBundleLazy 'nosami/Omnisharp', {
 \   'autoload': {'filetypes': ['cs']},
 \   'build': {
