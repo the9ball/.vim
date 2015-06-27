@@ -44,7 +44,6 @@ NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-brightest'
 NeoBundle 'dannyob/quickfixstatus'
 NeoBundle 'sjl/gundo.vim'
-NeoBundleLazy 'thinca/vim-threes'
 NeoBundle 'Lokaltog/vim-easymotion'
 
 if has('lua')
@@ -70,6 +69,8 @@ NeoBundle 'osyo-manga/vim-textobj-blockwise'
 NeoBundleLazy 'tpope/vim-fugitive'
 NeoBundleLazy 'cohama/agit.vim'
 
+" 遊び系
+NeoBundleLazy 'thinca/vim-threes'
 
 " 試用中
 NeoBundle 'othree/eregex.vim'
