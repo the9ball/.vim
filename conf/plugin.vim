@@ -44,7 +44,6 @@ NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-brightest'
 NeoBundle 'dannyob/quickfixstatus'
 NeoBundle 'sjl/gundo.vim'
-NeoBundleLazy 'osyo-manga/vim-textobj-blockwise'
 NeoBundleLazy 'thinca/vim-threes'
 NeoBundle 'Lokaltog/vim-easymotion'
 
@@ -64,6 +63,7 @@ NeoBundle 'kana/vim-textobj-function'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-underscore'
 NeoBundle 'thinca/vim-textobj-comment'
+NeoBundle 'osyo-manga/vim-textobj-blockwise'
 
 " git系
 NeoBundleLazy 'tpope/vim-fugitive'
