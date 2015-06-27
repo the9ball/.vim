@@ -65,11 +65,15 @@ NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-underscore'
 NeoBundle 'thinca/vim-textobj-comment'
 
+" git系
+NeoBundleLazy 'tpope/vim-fugitive'
+NeoBundleLazy 'cohama/agit.vim'
+
+
 " 試用中
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tyru/coolgrep.vim'
 NeoBundle 'mattn/vdbi-vim'
-NeoBundle 'gregsexton/gitv'
 NeoBundleLazy 'nosami/Omnisharp', {
 \   'autoload': {'filetypes': ['cs']},
 \   'build': {
@@ -674,6 +678,10 @@ endif
 
 if HasPlugin( 'gundo.vim' )
 	nnoremap U :<C-u>GundoToggle<CR>
+endif
+
+if HasPlugin( 'fugitive' )
+	nnoremap gp :<C-u>Ggrep -nH<space>
 endif
 
 " }}}
