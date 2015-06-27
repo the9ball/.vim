@@ -679,7 +679,7 @@ if HasPlugin( 'vim-anzu' )
 endif
 
 if HasPlugin( 'gundo.vim' )
-	nnoremap U :<C-u>GundoToggle<CR>
+	nnoremap <space>u :<C-u>GundoToggle<CR>
 endif
 
 if HasPlugin( 'fugitive' )
