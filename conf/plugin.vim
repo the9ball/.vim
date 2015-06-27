@@ -63,6 +63,7 @@ NeoBundle 'kana/vim-textobj-function'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-underscore'
 NeoBundle 'thinca/vim-textobj-comment'
+NeoBundle 'anyakichi/vim-textobj-ifdef'
 NeoBundle 'osyo-manga/vim-textobj-blockwise'
 
 " git系
