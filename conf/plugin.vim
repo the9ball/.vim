@@ -104,10 +104,6 @@ NeoBundle 'tyru/capture.vim'
 "NeoBundle 'itchyny/thumbnail.vim'
 
 " 動かし方を調べる。.
-NeoBundle 'mattn/vim-metarw'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/vim-metarw-simplenote'
-NeoBundle 'osyo-manga/vim-milfeulle'
 
 " カラースキーム {{{
 NeoBundle 'Shougo/unite.vim'
@@ -125,11 +121,7 @@ NeoBundle 'vim-scripts/zazen'
 colorscheme desert
 " }}}
 
-
 " 使ってみたいリスト {{{
-" NeoBundle 'kana/vim-smartinput'
-" NeoBundle 'mattn/excitetranslate-vim'
-" NeoBundle 'deris/vim-rengbang'
 " }}}
 
 " 使わないことにしたリスト。{{{
@@ -151,6 +143,7 @@ colorscheme desert
 " 使い方がわからなかった。
 " NeoBundle 'daisuzu/unite-gtags'
 " NeoBundle 'thinca/vim-unite-history'
+" NeoBundle 'osyo-manga/vim-milfeulle'
 
 " 使用しなくなった。
 " NeoBundle 'motemen/git-vim'
@@ -187,6 +180,16 @@ colorscheme desert
 " 		\ 'autoload' : { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
 " 		\ 'build_commands' : ['cmake', 'make']
 " 	\}
+
+" 勝手にカッコが出てくるとうざい
+" NeoBundle 'kana/vim-smartinput'
+
+" 必要性を感じなくなった
+" NeoBundle 'mattn/excitetranslate-vim'
+" NeoBundle 'deris/vim-rengbang'
+" NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'mattn/vim-metarw'
+
 " }}}
 
 call neobundle#end()
