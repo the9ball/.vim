@@ -10,6 +10,22 @@ call neobundle#begin( '$HOME/.vim/bundle' )
 
 let g:neobundle_default_git_protocol="git"
 
+NeoBundle 'thinca/vim-singleton'
+" =============================================================
+" {{{ vim-singleton
+" 真っ先に動かした方がいい気がする。.
+
+if HasPlugin( 'vim-singleton' )
+
+let g:singleton#opener='drop'
+call singleton#enable()
+
+endif
+
+" }}}
+" =============================================================
+
+
 " NeoBundle が管理するプラグイン
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
@@ -109,12 +125,6 @@ NeoBundle 'vim-scripts/zazen'
 colorscheme desert
 " }}}
 
-" Win用
-if g:is_win
-NeoBundle 'thinca/vim-singleton'
-"source $VIMRUNTIME/macros/editexisting.vim
-
-endif
 
 " 使ってみたいリスト {{{
 " NeoBundle 'kana/vim-smartinput'
@@ -197,20 +207,6 @@ function! HasPlugin(name)
     \   || globpath(&rtp, 'autoload/' . suffix, 1) != ''
     \   || globpath(&rtp, 'autoload/' . tolower(suffix), 1) != ''
 endfunction
-
-" }}}
-" =============================================================
-
-" =============================================================
-" {{{ vim-singleton
-" 真っ先に動かした方がいい気がする。.
-
-if HasPlugin( 'vim-singleton' )
-
-let g:singleton#opener='drop'
-call singleton#enable()
-
-endif
 
 " }}}
 " =============================================================
