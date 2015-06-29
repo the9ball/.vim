@@ -1,6 +1,23 @@
 scriptencoding utf-8
 
 " =============================================================
+" {{{ プラグイン操作系
+
+" tyruさんから
+function! HasPlugin(name)
+    let nosuffix = a:name =~? '\.vim$' ? a:name[:-5] : a:name
+    let suffix   = a:name =~? '\.vim$' ? a:name      : a:name . '.vim'
+    return &rtp =~# '\c\<' . nosuffix . '\>'
+    \   || globpath(&rtp, suffix, 1) != ''
+    \   || globpath(&rtp, nosuffix, 1) != ''
+    \   || globpath(&rtp, 'autoload/' . suffix, 1) != ''
+    \   || globpath(&rtp, 'autoload/' . tolower(suffix), 1) != ''
+endfunction
+
+" }}}
+" =============================================================
+
+" =============================================================
 " {{{ NeoBundle のための設定
 
 filetype off
@@ -194,23 +211,6 @@ colorscheme desert
 " }}}
 
 call neobundle#end()
-
-" }}}
-" =============================================================
-
-" =============================================================
-" {{{ プラグイン操作系
-
-" tyruさんから
-function! HasPlugin(name)
-    let nosuffix = a:name =~? '\.vim$' ? a:name[:-5] : a:name
-    let suffix   = a:name =~? '\.vim$' ? a:name      : a:name . '.vim'
-    return &rtp =~# '\c\<' . nosuffix . '\>'
-    \   || globpath(&rtp, suffix, 1) != ''
-    \   || globpath(&rtp, nosuffix, 1) != ''
-    \   || globpath(&rtp, 'autoload/' . suffix, 1) != ''
-    \   || globpath(&rtp, 'autoload/' . tolower(suffix), 1) != ''
-endfunction
 
 " }}}
 " =============================================================
