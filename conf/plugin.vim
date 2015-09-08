@@ -116,6 +116,7 @@ NeoBundleLazy 'thinca/vim-threes'
 
 " 試用中
 NeoBundle 'tyru/capture.vim'
+NeoBundle 'fatih/vim-go'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
