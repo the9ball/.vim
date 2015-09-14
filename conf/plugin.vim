@@ -684,6 +684,10 @@ if HasPlugin( 'fugitive' )
 	nnoremap gp :<C-u>Ggrep -nH<space>
 endif
 
+if HasPlugin( 'vim-go' )
+	let g:go_fmt_command = "goimports"
+endif
+
 " }}}
 " =============================================================
 
