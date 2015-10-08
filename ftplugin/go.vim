@@ -17,4 +17,8 @@ exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
 let b:undo_ftplugin = "setl com< cms<"
 
+setlocal foldmethod=marker
+setlocal foldminlines=0
+setlocal foldmarker={,}
+
 " vim:ts=4:sw=4:et
