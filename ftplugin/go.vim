@@ -12,6 +12,9 @@ let b:did_ftplugin = 1
 setlocal comments=s1:/*,mb:*,ex:*/,://
 setlocal commentstring=//\ %s
 
+set rtp+=$GOROOT/misc/vim
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+
 let b:undo_ftplugin = "setl com< cms<"
 
 " vim:ts=4:sw=4:et
