@@ -424,6 +424,8 @@ if 0
 	nnoremap <silent> tc :<C-u>tabclose<CR>
 endif
 
+" 新しいタブを作成
+nnoremap <silent> <C-t>t :<C-u>tabnew<CR>
 " 次のタブへ移動
 nnoremap <silent> <C-t>n :<C-u>tabnext<CR>
 " 前のタブへ移動
