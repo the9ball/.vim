@@ -118,6 +118,7 @@ NeoBundleLazy 'thinca/vim-threes'
 NeoBundle 'tyru/capture.vim'
 NeoBundle 'fatih/vim-go'
 NeoBundle "aklt/plantuml-syntax"
+NeoBundle 'vim-scripts/ShaderHighLight.vim'
 
 " 便利だけど、新タブで開かれるのがうざい。
 " ので、あとで詳しく調べる。
