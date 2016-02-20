@@ -690,6 +690,10 @@ if HasPlugin( 'vim-go' )
 	let g:go_fmt_command = "goimports"
 endif
 
+if HasPlugin( 'vim-markdown' )
+	au BufRead,BufNewFile *.md set filetype=markdown
+endif
+
 " }}}
 " =============================================================
 
