@@ -25,7 +25,7 @@ function! <SID>Enter(ofs)
 	endif
 
 	" 現在の行への処理
-	if l:now =~ '^-\s\?$' || l:now =~ '^1.\s\?$' || l:now =~ '^$'
+	if l:now =~ '^-\s\?$' || l:now =~ '^\d.\s\?$' || l:now =~ '^$'
 		let l:result=l:result."\<C-o>0\<C-o>\<S-d>"
 		let l:now="" " 空行と同じ扱いにする
 	endif
@@ -38,7 +38,7 @@ function! <SID>Enter(ofs)
 		let l:result=l:result."0\<C-d>"
 	elseif l:now =~ '^#\+\s'
 		let l:result=l:result."0\<C-d>- "
-	elseif l:now =~ '^1\.'
+	elseif l:now =~ '^\d\.'
 		let l:result=l:result."1. "
 	else
 		let l:result=l:result."- "
