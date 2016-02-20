@@ -16,4 +16,4 @@ check:php	!php -l %
 clean:swapfiles	!find . -name '.*.sw*' -print0 | xargs -0 rm
 clean:orig	!find . -name "*.orig" -print0 | xargs -0 rm
 OmniSharpReloadSolution	OmniSharpReloadSolution
-
+markdownmode	set tabstop=2 softtabstop=2 shiftwidth=2
