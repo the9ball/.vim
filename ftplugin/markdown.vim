@@ -2,7 +2,7 @@
 	finish
 endif
 
-set tabstop=2 softtabstop=2 shiftwidth=2
+setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " TAB入力でインデント
 inoremap <buffer> <Tab> <C-t>
