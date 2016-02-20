@@ -12,7 +12,8 @@ inoremap <buffer> <S-Tab> <C-d>
 nnoremap <buffer><expr> o "A".<SID>Enter(0)
 nnoremap <buffer><expr> O "kA".<SID>Enter(1)
 
-" 改行時の挙動をいい感じにする
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 改行時の挙動をいい感じにする {{{
 inoremap <buffer><expr> <Enter> <SID>Enter(0)
 function! <SID>Enter(ofs)
 	let l:result=""
@@ -46,3 +47,5 @@ function! <SID>Enter(ofs)
 	echo l:now." => ".l:result
 	return l:result
 endfunction
+" }}}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
