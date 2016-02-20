@@ -88,9 +88,28 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" リスト表示 {{{
+nnoremap <buffer> <C-l> :<C-u>call <SID>Tablaize()<Enter>
+inoremap <buffer> <C-l> <C-o>:<C-u>call <SID>Tablaize()<Enter>
+function! <SID>Tablaize()
+	let l:pos=getcurpos()
+	let l:nowline=l:pos[1]
+	let l:line=getline(l:nowline)
+	call append(l:nowline, substitute(l:line, '|\zs[^|]*\ze|', '  ', 'ge'))
+	call append(l:nowline, substitute(l:line, '|\zs[^|]*\ze|', '----', 'ge'))
+
+	let l:pos[1] = l:pos[1] + 2 " row
+	let l:pos[2] = 3 " column
+	call setpos('.', l:pos)
+
+	startinsert
+endfunction
+" }}}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TODO {{{
 " TODO:インデント変えたら(下げたら)箇条書きタイプを変える
-" TODO:表に対応(|hoge|fuga| -> |hoge|fuga|\n|---|---|\n|  |  |
 " TODO:行の途中で改行した時に末尾の"  "を追加する
 " TODO:箇条書き無しバージョンに対応("  "があったら無視する？)
 " TODO:プラグイン化(オプションにする項目の洗い出しレベルから)
