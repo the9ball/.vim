@@ -71,9 +71,18 @@ endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 折りたたみ設定 {{{
+" #毎に折りたたむ
+" ただし、#の行の前には空行が必須
+" ##とか###とかは無視
 setlocal fdm=expr fde=GetMyMarkdownFoldLevel(v:lnum)
 function! GetMyMarkdownFoldLevel(lnum)
-	return getline(a:lnum + 1) =~ '^#' ? '<1' : 1
+	if getline(a:lnum + 2) =~ '^# '
+		return '<1'
+	elseif getline(a:lnum + 1) =~ '^# '
+		return 0
+	else
+		return 1
+	endif
 endfunction
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
