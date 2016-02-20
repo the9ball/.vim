@@ -49,3 +49,21 @@ function! <SID>Enter(ofs)
 endfunction
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 箇条書きのタイプをトグルする {{{
+inoremap <buffer><expr> <C-s> <SID>ToggleType()
+function! <SID>ToggleType()
+	let l:result=""
+
+	let l:now=substitute(getline("."), "^\\t*\\([^ ]\\+\\).*$", "\\1", "")
+	if l:now =~ "-"
+	  let l:result="\<C-o>:\<C-u>s/^\\t*\\zs-/1./\<Enter>"
+	elseif l:now =~ '\d\+\.'
+	  let l:result="\<C-o>:\<C-u>s/^\t*\\zs\\d\\./-/\<Enter>"
+	endif
+
+	return l:result
+endfunction
+" }}}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
