@@ -44,7 +44,6 @@ function! <SID>Enter(ofs)
 		let l:result=l:result."- "
 	endif
 
-	echo l:now." => ".l:result
 	return l:result
 endfunction
 " }}}
