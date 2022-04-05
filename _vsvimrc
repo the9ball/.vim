@@ -10,3 +10,5 @@ set backspace=eol,start,indent
 set clipboard=unnamed
 
 nnoremap Y y$
+nnoremap o A<CR>
+nnoremap O kA<CR>
