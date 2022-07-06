@@ -93,10 +93,6 @@ NeoBundleLazy 'nosami/Omnisharp', {
 \   }
 \ }
 
-" TODO これじゃ動かない？
-"      とりあえず直接落としてきた。.
-"NeoBundle 'jayed/pyclewn'
-
 " textobject系
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'vim-scripts/surround.vim'
@@ -173,7 +169,6 @@ colorscheme desert
 
 " つかいにくかった。
 " NeoBundle 'rhysd/accelerated-jk'
-" NeoBundle 'yuratomo/dbg.vim' pyclewnの方が使いやすい。
 " NeoBundle 'cohama/vim-insert-linenr'
 
 " 結局使わない。
@@ -371,7 +366,7 @@ endif
 
 " }}}
 " =============================================================
-	
+
 endif
 
 " }}}
@@ -424,67 +419,6 @@ let g:ctrlp_custom_ignore = {
 \ }
 
 endif
-
-" }}}
-" =============================================================
-
-" =============================================================
-" {{{ pyclewn
-
-"if HasPlugin( 'pyclewn' )
-
-" パスを通す.
-let $PATH=$HOME."/.vim/pyclewn/pyclewn-1.9.py2:".$PATH
-
-source $HOME/.vim/pyclewn/pyclewn-1.9.py2/runtime/plugin/pyclewn.vim
-
-" Pyclewn用キーバインド
-nnoremap <silent> <F4> :<C-u>Pyclewn<CR>
-"nnoremap <F6> :<C-u>call g:TogglePyclewnKeymap()<CR>
-" キーマップのOn/OFF切り替え
-let s:TogglePyclewnKeymapFlag = 0
-function! g:TogglePyclewnKeymap()
-	if  0 == s:TogglePyclewnKeymapFlag
-		let s:TogglePyclewnKeymapFlag = 1
-		echo "Cmapkeys enable"
-		Cmapkeys
-		nnoremap <S-p> :Cprint <C-r><C-w><CR>
-	else
-		let s:TogglePyclewnKeymapFlag = 0
-		echo "Cmapkeys disable"
-		Cunmapkeys
-		nnoremap <S-p> <NOP>
-	endif
-endfunction
-" ブレークポイント置く用。
-function! g:PutBreak()
-	let s:name = expand("%")
-	let s:line = line(".")
-	"echo ":Cbreak \"". s:name . "\":" .  s:line
-	execute "Cbreak \\\"".s:name."\\\":".s:line
-endfunction
-" VCっぽく。
-nnoremap <F5> :<C-u>Ccontinue<CR>
-nnoremap <F9> :call g:PutBreak()<CR>
-nnoremap <F10> :Cnext<CR>
-nnoremap <F11> :Cstep<CR>
-nnoremap <F12> :Cfinish<CR>
-
-" ダブった時のことは知らない。
-if 1
-	function! g:AttachFunc( progname )
-		let s:pid = system( "pgrep " . a:progname )
-		"echo s:pid
-		"echo exists( 'pyclewn#StartClewn' )
-		if "" != s:pid
-			"echo s:pid
-			execute "Cattach".s:pid
-		endif
-	endfunction
-	command! -bar -nargs=1 -complete=file Attach :call g:AttachFunc( <f-args> )
-endif
-
-"endif
 
 " }}}
 " =============================================================
@@ -764,7 +698,7 @@ endif
 " =============================================================
 
 " =============================================================
-" {{{ 
+" {{{
 
 "if HasPlugin( '' )
 
