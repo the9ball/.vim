@@ -30,6 +30,9 @@ vnoremap < <gv
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+nnoremap ciw viwygvc
+vnoremap c ygvc
+
 nnoremap <Space>r :<C-U>vsc Refactor.Rename<CR>
 nnoremap <Space>b :<C-U>vsc Build.BuildSelection<CR>
 
