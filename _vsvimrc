@@ -24,6 +24,8 @@ inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 inoremap <C-f> <C-o>l
 inoremap <C-b> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
 
 vnoremap > >gv
 vnoremap < <gv
