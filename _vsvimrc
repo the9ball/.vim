@@ -20,6 +20,9 @@ nnoremap o A<CR>
 nnoremap <C-e> $
 nnoremap <C-a> ^
 
+nnoremap <C-n> :<C-U>vsc Edit.GoToNextLocation<CR>
+nnoremap <C-p> :<C-U>vsc Edit.GoToPrevLocation<CR>
+
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 inoremap <C-f> <C-o>l
